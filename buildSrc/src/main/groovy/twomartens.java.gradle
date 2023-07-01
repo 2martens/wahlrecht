@@ -1,0 +1,71 @@
+import java.text.SimpleDateFormat
+
+plugins {
+  id 'jacoco'
+  id 'io.freefair.lombok'
+  id 'twomartens.java-base'
+  id 'twomartens.checkstyle'
+}
+
+dependencies {
+  constraints.implementation libs.bundles.logging
+
+  implementation libs.slf4j.api
+  runtimeOnly libs.bundles.logging
+
+  testImplementation libs.bundles.test
+}
+
+configurations {
+  configureEach {
+    exclude group: 'junit', module: 'junit'
+    // we are using log4j-slf4j2-impl, so we need to suppress spring include of log4j-slf4j-impl
+    exclude group: 'org.apache.logging.log4j', module: 'log4j-slf4j-impl'
+  }
+}
+
+test {
+  systemProperty 'junit.jupiter.execution.parallel.enabled', true
+  systemProperty 'junit.jupiter.execution.parallel.mode.default', "concurrent"
+  useJUnitPlatform()
+  maxHeapSize = "4g"
+  workingDir = rootProject.projectDir
+  finalizedBy jacocoTestReport
+}
+
+configurations {
+  compileOnly {
+    extendsFrom annotationProcessor
+  }
+}
+
+jacocoTestReport {
+  dependsOn(test)
+  reports {
+    xml.required = true
+  }
+}
+
+jar {
+  doFirst {
+    manifest {
+      attributes 'Implementation-Title': rootProject.name,
+          'Implementation-Version': archiveVersion.get(),
+          'Implementation-Vendor': "Jim Martens",
+          'Build-Timestamp': new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
+          'Created-By': "Gradle ${gradle.gradleVersion}",
+          'Build-Jdk': "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+          'Build-OS': "${System.properties['os.name']} ${System.properties['os.arch']} ${System.properties['os.version']}"
+    }
+  }
+}
+
+normalization.runtimeClasspath.metaInf {
+  ignoreAttribute("Build-Timestamp")
+}
+
+tasks.register('cleanLibs') {
+  delete("${buildDir}/libs")
+}
+
+tasks.build.dependsOn("cleanLibs")

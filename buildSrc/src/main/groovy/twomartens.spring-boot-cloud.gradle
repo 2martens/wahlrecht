@@ -1,0 +1,40 @@
+plugins {
+  id 'twomartens.spring-boot'
+}
+
+dependencies {
+  implementation platform(libs.spring.cloud)
+  implementation libs.bundles.spring.boot.server
+  implementation libs.spring.openapi
+
+  implementation libs.httpclient
+  implementation libs.prometheus
+}
+
+sourceSets {
+  "server-test" {
+    java {
+      compileClasspath += main.output + test.output
+      runtimeClasspath += main.output + test.output
+      srcDir file('src/server-test/java')
+    }
+    resources.srcDir file('src/server-test/resources')
+  }
+}
+
+configurations {
+  serverTestImplementation.extendsFrom testImplementation
+}
+
+tasks.register('serverTest', Test) {
+  outputs.upToDateWhen { false }
+  systemProperty 'junit.jupiter.execution.parallel.enabled', true
+  systemProperty 'junit.jupiter.execution.parallel.mode.default', "concurrent"
+  systemProperty 'junit.jupiter.execution.parallel.mode.classes.default', "concurrent"
+  useJUnitPlatform()
+  maxHeapSize = "4g"
+  group = 'verification'
+  workingDir = rootProject.projectDir
+  testClassesDirs = sourceSets."server-test".output.classesDirs
+  classpath = sourceSets."server-test".runtimeClasspath
+}

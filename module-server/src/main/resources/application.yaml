@@ -1,0 +1,67 @@
+server:
+  port: 8080
+  shutdown: graceful
+grpc.server.port: 9090
+
+### technical configurations ###
+management:
+  # for security, don't use same port as application
+  server.port: 8081
+  health:
+    livenessState.enabled: true
+    readinessState.enabled: true
+  endpoint:
+    health:
+      show-details: always
+      probes.enabled: true
+      group:
+        readiness.include: readinessState,diskSpace,grpcChannel,grpc,rest
+        liveness.include: livenessState
+  endpoints.web.exposure.include: '*'
+  # activate percentiles for web and grpc requests
+  metrics.distribution.percentiles-histogram:
+    grpc.server.processing.duration: true
+    http.server.requests: true
+
+spring:
+  main:
+    banner-mode: off
+  profiles:
+    default: dev
+
+# properties for application
+de.twomartens.template:
+  defaultTimeZone: Europe/Berlin
+  greeting: "Hello %s"
+
+springdoc:
+  swagger-ui:
+    path: '/template/doc/'
+  api-docs:
+    path: '/template/api-docs/'
+  default-produces-media-type: 'application/json'
+
+openapi:
+  #TODO write description/ changelog
+  description: |
+    Open API Documentation for the Template
+
+    ## Header 2
+
+    __YOUR TEXT HERE__
+
+    ## Changelog
+
+    |Version | Change                                 | Author | Date       |
+    | ------ | -------------------------------------- | ------ | ---------- |
+    | 1.0    | added API Versioning (and changelog)   | Jim    | 28.05.2023 |
+
+  version: 1.0
+  title: 'Template API'
+
+resttemplate:
+  timeout:
+    readTimeoutRestHealthIndicatorInMillis: 5000
+    connectionRestHealthIndicatorTimeoutInMillis: 5000
+    readTimeoutRestTemplateInMillis: 5000
+    connectionRestTemplateTimeoutInMillis: 5000

@@ -1,0 +1,60 @@
+plugins {
+  id 'org.springframework.boot'
+  id 'twomartens.java'
+}
+
+dependencies {
+  implementation platform(libs.spring.boot)
+
+  implementation libs.bundles.spring.boot
+  testImplementation libs.spring.boot.test
+  annotationProcessor libs.spring.boot.config
+}
+
+sourceSets {
+  "integration-test" {
+    java {
+      compileClasspath += main.output + test.output
+      runtimeClasspath += main.output + test.output
+      srcDir file('src/integration-test/java')
+    }
+    resources.srcDir file('src/integration-test/resources')
+  }
+}
+
+configurations {
+  configureEach {
+    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+  }
+  integrationTestImplementation.extendsFrom testImplementation
+}
+
+tasks.register('integrationTest', Test) {
+  systemProperty 'junit.jupiter.execution.parallel.enabled', true
+  systemProperty 'junit.jupiter.execution.parallel.mode.default', "concurrent"
+  systemProperty 'junit.jupiter.execution.parallel.mode.classes.default', "concurrent"
+  useJUnitPlatform()
+  maxHeapSize = "4g"
+  group = 'verification'
+  workingDir = rootProject.projectDir
+  testClassesDirs = sourceSets."integration-test".output.classesDirs
+  classpath = sourceSets."integration-test".runtimeClasspath
+}
+
+tasks.named("buildAll").configure() {
+  dependsOn(integrationTest)
+}
+
+springBoot {
+  buildInfo()
+}
+
+bootJar {
+  enabled = false
+}
+
+jar {
+  enabled = true
+  archiveClassifier.set("")
+}

@@ -1,0 +1,45 @@
+/.*
+!/.gitignore
+!/.gitattributes
+!/.editorconfig
+!/.run/
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+**/*.log
+**/*.hprof
+**/generated/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Swap-Dateien und Backups ###
+*.swp
+*~
+/lib/

@@ -1,0 +1,23 @@
+plugins {
+  id 'checkstyle'
+  id 'twomartens.java-base'
+}
+
+checkstyle {
+  toolVersion '10.0'
+  ignoreFailures = false
+  maxWarnings = 0
+
+  configFile rootProject.file('config/checkstyle/checkstyle.xml')
+
+  configProperties = ['org.checkstyle.google.suppressionfilter.config': "${project.rootDir}/config/checkstyle/checkstyle-suppressions.xml"]
+
+  tasks.withType(Checkstyle).tap {
+    configureEach {
+      reports {
+        xml.required = true
+        html.required = true
+      }
+    }
+  }
+}

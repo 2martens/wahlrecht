@@ -1,0 +1,16 @@
+plugins {
+  id 'com.netflix.nebula.release'
+  id 'twomartens.base'
+}
+
+nebulaRelease {
+  addReleaseBranchPattern(/main/)
+}
+
+task writeVersionProperties() {
+  group 'version'
+  buildDir.mkdirs()
+  file("$buildDir/version.properties").text = "VERSION=${project.version.toString()}\n"
+  mustRunAfter("release")
+  outputs.file("$buildDir/version.properties")
+}

@@ -1,0 +1,22 @@
+plugins {
+  id 'java'
+  id 'java-library'
+  id 'twomartens.base'
+}
+
+sourceCompatibility = projectSourceCompatibility
+targetCompatibility = projectSourceCompatibility
+
+repositories {
+  mavenCentral()
+}
+
+tasks.register('buildAll') {
+  group 'build'
+  dependsOn(build)
+  dependsOn(test)
+}
+
+clean {
+  delete 'out'
+}
