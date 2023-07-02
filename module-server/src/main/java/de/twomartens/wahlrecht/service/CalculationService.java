@@ -3,7 +3,9 @@ package de.twomartens.wahlrecht.service;
 import de.twomartens.wahlrecht.model.Candidate;
 import de.twomartens.wahlrecht.model.Constituency;
 import de.twomartens.wahlrecht.model.ElectedResult;
+import de.twomartens.wahlrecht.model.Election;
 import de.twomartens.wahlrecht.model.Nomination;
+import de.twomartens.wahlrecht.model.SeatResult;
 import de.twomartens.wahlrecht.model.VotingResult;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ConstituencyCalculationService {
+public class CalculationService {
   private final Deque<Double> electionNumberHistory = new ArrayDeque<>();
 
   public ElectedResult calculateConstituency(@NonNull Constituency constituency,
@@ -39,6 +41,42 @@ public class ConstituencyCalculationService {
         .electedCandidates(findElectedCandidates(assignedSeatsPerNomination))
         .usedElectionNumbers(electionNumberHistory)
         .build();
+  }
+
+  public SeatResult calculateOverallSeatDistribution(@NonNull Election election,
+      @NonNull Collection<Nomination> nominations) {
+    electionNumberHistory.clear();
+    int totalVotes = nominations.stream()
+        .map(Nomination::getVotingResult)
+        .map(VotingResult::getTotalVotes)
+        .reduce(0, Integer::sum);
+
+    List<Nomination> validNominations = new ArrayList<>();
+    int totalIgnoredVotes = 0;
+    for (Nomination nomination : nominations) {
+      if (passesVotingThreshold(election, totalVotes, nomination)) {
+        validNominations.add(nomination);
+      } else {
+        totalIgnoredVotes += nomination.getVotingResult().getTotalVotes();
+      }
+    }
+    totalVotes -= totalIgnoredVotes;
+
+    int numberOfSeats = election.totalNumberOfSeats();
+    double initialElectionNumber = totalVotes / (double) numberOfSeats;
+
+    Map<Nomination, Long> assignedSeatsPerNomination = calculateAssignedSeatsPerNomination(
+        validNominations, numberOfSeats, initialElectionNumber);
+
+    return SeatResult.builder()
+        .seatsPerNomination(assignedSeatsPerNomination)
+        .usedElectionNumbers(electionNumberHistory)
+        .build();
+  }
+
+  private static boolean passesVotingThreshold(Election election, int totalVotes, Nomination nomination) {
+    return totalVotes * election.votingThreshold().getMultiplier()
+        <= nomination.getVotingResult().getTotalVotes();
   }
 
   @NonNull
