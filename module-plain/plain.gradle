@@ -1,7 +1,0 @@
-plugins {
-  id 'twomartens.java'
-}
-
-dependencies {
-  implementation project(':lib')
-}
