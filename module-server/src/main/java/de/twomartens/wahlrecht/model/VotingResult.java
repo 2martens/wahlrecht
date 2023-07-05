@@ -27,4 +27,8 @@ public class VotingResult {
     }
     return totalVotes;
   }
+
+  public int getTotalVotesWithoutHealing() {
+    return getTotalVotes() - votesThroughHealing;
+  }
 }

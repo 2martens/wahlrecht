@@ -5,7 +5,7 @@ import java.util.Map;
 import lombok.Builder;
 
 @Builder
-public record SeatResult(Map<Nomination, Long> seatsPerNomination,
+public record SeatResult(Map<Nomination, Integer> seatsPerNomination,
                          Deque<Double> usedElectionNumbers) {
 
 }

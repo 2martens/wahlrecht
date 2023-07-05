@@ -20,7 +20,6 @@ public class Nomination {
   private final Map<Integer, Candidate> positionToCandidate = new HashMap<>();
   @Include
   private final String name;
-  @Getter
   private final boolean supportVotesOnNomination;
   @Getter
   @Setter
@@ -40,11 +39,19 @@ public class Nomination {
     candidates.forEach(this::addCandidate);
   }
 
+  public List<Candidate> getCandidates() {
+    return new ArrayList<>(positionToCandidate.values());
+  }
+
   public Candidate getCandidate(int position) {
     return positionToCandidate.get(position);
   }
 
   public int getPosition(Candidate candidate) {
     return candidateToPosition.get(candidate);
+  }
+
+  public boolean supportsVotesOnNomination() {
+    return supportVotesOnNomination;
   }
 }

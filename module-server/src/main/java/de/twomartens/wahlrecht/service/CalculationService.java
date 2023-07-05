@@ -2,6 +2,7 @@ package de.twomartens.wahlrecht.service;
 
 import de.twomartens.wahlrecht.model.Candidate;
 import de.twomartens.wahlrecht.model.Constituency;
+import de.twomartens.wahlrecht.model.Elected;
 import de.twomartens.wahlrecht.model.ElectedResult;
 import de.twomartens.wahlrecht.model.Election;
 import de.twomartens.wahlrecht.model.Nomination;
@@ -34,7 +35,7 @@ public class CalculationService {
     int numberOfSeats = constituency.numberOfSeats();
     double initialElectionNumber = totalVotes / (double) numberOfSeats;
 
-    Map<Nomination, Long> assignedSeatsPerNomination = calculateAssignedSeatsPerNomination(
+    Map<Nomination, Integer> assignedSeatsPerNomination = calculateAssignedSeatsPerNomination(
         nominations, numberOfSeats, initialElectionNumber);
 
     return ElectedResult.builder()
@@ -65,11 +66,20 @@ public class CalculationService {
     int numberOfSeats = election.totalNumberOfSeats();
     double initialElectionNumber = totalVotes / (double) numberOfSeats;
 
-    Map<Nomination, Long> assignedSeatsPerNomination = calculateAssignedSeatsPerNomination(
+    Map<Nomination, Integer> assignedSeatsPerNomination = calculateAssignedSeatsPerNomination(
         validNominations, numberOfSeats, initialElectionNumber);
 
     return SeatResult.builder()
         .seatsPerNomination(assignedSeatsPerNomination)
+        .usedElectionNumbers(electionNumberHistory)
+        .build();
+  }
+
+  public ElectedResult calculateElectedOverallCandidates(Map<Nomination, Integer> seatsPerNomination) {
+    electionNumberHistory.clear();
+
+    return ElectedResult.builder()
+        .electedCandidates(findElectedCandidates(seatsPerNomination))
         .usedElectionNumbers(electionNumberHistory)
         .build();
   }
@@ -81,7 +91,7 @@ public class CalculationService {
 
   @NonNull
   private Map<Nomination, Collection<Candidate>> findElectedCandidates(
-      @NonNull Map<Nomination, Long> assignedSeatsPerNomination) {
+      @NonNull Map<Nomination, Integer> assignedSeatsPerNomination) {
 
     Map<Nomination, Collection<Candidate>> electedCandidates = new HashMap<>();
     assignedSeatsPerNomination.entrySet().stream()
@@ -93,27 +103,59 @@ public class CalculationService {
   }
 
   @NonNull
-  private Collection<Candidate> findCandidates(@NonNull Nomination nomination, long numberOfSeats) {
-    List<Integer> positions = nomination.getVotingResult().getVotesPerPosition().entrySet().stream()
+  private Collection<Candidate> findCandidates(@NonNull Nomination nomination, int numberOfSeats) {
+    List<Integer> individualVotesOrder = nomination.getVotingResult().getVotesPerPosition()
+        .entrySet().stream()
         .sorted(Comparator.comparing(Entry<Integer, Integer>::getValue).reversed())
         .map(Entry::getKey)
         .toList();
     Collection<Candidate> elected = new ArrayList<>();
-    for (int i = 0; i < numberOfSeats; i++) {
-      Integer position = positions.get(i);
-      elected.add(nomination.getCandidate(position));
+    int seatsByVoteOrder = numberOfSeats;
+
+    if (nomination.supportsVotesOnNomination()) {
+      int seatsByNomination = calculateSeatsByNominationOrder(nomination, numberOfSeats);
+      seatsByVoteOrder = numberOfSeats - seatsByNomination;
+      List<Candidate> candidates = nomination.getCandidates();
+      int electedByNominationOrder = 0;
+      for (int i = 0; i < candidates.size() && electedByNominationOrder < seatsByNomination; i++) {
+        Candidate candidate = candidates.get(i);
+        if (candidate.getElected() == Elected.NOT_ELECTED) {
+          candidate.setElected(Elected.OVERALL_NOMINATION_ORDER);
+          elected.add(candidate);
+          electedByNominationOrder++;
+        }
+      }
+    }
+
+    int electedByVoteOrder = 0;
+    for (int i = 0; i < individualVotesOrder.size() && electedByVoteOrder < seatsByVoteOrder; i++) {
+      Integer position = individualVotesOrder.get(i);
+      Candidate candidate = nomination.getCandidate(position);
+      if (candidate.getElected() == Elected.NOT_ELECTED) {
+        candidate.setElected(nomination.supportsVotesOnNomination()
+            ? Elected.OVERALL_VOTE_ORDER
+            : Elected.CONSTITUENCY);
+        elected.add(candidate);
+        electedByVoteOrder++;
+      }
     }
 
     return elected;
   }
 
-  private Map<Nomination, Long> calculateAssignedSeatsPerNomination(
+  private static int calculateSeatsByNominationOrder(@NonNull Nomination nomination, int numberOfSeats) {
+    int votesOnNomination = nomination.getVotingResult().getVotesOnNomination();
+    int totalVotes = nomination.getVotingResult().getTotalVotesWithoutHealing();
+    return (int) Math.round((numberOfSeats * votesOnNomination) / (double) totalVotes);
+  }
+
+  private Map<Nomination, Integer> calculateAssignedSeatsPerNomination(
       @NonNull Collection<Nomination> nominations,
       int numberOfSeats, Double initialElectionNumber) {
 
     double electionNumber = initialElectionNumber;
     long assignedSeats;
-    Map<Nomination, Long> assignedSeatsPerNomination;
+    Map<Nomination, Integer> assignedSeatsPerNomination;
 
     do {
       electionNumberHistory.add(electionNumber);
@@ -124,9 +166,9 @@ public class CalculationService {
         seatsPerNomination.put(nomination, seatNumber);
       }
       assignedSeatsPerNomination = seatsPerNomination.entrySet().stream()
-          .map(entry -> Map.entry(entry.getKey(), Math.round(entry.getValue())))
+          .map(entry -> Map.entry(entry.getKey(), (int) Math.round(entry.getValue())))
           .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
-      assignedSeats = assignedSeatsPerNomination.values().stream().reduce(0L, Long::sum);
+      assignedSeats = assignedSeatsPerNomination.values().stream().reduce(0, Integer::sum);
 
       if (assignedSeats < numberOfSeats) {
         // election number was too big, decrease
@@ -145,7 +187,7 @@ public class CalculationService {
 
   private static double calculateHigherElectionNumber(Double initialElectionNumber,
       @NonNull Map<Nomination, Double> seatsPerNomination,
-      Map<Nomination, Long> assignedSeatsPerNomination) {
+      Map<Nomination, Integer> assignedSeatsPerNomination) {
     double electionNumber;
     electionNumber = seatsPerNomination.entrySet().stream()
         .map(entry -> Map.entry(entry.getKey(),
@@ -159,7 +201,7 @@ public class CalculationService {
 
   private static double calculateLowerElectionNumber(Double initialElectionNumber,
       @NonNull Map<Nomination, Double> seatsPerNomination,
-      Map<Nomination, Long> assignedSeatsPerNomination) {
+      Map<Nomination, Integer> assignedSeatsPerNomination) {
     double electionNumber;
     electionNumber = seatsPerNomination.entrySet().stream()
         .map(entry -> Map.entry(entry.getKey(),

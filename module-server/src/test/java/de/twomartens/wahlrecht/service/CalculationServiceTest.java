@@ -2,6 +2,7 @@ package de.twomartens.wahlrecht.service;
 
 import de.twomartens.wahlrecht.model.Candidate;
 import de.twomartens.wahlrecht.model.Constituency;
+import de.twomartens.wahlrecht.model.Elected;
 import de.twomartens.wahlrecht.model.ElectedResult;
 import de.twomartens.wahlrecht.model.Election;
 import de.twomartens.wahlrecht.model.Nomination;
@@ -21,6 +22,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.lang.NonNull;
 
 class CalculationServiceTest {
+
   private static final Constituency EIMSBUETTEL_NORD = new Constituency("Eimsbüttel-Nord", 3);
   private static final Constituency EIMSBUETTEL_SUED = new Constituency("Eimsbüttel-Süd", 5);
   private static final Constituency HARO = new Constituency("Rotherbaum/Harvestehude", 4);
@@ -43,6 +45,27 @@ class CalculationServiceTest {
   private static final Nomination GRUENE_BEZIRK = buildNomination("GRUENE-Bezirk", true);
   private static final Nomination AFD_BEZIRK = buildNomination("AFD-Bezirk", true);
   private static final Nomination PIRATEN_BEZIRK = buildNomination("Piraten-Bezirk", true);
+  public static final String GOTTLIEB_GABOR = "Gottlieb, Gabor";
+  public static final String RIEGEL_ANN_KATHRIN = "Riegel, Ann-Kathrin";
+  public static final String HOEFLICH_JUTTA = "Höflich, Jutta";
+  public static final String DR_LANGHEIN_A_W_HEINRICH = "Dr. Langhein, A.W.Heinrich";
+  public static final String PAGELS_MANUELA = "Pagels, Manuela";
+  public static final String WIEGMANN_ROLAND = "Wiegmann, Roland";
+  public static final String KLEINERT_MIKEY = "Kleinert, Mikey";
+  public static final String KUHLMANN_DIETMAR = "Kuhlmann, Dietmar";
+  public static final String MARTENS_JIM = "Martens, Jim";
+  public static final String DORSCH_SEBASTIAN = "Dorsch, Sebastian";
+  public static final String BOHNY_CARL_MARIA = "Bohny, Carl Maria";
+  public static final String KRUEGER_KLAUS = "Krüger, Klaus";
+  public static final String SCHWANKE_BENJAMIN = "Schwanke, Benjamin";
+  public static final String MUELLER_SOENKSEN_BURKHARDT = "Müller-Sönksen, Burkhardt";
+  public static final String SCHOEMER_DIRK = "Schömer, Dirk";
+  public static final String ZIMMERMANN_ELKE = "Zimmermann, Elke";
+  public static final String PILLATZKE_JOERG = "Pillatzke, Jörg";
+  public static final String KLEIN_ROBERT = "Klein, Robert";
+  public static final String ERK_ARAMAK = "Erk, Aramak";
+  public static final String DR_FISCHER_JOST_LEONHARDT = "Dr. Fischer, Jost Leonhardt";
+  public static final String KUELL_GABRIELA = "Küll, Gabriela";
 
   private CalculationService service;
 
@@ -97,12 +120,97 @@ class CalculationServiceTest {
     SeatResult result = service.calculateOverallSeatDistribution(election, nominations);
 
     Assertions.assertThat(result.seatsPerNomination())
-        .containsEntry(SPD_BEZIRK, 12L)
-        .containsEntry(CDU_BEZIRK, 9L)
-        .containsEntry(LINKE_BEZIRK, 5L)
-        .containsEntry(FDP_BEZIRK, 3L)
-        .containsEntry(GRUENE_BEZIRK, 19L)
-        .containsEntry(AFD_BEZIRK, 3L);
+        .containsEntry(SPD_BEZIRK, 12)
+        .containsEntry(CDU_BEZIRK, 9)
+        .containsEntry(LINKE_BEZIRK, 5)
+        .containsEntry(FDP_BEZIRK, 3)
+        .containsEntry(GRUENE_BEZIRK, 19)
+        .containsEntry(AFD_BEZIRK, 3);
+  }
+
+  @Test
+  void shouldCalculateOverallCandidatesCorrectly() {
+    setUpCandidatesOverall();
+    setUpResultsOverall();
+    Map<Nomination, Integer> seatsPerNomination = Map.of(
+        SPD_BEZIRK, 2,
+        CDU_BEZIRK, 2,
+        LINKE_BEZIRK, 3,
+        GRUENE_BEZIRK, 8,
+        FDP_BEZIRK, 3,
+        AFD_BEZIRK, 3
+    );
+    setUpConstituencyResults();
+
+    ElectedResult result = service.calculateElectedOverallCandidates(seatsPerNomination);
+
+    Assertions.assertThat(result.electedCandidates())
+        .anySatisfy((nomination, candidates) -> {
+          Assertions.assertThat(nomination).isEqualTo(SPD_BEZIRK);
+          Assertions.assertThat(candidates)
+              .anyMatch(candidate -> candidate.getName().equals(GOTTLIEB_GABOR)
+                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.getName().equals(RIEGEL_ANN_KATHRIN)
+                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER);
+        })
+        .anySatisfy((nomination, candidates) -> {
+          Assertions.assertThat(nomination).isEqualTo(CDU_BEZIRK);
+          Assertions.assertThat(candidates)
+              .anyMatch(candidate -> candidate.getName().equals(HOEFLICH_JUTTA)
+                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.getName().equals(DR_LANGHEIN_A_W_HEINRICH)
+                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER);
+        })
+        .anySatisfy((nomination, candidates) -> {
+          Assertions.assertThat(nomination).isEqualTo(LINKE_BEZIRK);
+          Assertions.assertThat(candidates)
+              .anyMatch(candidate -> candidate.getName().equals(PAGELS_MANUELA)
+                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.getName().equals(WIEGMANN_ROLAND)
+                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.getName().equals(KLEINERT_MIKEY)
+                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER);
+        })
+        .anySatisfy((nomination, candidates) -> {
+          Assertions.assertThat(nomination).isEqualTo(FDP_BEZIRK);
+          Assertions.assertThat(candidates)
+              .anyMatch(candidate -> candidate.getName().equals(KRUEGER_KLAUS)
+                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.getName().equals(SCHWANKE_BENJAMIN)
+                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.getName().equals(MUELLER_SOENKSEN_BURKHARDT)
+                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER);
+        })
+        .anySatisfy((nomination, candidates) -> {
+          Assertions.assertThat(nomination).isEqualTo(AFD_BEZIRK);
+          Assertions.assertThat(candidates)
+              .anyMatch(candidate -> candidate.getName().equals(SCHOEMER_DIRK)
+                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.getName().equals(ZIMMERMANN_ELKE)
+                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.getName().equals(PILLATZKE_JOERG)
+                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER);
+        })
+        .anySatisfy((nomination, candidates) -> {
+          Assertions.assertThat(nomination).isEqualTo(GRUENE_BEZIRK);
+          Assertions.assertThat(candidates)
+              .anyMatch(candidate -> candidate.getName().equals(KUHLMANN_DIETMAR)
+                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.getName().equals(KLEIN_ROBERT)
+                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.getName().equals(ERK_ARAMAK)
+                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.getName().equals(MARTENS_JIM)
+                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.getName().equals(DR_FISCHER_JOST_LEONHARDT)
+                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.getName().equals(KUELL_GABRIELA)
+                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER)
+              .anyMatch(candidate -> candidate.getName().equals(BOHNY_CARL_MARIA)
+                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER)
+              .anyMatch(candidate -> candidate.getName().equals(DORSCH_SEBASTIAN)
+                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER);
+        });
   }
 
   private void setUpCandidatesConstituency() {
@@ -201,8 +309,8 @@ class CalculationServiceTest {
 
   private void setUpCandidatesOverall() {
     SPD_BEZIRK.addCandidates(buildCandidates(
-        "Gottlieb, Gabor", "Meding, Sarah", "Harringa, Nils", "Nendza-Ammar, Charlotte",
-        "Rust, Rüdiger", "Köster-Marjanovic, Hannelore", "Riegel, Ann-Kathrin", "Rüter, Monika",
+        GOTTLIEB_GABOR, "Meding, Sarah", "Harringa, Nils", "Nendza-Ammar, Charlotte",
+        "Rust, Rüdiger", "Köster-Marjanovic, Hannelore", RIEGEL_ANN_KATHRIN, "Rüter, Monika",
         "Heise, Elk", "Fischbach-Pyttel, Carola", "Schirmer, Stephan-Philipp", "Telljohann, Katharina",
         "Röder, Wilfried", "Dr. Matiss, Claudia", "Koßel, Uwe", "Wagner, Saskia", "Bäcker, Guido",
         "Tiben-Thörner, Karin", "Ptach, Stephan", "Steinbiß, Emily", "Berisha, Dafina",
@@ -214,9 +322,9 @@ class CalculationServiceTest {
     ));
 
     CDU_BEZIRK.addCandidates(buildCandidates(
-        "Höflich, Jutta", "Könecke, Christian", "Birnbaum, Andreas", "Möller-Fiedler, Sybille",
+        HOEFLICH_JUTTA, "Könecke, Christian", "Birnbaum, Andreas", "Möller-Fiedler, Sybille",
         "Kochmann, Franziska", "von Deutsch, Christiane", "Hoffmann, Bernd", "Holst, Christian",
-        "Lau, Roman", "Hille, Robert", "Ahrens, Mareike", "Dr. Langhein, A.W.Heinrich",
+        "Lau, Roman", "Hille, Robert", "Ahrens, Mareike", DR_LANGHEIN_A_W_HEINRICH,
         "Wichmann, Norbert", "Lau, Johanna", "Czernotzky, Birgit", "von Sawilski, Marlies",
         "Dönselmann, Malte",
         "Jarzembowski, Daniel", "Howe, Sönke", "Recknagel, Dennis", "Dieball, Laura",
@@ -226,34 +334,34 @@ class CalculationServiceTest {
     ));
 
     LINKE_BEZIRK.addCandidates(buildCandidates(
-        "Pagels, Manuela", "Wiegmann, Roland", "Peters, Ralf", "Hoyer, Jonas",
-        "Kleinert, Mikey", "Schulte, Kolja", "Huwald, Kristin", "Dr. Ritter, Sabine",
+        PAGELS_MANUELA, WIEGMANN_ROLAND, "Peters, Ralf", "Hoyer, Jonas",
+        KLEINERT_MIKEY, "Schulte, Kolja", "Huwald, Kristin", "Dr. Ritter, Sabine",
         "Pirling, David", "Reipschläger, Bernhard", "Arndt, Thomas", "Artus, Holger",
         "WLaab, Helene"
     ));
 
     GRUENE_BEZIRK.addCandidates(buildCandidates(
-        "Kern, Lisa", "Hadji Mir Agha, Ali", "Dr. Putz, Miriam", "Kuhlmann, Dietmar",
-        "Dr. Hunter, Lynne", "Schmidt-Tobler, Falk", "Demirhan, Sina", "Klein, Robert",
-        "Erk, Aramak", "Martens, Jim", "Warnecke, Anne Kathrin", "Dr. Fischer, Jost Leonhardt",
+        "Kern, Lisa", "Hadji Mir Agha, Ali", "Dr. Putz, Miriam", KUHLMANN_DIETMAR,
+        "Dr. Hunter, Lynne", "Schmidt-Tobler, Falk", "Demirhan, Sina", KLEIN_ROBERT,
+        ERK_ARAMAK, MARTENS_JIM, "Warnecke, Anne Kathrin", DR_FISCHER_JOST_LEONHARDT,
         "Kost, Cornelia", "Brandt, Christopher", "Schübel, Nina Joana", "Schmidt, Lutz",
         "Wolf, Rita",
         "Alam, Leon", "Schwarzwald, Cristina", "Thies, Nico", "Hasselmann, Annette",
-        "Koriath, Jan", "Küll, Gabriela", "Köhler, Kevin", "Hericks, Susanne",
-        "Bohny, Carl Maria",
+        "Koriath, Jan", KUELL_GABRIELA, "Köhler, Kevin", "Hericks, Susanne",
+        BOHNY_CARL_MARIA,
         "Fester, Emilia", "Hofmann, Klaus-Dieter", "Neumann, Bernd", "Braasch, Julian",
-        "Dorsch, Sebastian", "Hasselmann, Harald"
+        DORSCH_SEBASTIAN, "Hasselmann, Harald"
     ));
 
     FDP_BEZIRK.addCandidates(buildCandidates(
-        "Krüger, Klaus", "Schwanke, Benjamin", "Cleven, Martina", "Zielinski, Mathias",
+        KRUEGER_KLAUS, SCHWANKE_BENJAMIN, "Cleven, Martina", "Zielinski, Mathias",
         "Thiele, Camilla Joyce", "Krüger, Hannelore", "Welling, Jörg", "Häffs, Marvin",
         "Korb, Hendrik", "Bahmer, Larissa", "Langbehn, Marian", "Szrubarski, Sebastian",
-        "Patzer, Heinrich-Otto", "Sosin, Tatjana", "Damm, Renate", "Müller-Sönksen, Burkhardt"
+        "Patzer, Heinrich-Otto", "Sosin, Tatjana", "Damm, Renate", MUELLER_SOENKSEN_BURKHARDT
     ));
 
     AFD_BEZIRK.addCandidates(buildCandidates(
-        "Schömer, Dirk", "Zimmermann, Elke", "Pillatzke, Jörg", "Pohl, Christian",
+        SCHOEMER_DIRK, ZIMMERMANN_ELKE, PILLATZKE_JOERG, "Pohl, Christian",
         "Hanssen, Wolfgang", "Lemke, Martin", "Cremer-Thursby, Marc", "Schultz, Thomas",
         "Ziob, Peter"
     ));
@@ -326,6 +434,20 @@ class CalculationServiceTest {
             871, 1907, 987
         ))
         .build());
+  }
+
+  void setUpConstituencyResults() {
+    GRUENE_BEZIRK.getCandidate(1).setElected(Elected.CONSTITUENCY);
+    GRUENE_BEZIRK.getCandidate(2).setElected(Elected.CONSTITUENCY);
+    GRUENE_BEZIRK.getCandidate(3).setElected(Elected.CONSTITUENCY);
+    GRUENE_BEZIRK.getCandidate(5).setElected(Elected.CONSTITUENCY);
+    GRUENE_BEZIRK.getCandidate(6).setElected(Elected.CONSTITUENCY);
+    GRUENE_BEZIRK.getCandidate(7).setElected(Elected.CONSTITUENCY);
+    GRUENE_BEZIRK.getCandidate(11).setElected(Elected.CONSTITUENCY);
+    GRUENE_BEZIRK.getCandidate(15).setElected(Elected.CONSTITUENCY);
+    GRUENE_BEZIRK.getCandidate(16).setElected(Elected.CONSTITUENCY);
+    GRUENE_BEZIRK.getCandidate(20).setElected(Elected.CONSTITUENCY);
+    GRUENE_BEZIRK.getCandidate(22).setElected(Elected.CONSTITUENCY);
   }
 
   private static Nomination buildNomination(String name, boolean supportVotesOnNomination) {
