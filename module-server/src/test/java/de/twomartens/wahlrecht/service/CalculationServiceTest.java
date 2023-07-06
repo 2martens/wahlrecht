@@ -3,6 +3,7 @@ package de.twomartens.wahlrecht.service;
 import de.twomartens.wahlrecht.model.Candidate;
 import de.twomartens.wahlrecht.model.Constituency;
 import de.twomartens.wahlrecht.model.Elected;
+import de.twomartens.wahlrecht.model.ElectedCandidate;
 import de.twomartens.wahlrecht.model.ElectedResult;
 import de.twomartens.wahlrecht.model.Election;
 import de.twomartens.wahlrecht.model.Nomination;
@@ -140,76 +141,76 @@ class CalculationServiceTest {
         FDP_BEZIRK, 3,
         AFD_BEZIRK, 3
     );
-    setUpConstituencyResults();
+    Map<Nomination, Collection<ElectedCandidate>> electedCandidates = setUpConstituencyResults();
 
-    ElectedResult result = service.calculateElectedOverallCandidates(seatsPerNomination);
+    ElectedResult result = service.calculateElectedOverallCandidates(seatsPerNomination, electedCandidates);
 
     Assertions.assertThat(result.electedCandidates())
         .anySatisfy((nomination, candidates) -> {
           Assertions.assertThat(nomination).isEqualTo(SPD_BEZIRK);
           Assertions.assertThat(candidates)
-              .anyMatch(candidate -> candidate.getName().equals(GOTTLIEB_GABOR)
-                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
-              .anyMatch(candidate -> candidate.getName().equals(RIEGEL_ANN_KATHRIN)
-                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER);
+              .anyMatch(candidate -> candidate.name().equals(GOTTLIEB_GABOR)
+                  && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.name().equals(RIEGEL_ANN_KATHRIN)
+                  && candidate.elected() == Elected.OVERALL_VOTE_ORDER);
         })
         .anySatisfy((nomination, candidates) -> {
           Assertions.assertThat(nomination).isEqualTo(CDU_BEZIRK);
           Assertions.assertThat(candidates)
-              .anyMatch(candidate -> candidate.getName().equals(HOEFLICH_JUTTA)
-                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
-              .anyMatch(candidate -> candidate.getName().equals(DR_LANGHEIN_A_W_HEINRICH)
-                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER);
+              .anyMatch(candidate -> candidate.name().equals(HOEFLICH_JUTTA)
+                  && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.name().equals(DR_LANGHEIN_A_W_HEINRICH)
+                  && candidate.elected() == Elected.OVERALL_VOTE_ORDER);
         })
         .anySatisfy((nomination, candidates) -> {
           Assertions.assertThat(nomination).isEqualTo(LINKE_BEZIRK);
           Assertions.assertThat(candidates)
-              .anyMatch(candidate -> candidate.getName().equals(PAGELS_MANUELA)
-                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
-              .anyMatch(candidate -> candidate.getName().equals(WIEGMANN_ROLAND)
-                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
-              .anyMatch(candidate -> candidate.getName().equals(KLEINERT_MIKEY)
-                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER);
+              .anyMatch(candidate -> candidate.name().equals(PAGELS_MANUELA)
+                  && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.name().equals(WIEGMANN_ROLAND)
+                  && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.name().equals(KLEINERT_MIKEY)
+                  && candidate.elected() == Elected.OVERALL_VOTE_ORDER);
         })
         .anySatisfy((nomination, candidates) -> {
           Assertions.assertThat(nomination).isEqualTo(FDP_BEZIRK);
           Assertions.assertThat(candidates)
-              .anyMatch(candidate -> candidate.getName().equals(KRUEGER_KLAUS)
-                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
-              .anyMatch(candidate -> candidate.getName().equals(SCHWANKE_BENJAMIN)
-                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
-              .anyMatch(candidate -> candidate.getName().equals(MUELLER_SOENKSEN_BURKHARDT)
-                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER);
+              .anyMatch(candidate -> candidate.name().equals(KRUEGER_KLAUS)
+                  && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.name().equals(SCHWANKE_BENJAMIN)
+                  && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.name().equals(MUELLER_SOENKSEN_BURKHARDT)
+                  && candidate.elected() == Elected.OVERALL_VOTE_ORDER);
         })
         .anySatisfy((nomination, candidates) -> {
           Assertions.assertThat(nomination).isEqualTo(AFD_BEZIRK);
           Assertions.assertThat(candidates)
-              .anyMatch(candidate -> candidate.getName().equals(SCHOEMER_DIRK)
-                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
-              .anyMatch(candidate -> candidate.getName().equals(ZIMMERMANN_ELKE)
-                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
-              .anyMatch(candidate -> candidate.getName().equals(PILLATZKE_JOERG)
-                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER);
+              .anyMatch(candidate -> candidate.name().equals(SCHOEMER_DIRK)
+                  && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.name().equals(ZIMMERMANN_ELKE)
+                  && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.name().equals(PILLATZKE_JOERG)
+                  && candidate.elected() == Elected.OVERALL_VOTE_ORDER);
         })
         .anySatisfy((nomination, candidates) -> {
           Assertions.assertThat(nomination).isEqualTo(GRUENE_BEZIRK);
           Assertions.assertThat(candidates)
-              .anyMatch(candidate -> candidate.getName().equals(KUHLMANN_DIETMAR)
-                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
-              .anyMatch(candidate -> candidate.getName().equals(KLEIN_ROBERT)
-                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
-              .anyMatch(candidate -> candidate.getName().equals(ERK_ARAMAK)
-                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
-              .anyMatch(candidate -> candidate.getName().equals(MARTENS_JIM)
-                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
-              .anyMatch(candidate -> candidate.getName().equals(DR_FISCHER_JOST_LEONHARDT)
-                  && candidate.getElected() == Elected.OVERALL_NOMINATION_ORDER)
-              .anyMatch(candidate -> candidate.getName().equals(KUELL_GABRIELA)
-                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER)
-              .anyMatch(candidate -> candidate.getName().equals(BOHNY_CARL_MARIA)
-                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER)
-              .anyMatch(candidate -> candidate.getName().equals(DORSCH_SEBASTIAN)
-                  && candidate.getElected() == Elected.OVERALL_VOTE_ORDER);
+              .anyMatch(candidate -> candidate.name().equals(KUHLMANN_DIETMAR)
+                  && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.name().equals(KLEIN_ROBERT)
+                  && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.name().equals(ERK_ARAMAK)
+                  && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.name().equals(MARTENS_JIM)
+                  && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.name().equals(DR_FISCHER_JOST_LEONHARDT)
+                  && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
+              .anyMatch(candidate -> candidate.name().equals(KUELL_GABRIELA)
+                  && candidate.elected() == Elected.OVERALL_VOTE_ORDER)
+              .anyMatch(candidate -> candidate.name().equals(BOHNY_CARL_MARIA)
+                  && candidate.elected() == Elected.OVERALL_VOTE_ORDER)
+              .anyMatch(candidate -> candidate.name().equals(DORSCH_SEBASTIAN)
+                  && candidate.elected() == Elected.OVERALL_VOTE_ORDER);
         });
   }
 
@@ -436,18 +437,20 @@ class CalculationServiceTest {
         .build());
   }
 
-  void setUpConstituencyResults() {
-    GRUENE_BEZIRK.getCandidate(1).setElected(Elected.CONSTITUENCY);
-    GRUENE_BEZIRK.getCandidate(2).setElected(Elected.CONSTITUENCY);
-    GRUENE_BEZIRK.getCandidate(3).setElected(Elected.CONSTITUENCY);
-    GRUENE_BEZIRK.getCandidate(5).setElected(Elected.CONSTITUENCY);
-    GRUENE_BEZIRK.getCandidate(6).setElected(Elected.CONSTITUENCY);
-    GRUENE_BEZIRK.getCandidate(7).setElected(Elected.CONSTITUENCY);
-    GRUENE_BEZIRK.getCandidate(11).setElected(Elected.CONSTITUENCY);
-    GRUENE_BEZIRK.getCandidate(15).setElected(Elected.CONSTITUENCY);
-    GRUENE_BEZIRK.getCandidate(16).setElected(Elected.CONSTITUENCY);
-    GRUENE_BEZIRK.getCandidate(20).setElected(Elected.CONSTITUENCY);
-    GRUENE_BEZIRK.getCandidate(22).setElected(Elected.CONSTITUENCY);
+  private Map<Nomination, Collection<ElectedCandidate>> setUpConstituencyResults() {
+    return Map.of(GRUENE_BEZIRK, List.of(
+        new ElectedCandidate(GRUENE_BEZIRK.getCandidate(1), Elected.CONSTITUENCY),
+        new ElectedCandidate(GRUENE_BEZIRK.getCandidate(2), Elected.CONSTITUENCY),
+        new ElectedCandidate(GRUENE_BEZIRK.getCandidate(3), Elected.CONSTITUENCY),
+        new ElectedCandidate(GRUENE_BEZIRK.getCandidate(5), Elected.CONSTITUENCY),
+        new ElectedCandidate(GRUENE_BEZIRK.getCandidate(6), Elected.CONSTITUENCY),
+        new ElectedCandidate(GRUENE_BEZIRK.getCandidate(7), Elected.CONSTITUENCY),
+        new ElectedCandidate(GRUENE_BEZIRK.getCandidate(11), Elected.CONSTITUENCY),
+        new ElectedCandidate(GRUENE_BEZIRK.getCandidate(15), Elected.CONSTITUENCY),
+        new ElectedCandidate(GRUENE_BEZIRK.getCandidate(16), Elected.CONSTITUENCY),
+        new ElectedCandidate(GRUENE_BEZIRK.getCandidate(20), Elected.CONSTITUENCY),
+        new ElectedCandidate(GRUENE_BEZIRK.getCandidate(22), Elected.CONSTITUENCY)
+    ));
   }
 
   private static Nomination buildNomination(String name, boolean supportVotesOnNomination) {

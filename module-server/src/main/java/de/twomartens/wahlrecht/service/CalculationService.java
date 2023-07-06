@@ -3,6 +3,7 @@ package de.twomartens.wahlrecht.service;
 import de.twomartens.wahlrecht.model.Candidate;
 import de.twomartens.wahlrecht.model.Constituency;
 import de.twomartens.wahlrecht.model.Elected;
+import de.twomartens.wahlrecht.model.ElectedCandidate;
 import de.twomartens.wahlrecht.model.ElectedResult;
 import de.twomartens.wahlrecht.model.Election;
 import de.twomartens.wahlrecht.model.Nomination;
@@ -11,12 +12,14 @@ import de.twomartens.wahlrecht.model.VotingResult;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
@@ -39,7 +42,7 @@ public class CalculationService {
         nominations, numberOfSeats, initialElectionNumber);
 
     return ElectedResult.builder()
-        .electedCandidates(findElectedCandidates(assignedSeatsPerNomination))
+        .electedCandidates(findElectedCandidates(assignedSeatsPerNomination, Collections.emptyMap()))
         .usedElectionNumbers(electionNumberHistory)
         .build();
   }
@@ -75,42 +78,50 @@ public class CalculationService {
         .build();
   }
 
-  public ElectedResult calculateElectedOverallCandidates(Map<Nomination, Integer> seatsPerNomination) {
+  public ElectedResult calculateElectedOverallCandidates(Map<Nomination, Integer> seatsPerNomination,
+      Map<Nomination, Collection<ElectedCandidate>> electedCandidates) {
     electionNumberHistory.clear();
 
     return ElectedResult.builder()
-        .electedCandidates(findElectedCandidates(seatsPerNomination))
+        .electedCandidates(findElectedCandidates(seatsPerNomination, electedCandidates))
         .usedElectionNumbers(electionNumberHistory)
         .build();
   }
 
-  private static boolean passesVotingThreshold(Election election, int totalVotes, Nomination nomination) {
+  private static boolean passesVotingThreshold(@NonNull Election election, int totalVotes,
+      @NonNull Nomination nomination) {
     return totalVotes * election.votingThreshold().getMultiplier()
         <= nomination.getVotingResult().getTotalVotes();
   }
 
   @NonNull
-  private Map<Nomination, Collection<Candidate>> findElectedCandidates(
-      @NonNull Map<Nomination, Integer> assignedSeatsPerNomination) {
+  private Map<Nomination, Collection<ElectedCandidate>> findElectedCandidates(
+      @NonNull Map<Nomination, Integer> assignedSeatsPerNomination,
+      Map<Nomination, Collection<ElectedCandidate>> alreadyElectedCandidates) {
 
-    Map<Nomination, Collection<Candidate>> electedCandidates = new HashMap<>();
+    Map<Nomination, Collection<ElectedCandidate>> electedCandidates = new HashMap<>();
     assignedSeatsPerNomination.entrySet().stream()
         .filter(entry -> entry.getValue() > 0)
         .forEach(entry ->
-            electedCandidates.put(entry.getKey(), findCandidates(entry.getKey(), entry.getValue())));
+            electedCandidates.put(entry.getKey(), findCandidates(entry.getKey(), entry.getValue(),
+                alreadyElectedCandidates.getOrDefault(entry.getKey(), Collections.emptyList()))));
 
     return electedCandidates;
   }
 
   @NonNull
-  private Collection<Candidate> findCandidates(@NonNull Nomination nomination, int numberOfSeats) {
+  private Collection<ElectedCandidate> findCandidates(@NonNull Nomination nomination,
+      int numberOfSeats, Collection<ElectedCandidate> alreadyElectedCandidates) {
     List<Integer> individualVotesOrder = nomination.getVotingResult().getVotesPerPosition()
         .entrySet().stream()
         .sorted(Comparator.comparing(Entry<Integer, Integer>::getValue).reversed())
         .map(Entry::getKey)
         .toList();
-    Collection<Candidate> elected = new ArrayList<>();
+    Collection<ElectedCandidate> elected = new ArrayList<>();
     int seatsByVoteOrder = numberOfSeats;
+
+    Map<Candidate, ElectedCandidate> electedCandidateMap = alreadyElectedCandidates.stream()
+        .collect(Collectors.toMap(ElectedCandidate::candidate, Function.identity()));
 
     if (nomination.supportsVotesOnNomination()) {
       int seatsByNomination = calculateSeatsByNominationOrder(nomination, numberOfSeats);
@@ -119,9 +130,11 @@ public class CalculationService {
       int electedByNominationOrder = 0;
       for (int i = 0; i < candidates.size() && electedByNominationOrder < seatsByNomination; i++) {
         Candidate candidate = candidates.get(i);
-        if (candidate.getElected() == Elected.NOT_ELECTED) {
-          candidate.setElected(Elected.OVERALL_NOMINATION_ORDER);
-          elected.add(candidate);
+        ElectedCandidate electedCandidate = electedCandidateMap.get(candidate);
+        if (electedCandidate == null) {
+          electedCandidate = new ElectedCandidate(candidate, Elected.OVERALL_NOMINATION_ORDER);
+          elected.add(electedCandidate);
+          electedCandidateMap.put(candidate, electedCandidate);
           electedByNominationOrder++;
         }
       }
@@ -131,11 +144,12 @@ public class CalculationService {
     for (int i = 0; i < individualVotesOrder.size() && electedByVoteOrder < seatsByVoteOrder; i++) {
       Integer position = individualVotesOrder.get(i);
       Candidate candidate = nomination.getCandidate(position);
-      if (candidate.getElected() == Elected.NOT_ELECTED) {
-        candidate.setElected(nomination.supportsVotesOnNomination()
+      ElectedCandidate electedCandidate = electedCandidateMap.get(candidate);
+      if (electedCandidate == null) {
+        electedCandidate = new ElectedCandidate(candidate, nomination.supportsVotesOnNomination()
             ? Elected.OVERALL_VOTE_ORDER
             : Elected.CONSTITUENCY);
-        elected.add(candidate);
+        elected.add(electedCandidate);
         electedByVoteOrder++;
       }
     }

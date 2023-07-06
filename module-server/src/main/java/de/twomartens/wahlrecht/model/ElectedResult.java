@@ -6,7 +6,7 @@ import java.util.Map;
 import lombok.Builder;
 
 @Builder
-public record ElectedResult(Map<Nomination, Collection<Candidate>> electedCandidates,
+public record ElectedResult(Map<Nomination, Collection<ElectedCandidate>> electedCandidates,
                             Deque<Double> usedElectionNumbers) {
 
 }
