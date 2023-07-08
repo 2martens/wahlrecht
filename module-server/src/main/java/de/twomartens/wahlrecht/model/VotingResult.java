@@ -10,14 +10,16 @@ public class VotingResult {
   private final int votesOnNomination;
   private final int votesThroughHealing;
   private final Map<Integer, Integer> votesPerPosition;
+  private final Nomination nomination;
   private Integer totalVotes = null;
 
   @Builder
   public VotingResult(int votesOnNomination, int votesThroughHealing,
-      Map<Integer, Integer> votesPerPosition) {
+      Map<Integer, Integer> votesPerPosition, Nomination nomination) {
     this.votesOnNomination = votesOnNomination;
     this.votesThroughHealing = votesThroughHealing;
     this.votesPerPosition = votesPerPosition;
+    this.nomination = nomination;
   }
 
   public int getTotalVotes() {

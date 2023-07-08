@@ -6,9 +6,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 import lombok.ToString.Include;
 
@@ -21,9 +19,6 @@ public class Nomination {
   @Include
   private final String name;
   private final boolean supportVotesOnNomination;
-  @Getter
-  @Setter
-  private VotingResult votingResult;
 
   private void addCandidate(Candidate candidate) {
     candidates.add(candidate);

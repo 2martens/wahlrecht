@@ -29,39 +29,37 @@ public class CalculationService {
   private final Deque<Double> electionNumberHistory = new ArrayDeque<>();
 
   public ElectedResult calculateConstituency(@NonNull Constituency constituency,
-      @NonNull Collection<Nomination> nominations) {
+      @NonNull Collection<VotingResult> votingResults) {
     electionNumberHistory.clear();
-    int totalVotes = nominations.stream()
-        .map(Nomination::getVotingResult)
+    int totalVotes = votingResults.stream()
         .map(VotingResult::getTotalVotes)
         .reduce(0, Integer::sum);
     int numberOfSeats = constituency.numberOfSeats();
     double initialElectionNumber = totalVotes / (double) numberOfSeats;
 
-    Map<Nomination, Integer> assignedSeatsPerNomination = calculateAssignedSeatsPerNomination(
-        nominations, numberOfSeats, initialElectionNumber);
+    Map<VotingResult, Integer> assignedSeatsPerResult = calculateAssignedSeatsPerResult(
+        votingResults, numberOfSeats, initialElectionNumber);
 
     return ElectedResult.builder()
-        .electedCandidates(findElectedCandidates(assignedSeatsPerNomination, Collections.emptyMap()))
+        .electedCandidates(findElectedCandidates(assignedSeatsPerResult, Collections.emptyMap()))
         .usedElectionNumbers(electionNumberHistory)
         .build();
   }
 
   public SeatResult calculateOverallSeatDistribution(@NonNull Election election,
-      @NonNull Collection<Nomination> nominations) {
+      @NonNull Collection<VotingResult> votingResults) {
     electionNumberHistory.clear();
-    int totalVotes = nominations.stream()
-        .map(Nomination::getVotingResult)
+    int totalVotes = votingResults.stream()
         .map(VotingResult::getTotalVotes)
         .reduce(0, Integer::sum);
 
-    List<Nomination> validNominations = new ArrayList<>();
+    List<VotingResult> validVotingResults = new ArrayList<>();
     int totalIgnoredVotes = 0;
-    for (Nomination nomination : nominations) {
-      if (passesVotingThreshold(election, totalVotes, nomination)) {
-        validNominations.add(nomination);
+    for (VotingResult votingResult : votingResults) {
+      if (passesVotingThreshold(election, totalVotes, votingResult)) {
+        validVotingResults.add(votingResult);
       } else {
-        totalIgnoredVotes += nomination.getVotingResult().getTotalVotes();
+        totalIgnoredVotes += votingResult.getTotalVotes();
       }
     }
     totalVotes -= totalIgnoredVotes;
@@ -69,17 +67,17 @@ public class CalculationService {
     int numberOfSeats = election.totalNumberOfSeats();
     double initialElectionNumber = totalVotes / (double) numberOfSeats;
 
-    Map<Nomination, Integer> assignedSeatsPerNomination = calculateAssignedSeatsPerNomination(
-        validNominations, numberOfSeats, initialElectionNumber);
+    Map<VotingResult, Integer> assignedSeatsPerResult = calculateAssignedSeatsPerResult(
+        validVotingResults, numberOfSeats, initialElectionNumber);
 
     return SeatResult.builder()
-        .seatsPerNomination(assignedSeatsPerNomination)
+        .seatsPerResult(assignedSeatsPerResult)
         .usedElectionNumbers(electionNumberHistory)
         .build();
   }
 
-  public ElectedResult calculateElectedOverallCandidates(Map<Nomination, Integer> seatsPerNomination,
-      Map<Nomination, Collection<ElectedCandidate>> electedCandidates) {
+  public ElectedResult calculateElectedOverallCandidates(Map<VotingResult, Integer> seatsPerNomination,
+      Map<VotingResult, Collection<ElectedCandidate>> electedCandidates) {
     electionNumberHistory.clear();
 
     return ElectedResult.builder()
@@ -89,30 +87,35 @@ public class CalculationService {
   }
 
   private static boolean passesVotingThreshold(@NonNull Election election, int totalVotes,
-      @NonNull Nomination nomination) {
+      @NonNull VotingResult votingResult) {
     return totalVotes * election.votingThreshold().getMultiplier()
-        <= nomination.getVotingResult().getTotalVotes();
+        <= votingResult.getTotalVotes();
   }
 
   @NonNull
-  private Map<Nomination, Collection<ElectedCandidate>> findElectedCandidates(
-      @NonNull Map<Nomination, Integer> assignedSeatsPerNomination,
-      Map<Nomination, Collection<ElectedCandidate>> alreadyElectedCandidates) {
+  private Map<VotingResult, Collection<ElectedCandidate>> findElectedCandidates(
+      @NonNull Map<VotingResult, Integer> assignedSeatsPerNomination,
+      Map<VotingResult, Collection<ElectedCandidate>> alreadyElectedCandidates) {
 
-    Map<Nomination, Collection<ElectedCandidate>> electedCandidates = new HashMap<>();
-    assignedSeatsPerNomination.entrySet().stream()
-        .filter(entry -> entry.getValue() > 0)
-        .forEach(entry ->
-            electedCandidates.put(entry.getKey(), findCandidates(entry.getKey(), entry.getValue(),
-                alreadyElectedCandidates.getOrDefault(entry.getKey(), Collections.emptyList()))));
+    Map<VotingResult, Collection<ElectedCandidate>> electedCandidates = new HashMap<>();
+    for (Entry<VotingResult, Integer> entry : assignedSeatsPerNomination.entrySet()) {
+      if (entry.getValue() > 0) {
+        Collection<ElectedCandidate> candidates = findCandidates(
+            entry.getKey(),
+            entry.getValue(),
+            alreadyElectedCandidates.getOrDefault(entry.getKey(), Collections.emptyList())
+        );
+        electedCandidates.put(entry.getKey(), candidates);
+      }
+    }
 
     return electedCandidates;
   }
 
   @NonNull
-  private Collection<ElectedCandidate> findCandidates(@NonNull Nomination nomination,
+  private Collection<ElectedCandidate> findCandidates(@NonNull VotingResult votingResult,
       int numberOfSeats, Collection<ElectedCandidate> alreadyElectedCandidates) {
-    List<Integer> individualVotesOrder = nomination.getVotingResult().getVotesPerPosition()
+    List<Integer> individualVotesOrder = votingResult.getVotesPerPosition()
         .entrySet().stream()
         .sorted(Comparator.comparing(Entry<Integer, Integer>::getValue).reversed())
         .map(Entry::getKey)
@@ -123,8 +126,9 @@ public class CalculationService {
     Map<Candidate, ElectedCandidate> electedCandidateMap = alreadyElectedCandidates.stream()
         .collect(Collectors.toMap(ElectedCandidate::candidate, Function.identity()));
 
+    Nomination nomination = votingResult.getNomination();
     if (nomination.supportsVotesOnNomination()) {
-      int seatsByNomination = calculateSeatsByNominationOrder(nomination, numberOfSeats);
+      int seatsByNomination = calculateSeatsByNominationOrder(votingResult, numberOfSeats);
       seatsByVoteOrder = numberOfSeats - seatsByNomination;
       List<Candidate> candidates = nomination.getCandidates();
       int electedByNominationOrder = 0;
@@ -157,72 +161,72 @@ public class CalculationService {
     return elected;
   }
 
-  private static int calculateSeatsByNominationOrder(@NonNull Nomination nomination, int numberOfSeats) {
-    int votesOnNomination = nomination.getVotingResult().getVotesOnNomination();
-    int totalVotes = nomination.getVotingResult().getTotalVotesWithoutHealing();
+  private static int calculateSeatsByNominationOrder(@NonNull VotingResult votingResult, int numberOfSeats) {
+    int votesOnNomination = votingResult.getVotesOnNomination();
+    int totalVotes = votingResult.getTotalVotesWithoutHealing();
     return (int) Math.round((numberOfSeats * votesOnNomination) / (double) totalVotes);
   }
 
-  private Map<Nomination, Integer> calculateAssignedSeatsPerNomination(
-      @NonNull Collection<Nomination> nominations,
+  private Map<VotingResult, Integer> calculateAssignedSeatsPerResult(
+      @NonNull Collection<VotingResult> votingResults,
       int numberOfSeats, Double initialElectionNumber) {
 
     double electionNumber = initialElectionNumber;
     long assignedSeats;
-    Map<Nomination, Integer> assignedSeatsPerNomination;
+    Map<VotingResult, Integer> assignedSeatsPerVotingResult;
 
     do {
       electionNumberHistory.add(electionNumber);
-      Map<Nomination, Double> seatsPerNomination = new HashMap<>();
-      for (Nomination nomination : nominations) {
+      Map<VotingResult, Double> seatsPerVotingResult = new HashMap<>();
+      for (VotingResult votingResult : votingResults) {
         double seatNumber = calculateAssignedSeatNumber(electionNumber,
-            nomination.getVotingResult().getTotalVotes());
-        seatsPerNomination.put(nomination, seatNumber);
+            votingResult.getTotalVotes());
+        seatsPerVotingResult.put(votingResult, seatNumber);
       }
-      assignedSeatsPerNomination = seatsPerNomination.entrySet().stream()
+      assignedSeatsPerVotingResult = seatsPerVotingResult.entrySet().stream()
           .map(entry -> Map.entry(entry.getKey(), (int) Math.round(entry.getValue())))
           .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
-      assignedSeats = assignedSeatsPerNomination.values().stream().reduce(0, Integer::sum);
+      assignedSeats = assignedSeatsPerVotingResult.values().stream().reduce(0, Integer::sum);
 
       if (assignedSeats < numberOfSeats) {
         // election number was too big, decrease
-        electionNumber = calculateLowerElectionNumber(initialElectionNumber, seatsPerNomination,
-            assignedSeatsPerNomination);
+        electionNumber = calculateLowerElectionNumber(initialElectionNumber, seatsPerVotingResult,
+            assignedSeatsPerVotingResult);
       } else if (assignedSeats > numberOfSeats) {
         // election number was too small, increase
-        electionNumber = calculateHigherElectionNumber(initialElectionNumber, seatsPerNomination,
-            assignedSeatsPerNomination);
+        electionNumber = calculateHigherElectionNumber(initialElectionNumber, seatsPerVotingResult,
+            assignedSeatsPerVotingResult);
       }
     } while (assignedSeats != numberOfSeats);
 
 
-    return assignedSeatsPerNomination;
+    return assignedSeatsPerVotingResult;
   }
 
   private static double calculateHigherElectionNumber(Double initialElectionNumber,
-      @NonNull Map<Nomination, Double> seatsPerNomination,
-      Map<Nomination, Integer> assignedSeatsPerNomination) {
+      @NonNull Map<VotingResult, Double> seatsPerVotingResult,
+      Map<VotingResult, Integer> assignedSeatsPerVotingResult) {
     double electionNumber;
-    electionNumber = seatsPerNomination.entrySet().stream()
+    electionNumber = seatsPerVotingResult.entrySet().stream()
         .map(entry -> Map.entry(entry.getKey(),
-            entry.getValue() - assignedSeatsPerNomination.get(entry.getKey())))
-        .min(Comparator.comparing(Entry<Nomination, Double>::getValue))
-        .map(entry -> entry.getKey().getVotingResult().getTotalVotes()
-            / (assignedSeatsPerNomination.get(entry.getKey()) - 0.5))
+            entry.getValue() - assignedSeatsPerVotingResult.get(entry.getKey())))
+        .min(Comparator.comparing(Entry<VotingResult, Double>::getValue))
+        .map(entry -> entry.getKey().getTotalVotes()
+            / (assignedSeatsPerVotingResult.get(entry.getKey()) - 0.5))
         .orElse(initialElectionNumber);
     return electionNumber;
   }
 
   private static double calculateLowerElectionNumber(Double initialElectionNumber,
-      @NonNull Map<Nomination, Double> seatsPerNomination,
-      Map<Nomination, Integer> assignedSeatsPerNomination) {
+      @NonNull Map<VotingResult, Double> seatsPerVotingResult,
+      Map<VotingResult, Integer> assignedSeatsPerVotingResult) {
     double electionNumber;
-    electionNumber = seatsPerNomination.entrySet().stream()
+    electionNumber = seatsPerVotingResult.entrySet().stream()
         .map(entry -> Map.entry(entry.getKey(),
-            entry.getValue() - assignedSeatsPerNomination.get(entry.getKey())))
-        .max(Comparator.comparing(Entry<Nomination, Double>::getValue))
-        .map(entry -> entry.getKey().getVotingResult().getTotalVotes()
-            / (assignedSeatsPerNomination.get(entry.getKey()) + 0.5))
+            entry.getValue() - assignedSeatsPerVotingResult.get(entry.getKey())))
+        .max(Comparator.comparing(Entry<VotingResult, Double>::getValue))
+        .map(entry -> entry.getKey().getTotalVotes()
+            / (assignedSeatsPerVotingResult.get(entry.getKey()) + 0.5))
         .orElse(initialElectionNumber);
     return electionNumber;
   }
