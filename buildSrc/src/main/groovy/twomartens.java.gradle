@@ -25,7 +25,7 @@ configurations {
 }
 
 test {
-  systemProperty 'junit.jupiter.execution.parallel.enabled', false
+  systemProperty 'junit.jupiter.execution.parallel.enabled', true
   systemProperty 'junit.jupiter.execution.parallel.mode.default', "concurrent"
   useJUnitPlatform()
   maxHeapSize = "4g"

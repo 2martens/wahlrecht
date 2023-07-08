@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.lang.NonNull;
@@ -70,6 +71,12 @@ class CalculationServiceTest {
 
   private CalculationService service;
 
+  @BeforeAll
+  static void setUpOverall() {
+    setUpCandidatesOverall();
+    setUpResultsOverall();
+  }
+
   @BeforeEach
   void setService() {
     service = new CalculationService();
@@ -115,8 +122,6 @@ class CalculationServiceTest {
         GRUENE_BEZIRK,
         AFD_BEZIRK
     );
-    setUpCandidatesOverall();
-    setUpResultsOverall();
 
     SeatResult result = service.calculateOverallSeatDistribution(election, nominations);
 
@@ -131,8 +136,6 @@ class CalculationServiceTest {
 
   @Test
   void shouldCalculateOverallCandidatesCorrectly() {
-    setUpCandidatesOverall();
-    setUpResultsOverall();
     Map<Nomination, Integer> seatsPerNomination = Map.of(
         SPD_BEZIRK, 2,
         CDU_BEZIRK, 2,
@@ -308,7 +311,7 @@ class CalculationServiceTest {
         .build());
   }
 
-  private void setUpCandidatesOverall() {
+  private static void setUpCandidatesOverall() {
     SPD_BEZIRK.addCandidates(buildCandidates(
         GOTTLIEB_GABOR, "Meding, Sarah", "Harringa, Nils", "Nendza-Ammar, Charlotte",
         "Rust, Rüdiger", "Köster-Marjanovic, Hannelore", RIEGEL_ANN_KATHRIN, "Rüter, Monika",
@@ -372,7 +375,7 @@ class CalculationServiceTest {
     ));
   }
 
-  private void setUpResultsOverall() {
+  private static void setUpResultsOverall() {
     SPD_BEZIRK.setVotingResult(VotingResult.builder()
         .votesOnNomination(84703)
         .votesThroughHealing(985)
