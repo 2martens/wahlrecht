@@ -1,8 +1,6 @@
 package de.twomartens.wahlrecht.mapper.v1;
 
 import de.twomartens.wahlrecht.model.internal.SeatResult;
-import java.util.Deque;
-import java.util.LinkedList;
 import org.mapstruct.CollectionMappingStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;

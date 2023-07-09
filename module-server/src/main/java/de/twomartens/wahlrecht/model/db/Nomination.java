@@ -42,8 +42,4 @@ public class Nomination {
   String electionName;
   Collection<Candidate> candidates;
   boolean supportVotesOnNomination;
-
-  public boolean supportsVotesOnNomination() {
-    return supportVotesOnNomination;
-  }
 }

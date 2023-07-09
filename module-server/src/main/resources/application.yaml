@@ -1,7 +1,6 @@
 server:
   port: 8080
   shutdown: graceful
-grpc.server.port: 9090
 
 ### technical configurations ###
 management:
