@@ -22,20 +22,20 @@ public class WebSecurityConfiguration {
   public SecurityFilterChain securityFilterChain(@NonNull HttpSecurity http) throws Exception {  // (2)
     http
         .authorizeHttpRequests()
-          .requestMatchers("/wahlrecht/v1/**")
+          .requestMatchers("/wahlrecht/v1/**", "/wahlrecht/version")
           .permitAll()
           .and()
         .authorizeHttpRequests()
           .requestMatchers("/resources/**")
           .permitAll()
           .and()
-        .csrf()
-          .disable()
         .authorizeHttpRequests()
-          .requestMatchers("/wahlrecht/v1/election", "/wahlrecht/v1/party")
+          .requestMatchers("/wahlrecht/v1/election",
+              "/wahlrecht/v1/party/**",
+              "/wahlrecht/v1/nomination/**")
           .authenticated() // (3)
           .and()
-        .formLogin(); // (7)
+        .httpBasic(); // (7)
     return http.build();
   }
 

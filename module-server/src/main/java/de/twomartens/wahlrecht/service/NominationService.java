@@ -17,6 +17,10 @@ public class NominationService {
   private final CandidateService candidateService;
 
   public Nomination storeNomination(Nomination nomination) {
+    if (nomination == null) {
+      return null;
+    }
+
     Optional<Nomination> existingOptional = repository
         .findByNameAndElectionNameAndPartyAbbreviation(nomination.getName(),
             nomination.getElectionName(), nomination.getPartyAbbreviation());

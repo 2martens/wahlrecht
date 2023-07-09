@@ -28,10 +28,21 @@ public class PartyService {
     return parties;
   }
 
+  public PartyInElection getPartyByElectionNameAndAbbreviation(String electionName,
+      String abbreviation) {
+    Optional<PartyInElection> optionalParty = partyRepository.findByAbbreviationAndElectionName(
+        abbreviation, electionName);
+    if (optionalParty.isEmpty()) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+          "no party found for %s and %s".formatted(electionName, abbreviation));
+    }
+    return optionalParty.get();
+  }
+
   public boolean storeParty(PartyInElection partyInElection) {
     boolean createdNew = true;
     Optional<PartyInElection> existingOptional = partyRepository
-        .findByAbbreviationAndElectionName(partyInElection.getName(),
+        .findByAbbreviationAndElectionName(partyInElection.getAbbreviation(),
             partyInElection.getElectionName());
     Map<Integer, Nomination> constituencyNominations = new HashMap<>();
     partyInElection.getConstituencyNominations()
@@ -40,6 +51,9 @@ public class PartyService {
     if (existingOptional.isPresent()) {
       PartyInElection existing = existingOptional.get();
       existing.setName(partyInElection.getName());
+      if (constituencyNominations.isEmpty()) {
+        constituencyNominations.putAll(existing.getConstituencyNominations());
+      }
       partyInElection = existing;
       createdNew = false;
     }
