@@ -2,5 +2,3 @@
 server.port: 12000
 grpc.server.port: 12002
 management.server.port: 12001
-
-de.twomartens.template.name: "Template"
