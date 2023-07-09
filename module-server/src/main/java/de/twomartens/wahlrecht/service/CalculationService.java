@@ -1,21 +1,20 @@
 package de.twomartens.wahlrecht.service;
 
-import de.twomartens.wahlrecht.model.Candidate;
-import de.twomartens.wahlrecht.model.Constituency;
-import de.twomartens.wahlrecht.model.Elected;
-import de.twomartens.wahlrecht.model.ElectedCandidate;
-import de.twomartens.wahlrecht.model.ElectedResult;
-import de.twomartens.wahlrecht.model.Election;
-import de.twomartens.wahlrecht.model.Nomination;
-import de.twomartens.wahlrecht.model.SeatResult;
-import de.twomartens.wahlrecht.model.VotingResult;
-import java.util.ArrayDeque;
+import de.twomartens.wahlrecht.model.internal.Candidate;
+import de.twomartens.wahlrecht.model.internal.Constituency;
+import de.twomartens.wahlrecht.model.internal.Elected;
+import de.twomartens.wahlrecht.model.internal.ElectedCandidate;
+import de.twomartens.wahlrecht.model.internal.ElectedResult;
+import de.twomartens.wahlrecht.model.internal.Election;
+import de.twomartens.wahlrecht.model.internal.Nomination;
+import de.twomartens.wahlrecht.model.internal.SeatResult;
+import de.twomartens.wahlrecht.model.internal.VotingResult;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Deque;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -26,7 +25,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CalculationService {
-  private final Deque<Double> electionNumberHistory = new ArrayDeque<>();
+
+  private final LinkedList<Double> electionNumberHistory = new LinkedList<>();
 
   public ElectedResult calculateConstituency(@NonNull Constituency constituency,
       @NonNull Collection<VotingResult> votingResults) {
@@ -76,7 +76,8 @@ public class CalculationService {
         .build();
   }
 
-  public ElectedResult calculateElectedOverallCandidates(Map<VotingResult, Integer> seatsPerNomination,
+  public ElectedResult calculateElectedOverallCandidates(
+      Map<VotingResult, Integer> seatsPerNomination,
       Map<VotingResult, Collection<ElectedCandidate>> electedCandidates) {
     electionNumberHistory.clear();
 
@@ -161,7 +162,8 @@ public class CalculationService {
     return elected;
   }
 
-  private static int calculateSeatsByNominationOrder(@NonNull VotingResult votingResult, int numberOfSeats) {
+  private static int calculateSeatsByNominationOrder(@NonNull VotingResult votingResult,
+      int numberOfSeats) {
     int votesOnNomination = votingResult.getVotesOnNomination();
     int totalVotes = votingResult.getTotalVotesWithoutHealing();
     return (int) Math.round((numberOfSeats * votesOnNomination) / (double) totalVotes);
@@ -199,7 +201,6 @@ public class CalculationService {
       }
     } while (assignedSeats != numberOfSeats);
 
-
     return assignedSeatsPerVotingResult;
   }
 
@@ -230,7 +231,6 @@ public class CalculationService {
         .orElse(initialElectionNumber);
     return electionNumber;
   }
-
 
 
   private double calculateAssignedSeatNumber(double electionNumber, int totalVotesOfNomination) {

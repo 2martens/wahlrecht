@@ -1,4 +1,4 @@
-package de.twomartens.wahlrecht.model;
+package de.twomartens.wahlrecht.model.internal;
 
 import java.util.Map;
 import lombok.Builder;

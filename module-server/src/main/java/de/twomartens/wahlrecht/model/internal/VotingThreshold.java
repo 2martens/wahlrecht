@@ -1,4 +1,4 @@
-package de.twomartens.wahlrecht.model;
+package de.twomartens.wahlrecht.model.internal;
 
 import lombok.AccessLevel;
 import lombok.Getter;

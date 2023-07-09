@@ -1,15 +1,15 @@
 package de.twomartens.wahlrecht.service;
 
-import de.twomartens.wahlrecht.model.Candidate;
-import de.twomartens.wahlrecht.model.Constituency;
-import de.twomartens.wahlrecht.model.Elected;
-import de.twomartens.wahlrecht.model.ElectedCandidate;
-import de.twomartens.wahlrecht.model.ElectedResult;
-import de.twomartens.wahlrecht.model.Election;
-import de.twomartens.wahlrecht.model.Nomination;
-import de.twomartens.wahlrecht.model.SeatResult;
-import de.twomartens.wahlrecht.model.VotingResult;
-import de.twomartens.wahlrecht.model.VotingThreshold;
+import de.twomartens.wahlrecht.model.internal.Candidate;
+import de.twomartens.wahlrecht.model.internal.Constituency;
+import de.twomartens.wahlrecht.model.internal.Elected;
+import de.twomartens.wahlrecht.model.internal.ElectedCandidate;
+import de.twomartens.wahlrecht.model.internal.ElectedResult;
+import de.twomartens.wahlrecht.model.internal.Election;
+import de.twomartens.wahlrecht.model.internal.Nomination;
+import de.twomartens.wahlrecht.model.internal.SeatResult;
+import de.twomartens.wahlrecht.model.internal.VotingResult;
+import de.twomartens.wahlrecht.model.internal.VotingThreshold;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
@@ -27,6 +27,7 @@ import org.springframework.lang.NonNull;
 
 class CalculationServiceTest {
 
+  private static final String BEZIRKSWAHL = "Bezirkswahl 2019";
   public static final String GOTTLIEB_GABOR = "Gottlieb, Gabor";
   public static final String RIEGEL_ANN_KATHRIN = "Riegel, Ann-Kathrin";
   public static final String HOEFLICH_JUTTA = "Höflich, Jutta";
@@ -48,58 +49,58 @@ class CalculationServiceTest {
   public static final String ERK_ARAMAK = "Erk, Aramak";
   public static final String DR_FISCHER_JOST_LEONHARDT = "Dr. Fischer, Jost Leonhardt";
   public static final String KUELL_GABRIELA = "Küll, Gabriela";
-  private static final Constituency EIMSBUETTEL_NORD = new Constituency("Eimsbüttel-Nord", 3);
-  private static final Constituency EIMSBUETTEL_SUED = new Constituency("Eimsbüttel-Süd", 5);
-  private static final Constituency HARO = new Constituency("Rotherbaum/Harvestehude", 4);
-  private static final Constituency LOKSTEDT = new Constituency("Lokstedt", 3);
-  private static final Constituency NIENDORF = new Constituency("Niendorf", 5);
-  private static final Constituency SCHNELSEN = new Constituency("Schnelsen", 3);
-  private static final Constituency EIDELSTEDT = new Constituency("Eidelstedt", 4);
-  private static final Constituency STELLINGEN = new Constituency("Stellingen", 3);
-  private static final Nomination SPD_NIENDORF = buildNomination("SPD-Niendorf", false);
+  private static final Constituency EIMSBUETTEL_NORD = new Constituency(BEZIRKSWAHL, 1, "Eimsbüttel-Nord", 3);
+  private static final Constituency EIMSBUETTEL_SUED = new Constituency(BEZIRKSWAHL, 2, "Eimsbüttel-Süd", 5);
+  private static final Constituency HARO = new Constituency(BEZIRKSWAHL, 3, "Rotherbaum/Harvestehude", 4);
+  private static final Constituency LOKSTEDT = new Constituency(BEZIRKSWAHL, 4, "Lokstedt", 3);
+  private static final Constituency NIENDORF = new Constituency(BEZIRKSWAHL, 5, "Niendorf", 5);
+  private static final Constituency SCHNELSEN = new Constituency(BEZIRKSWAHL, 6, "Schnelsen", 3);
+  private static final Constituency EIDELSTEDT = new Constituency(BEZIRKSWAHL, 7, "Eidelstedt", 4);
+  private static final Constituency STELLINGEN = new Constituency(BEZIRKSWAHL, 8, "Stellingen", 3);
+  private static final Nomination SPD_NIENDORF = buildNomination("SPD", "SPD-Niendorf", false);
   private static final VotingResult SPD_NIENDORF_RESULT = buildVotingResult(SPD_NIENDORF, 0, 0,
       11882, 7617, 1946, 1743, 1363, 762, 895, 1598, 1786, 781);
-  private static final Nomination CDU_NIENDORF = buildNomination("CDU-Niendorf", false);
+  private static final Nomination CDU_NIENDORF = buildNomination("CDU", "CDU-Niendorf", false);
   public static final VotingResult CDU_NIENDORF_RESULT = buildVotingResult(CDU_NIENDORF, 0, 0, 10733,
       4550, 2310, 2333, 2565);
-  private static final Nomination FDP_NIENDORF = buildNomination("FDP-Niendorf", false);
+  private static final Nomination FDP_NIENDORF = buildNomination("FDP", "FDP-Niendorf", false);
   public static final VotingResult FDP_NIENDORF_RESULT = buildVotingResult(FDP_NIENDORF, 0, 0, 2498,
       3200, 992);
-  private static final Nomination LINKE_NIENDORF = buildNomination("LINKE-Niendorf", false);
+  private static final Nomination LINKE_NIENDORF = buildNomination("LINKE", "LINKE-Niendorf", false);
   public static final VotingResult LINKE_NIENDORF_RESULT = buildVotingResult(LINKE_NIENDORF, 0, 0,
       3782, 1584, 1185);
-  private static final Nomination GRUENE_NIENDORF = buildNomination("GRUENE-Niendorf", false);
+  private static final Nomination GRUENE_NIENDORF = buildNomination("GRUENE", "GRUENE-Niendorf", false);
   public static final VotingResult GRUENE_NIENDORF_RESULT = buildVotingResult(GRUENE_NIENDORF, 0, 0,
       14838, 12501);
-  private static final Nomination AFD_NIENDORF = buildNomination("AFD-Niendorf", false);
+  private static final Nomination AFD_NIENDORF = buildNomination("AFD", "AFD-Niendorf", false);
   public static final VotingResult AFD_NIENDORF_RESULT = buildVotingResult(AFD_NIENDORF, 0, 0, 6616);
-  private static final Nomination SPD_BEZIRK = buildNomination("SPD-Bezirk", true);
+  private static final Nomination SPD_BEZIRK = buildNomination("SPD", "SPD-Bezirk", true);
   public static final VotingResult SPD_BEZIRK_RESULT = buildVotingResult(SPD_BEZIRK, 84703, 985,
       8782, 3318, 3825, 3519, 2036, 3923, 5427, 2131, 566, 895, 1425, 1924, 819,
       2590, 2190, 3568, 742, 401, 554, 1133, 1268, 580, 254, 1217, 693, 1359, 481,
       650, 230, 1544, 1080, 1879, 400, 353, 525, 469, 196, 759, 872);
-  private static final Nomination CDU_BEZIRK = buildNomination("CDU-Bezirk", true);
+  private static final Nomination CDU_BEZIRK = buildNomination("CDU", "CDU-Bezirk", true);
   public static final VotingResult CDU_BEZIRK_RESULT = buildVotingResult(CDU_BEZIRK, 66245, 660,
       5966, 1982, 1604, 2414, 1322, 2237, 1868, 1872, 1889, 881, 1253, 2921, 598,
       2721, 618, 941, 620, 837, 378, 594, 484, 584, 472, 408, 748, 650, 282,
       315, 1397, 502);
-  private static final Nomination FDP_BEZIRK = buildNomination("FDP-Bezirk", true);
+  private static final Nomination FDP_BEZIRK = buildNomination("FDP", "FDP-Bezirk", true);
   public static final VotingResult FDP_BEZIRK_RESULT = buildVotingResult(FDP_BEZIRK, 24435, 240,
       3528, 1964, 1633, 897, 1193, 355, 401, 1012, 496, 1242, 643, 300, 311,
       998, 505, 2181);
-  private static final Nomination LINKE_BEZIRK = buildNomination("LINKE-Bezirk", true);
+  private static final Nomination LINKE_BEZIRK = buildNomination("LINKE", "LINKE-Bezirk", true);
   public static final VotingResult LINKE_BEZIRK_RESULT = buildVotingResult(LINKE_BEZIRK, 47452, 330,
       4890, 875, 1532, 1293, 2321, 696, 1843, 2212, 1488, 483, 764, 572, 892);
-  private static final Nomination GRUENE_BEZIRK = buildNomination("GRUENE-Bezirk", true);
+  private static final Nomination GRUENE_BEZIRK = buildNomination("GRUENE", "GRUENE-Bezirk", true);
   public static final VotingResult GRUENE_BEZIRK_RESULT = buildVotingResult(GRUENE_BEZIRK, 150842,
       900,
       10586, 5629, 12597, 2935, 3378, 735, 5662, 4021, 2065, 2469, 1561, 3557, 2290,
       1411, 2445, 1761, 1252, 1628, 652, 3524, 677, 843, 2375, 500, 1674, 3264, 1569,
       531, 531, 652, 5358, 2129);
-  private static final Nomination AFD_BEZIRK = buildNomination("AFD-Bezirk", true);
+  private static final Nomination AFD_BEZIRK = buildNomination("AFD", "AFD-Bezirk", true);
   public static final VotingResult AFD_BEZIRK_RESULT = buildVotingResult(AFD_BEZIRK, 21625, 220,
       1226, 1950, 3007, 874, 1032, 780, 535, 221, 283);
-  private static final Nomination PIRATEN_BEZIRK = buildNomination("Piraten-Bezirk", true);
+  private static final Nomination PIRATEN_BEZIRK = buildNomination("PIRATEN", "Piraten-Bezirk", true);
   public static final VotingResult PIRATEN_BEZIRK_RESULT = buildVotingResult(PIRATEN_BEZIRK, 6715,
       25,
       871, 1907, 987);
@@ -220,8 +221,9 @@ class CalculationServiceTest {
     ));
   }
 
-  private static Nomination buildNomination(String name, boolean supportVotesOnNomination) {
-    return new Nomination(name, supportVotesOnNomination);
+  private static Nomination buildNomination(String partyAbbreviation,
+      String name, boolean supportVotesOnNomination) {
+    return new Nomination(BEZIRKSWAHL, partyAbbreviation, name, supportVotesOnNomination);
   }
 
   private static Collection<Candidate> buildCandidates(String... names) {

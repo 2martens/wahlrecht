@@ -1,4 +1,4 @@
-package de.twomartens.wahlrecht.model;
+package de.twomartens.wahlrecht.model.internal;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,12 +13,15 @@ import lombok.ToString.Include;
 @RequiredArgsConstructor
 @ToString(onlyExplicitlyIncluded = true)
 public class Nomination {
-  private final List<Candidate> candidates = new ArrayList<>();
-  private final Map<Candidate, Integer> candidateToPosition = new HashMap<>();
-  private final Map<Integer, Candidate> positionToCandidate = new HashMap<>();
+
+  private final String electionName;
+  private final String partyAbbreviation;
   @Include
   private final String name;
   private final boolean supportVotesOnNomination;
+  private final List<Candidate> candidates = new ArrayList<>();
+  private final Map<Candidate, Integer> candidateToPosition = new HashMap<>();
+  private final Map<Integer, Candidate> positionToCandidate = new HashMap<>();
 
   private void addCandidate(Candidate candidate) {
     candidates.add(candidate);

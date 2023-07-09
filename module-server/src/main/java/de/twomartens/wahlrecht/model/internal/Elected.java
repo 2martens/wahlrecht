@@ -1,4 +1,4 @@
-package de.twomartens.wahlrecht.model;
+package de.twomartens.wahlrecht.model.internal;
 
 public enum Elected {
   NOT_ELECTED,
