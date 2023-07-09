@@ -30,21 +30,21 @@ spring:
     default: dev
 
 # properties for application
-de.twomartens.template:
+de.twomartens.wahlrecht:
   defaultTimeZone: Europe/Berlin
   greeting: "Hello %s"
 
 springdoc:
   swagger-ui:
-    path: '/template/doc/'
+    path: '/wahlrecht/v1/doc/'
   api-docs:
-    path: '/template/api-docs/'
+    path: '/wahlrecht/v1/api-docs/'
   default-produces-media-type: 'application/json'
 
 openapi:
   #TODO write description/ changelog
   description: |
-    Open API Documentation for the Template
+    Open API Documentation for the Wahlrecht
 
     ## Header 2
 
@@ -57,7 +57,7 @@ openapi:
     | 1.0    | added API Versioning (and changelog)   | Jim    | 28.05.2023 |
 
   version: 1.0
-  title: 'Template API'
+  title: 'Wahlrecht API'
 
 resttemplate:
   timeout:
