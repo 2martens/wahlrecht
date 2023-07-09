@@ -27,6 +27,7 @@ spring-boot-thymeleaf = { module = "org.springframework.boot:spring-boot-starter
 spring-boot-mongo = { module = "org.springframework.boot:spring-boot-starter-data-mongodb" }
 spring-boot-validation = { module = "org.springframework.boot:spring-boot-starter-validation" }
 spring-boot-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+spring-boot-security = { module = "org.springframework.boot:spring-boot-starter-security" }
 spring-boot-config = { module = "org.springframework.boot:spring-boot-configuration-processor", version.ref = "spring-boot" }
 spring-cloud = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "spring-cloud" }
 spring-cloud-starter = { module = "org.springframework.cloud:spring-cloud-starter" }
