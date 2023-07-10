@@ -13,29 +13,30 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity // (1)
+@EnableWebSecurity
 public class WebSecurityConfiguration {
 
   public static final String ROLE_USER = "USER";
 
   @Bean
-  public SecurityFilterChain securityFilterChain(@NonNull HttpSecurity http) throws Exception {  // (2)
+  public SecurityFilterChain securityFilterChain(@NonNull HttpSecurity http) throws Exception {
     http
+        .csrf().disable()
         .authorizeHttpRequests()
-          .requestMatchers("/wahlrecht/v1/**", "/wahlrecht/version")
-          .permitAll()
-          .and()
+            .requestMatchers("/wahlrecht/v1/election", "/wahlrecht/v1/party/**",
+                "/wahlrecht/v1/nomination/**")
+            .authenticated()
+            .and()
         .authorizeHttpRequests()
-          .requestMatchers("/resources/**")
-          .permitAll()
-          .and()
+            .requestMatchers("/wahlrecht/v1/**", "/wahlrecht/version",
+                "/error")
+            .permitAll()
+            .and()
         .authorizeHttpRequests()
-          .requestMatchers("/wahlrecht/v1/election",
-              "/wahlrecht/v1/party/**",
-              "/wahlrecht/v1/nomination/**")
-          .authenticated() // (3)
-          .and()
-        .httpBasic(); // (7)
+            .requestMatchers("/resources/**")
+            .permitAll()
+            .and()
+        .httpBasic();
     return http.build();
   }
 
