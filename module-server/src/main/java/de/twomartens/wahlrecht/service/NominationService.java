@@ -2,10 +2,13 @@ package de.twomartens.wahlrecht.service;
 
 import de.twomartens.wahlrecht.model.db.Candidate;
 import de.twomartens.wahlrecht.model.db.Nomination;
+import de.twomartens.wahlrecht.model.internal.NominationId;
 import de.twomartens.wahlrecht.repository.NominationRepository;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Optional;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,22 +18,43 @@ public class NominationService {
 
   private final NominationRepository repository;
   private final CandidateService candidateService;
+  private Map<NominationId, Nomination> nominations;
 
   public Nomination storeNomination(Nomination nomination) {
     if (nomination == null) {
       return null;
     }
 
-    Optional<Nomination> existingOptional = repository
-        .findByNameAndElectionNameAndPartyAbbreviation(nomination.getName(),
-            nomination.getElectionName(), nomination.getPartyAbbreviation());
+    if (nominations == null) {
+      fetchNominations();
+    }
+
+    NominationId nominationId = new NominationId(nomination.getElectionName(),
+        nomination.getPartyAbbreviation(), nomination.getName());
+    Nomination existing = nominations.get(nominationId);
+    boolean needsUpdate = !nomination.equals(existing);
+
+    if (!needsUpdate) {
+      return existing;
+    }
+
     Collection<Candidate> candidates = new ArrayList<>();
     nomination.getCandidates()
         .forEach(candidate -> candidates.add(candidateService.storeCandidate(candidate)));
-    if (existingOptional.isPresent()) {
-      nomination = existingOptional.get();
+    if (existing != null) {
+      nomination = existing;
     }
     nomination.setCandidates(candidates);
-    return repository.save(nomination);
+    nomination = repository.save(nomination);
+    nominations.put(nominationId, nomination);
+
+    return nomination;
+  }
+
+  private void fetchNominations() {
+    nominations = repository.findAll().stream()
+        .collect(Collectors.toMap(
+            n -> new NominationId(n.getElectionName(), n.getPartyAbbreviation(), n.getName()),
+            Function.identity()));
   }
 }

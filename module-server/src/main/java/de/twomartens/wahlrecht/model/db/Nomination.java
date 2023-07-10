@@ -1,7 +1,7 @@
 package de.twomartens.wahlrecht.model.db;
 
+import java.time.Instant;
 import java.util.Collection;
-import java.util.Date;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,12 +30,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @CompoundIndex(def = "{'name': 1, 'partyAbbreviation': 1, 'electionName': 1}")
 public class Nomination {
 
+  @EqualsAndHashCode.Exclude
   @Id
   ObjectId id;
+  @EqualsAndHashCode.Exclude
   @CreatedDate
-  Date created;
+  Instant created;
+  @EqualsAndHashCode.Exclude
   @LastModifiedDate
-  Date lastModified;
+  Instant lastModified;
 
   String name;
   String partyAbbreviation;

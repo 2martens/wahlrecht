@@ -1,6 +1,6 @@
 package de.twomartens.wahlrecht.model.db;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.Map;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -30,12 +30,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @CompoundIndex(def = "{'abbreviation': 1, 'electionName': 1}")
 public class PartyInElection {
 
+  @EqualsAndHashCode.Exclude
   @Id
   ObjectId id;
+  @EqualsAndHashCode.Exclude
   @CreatedDate
-  Date created;
+  Instant created;
+  @EqualsAndHashCode.Exclude
   @LastModifiedDate
-  Date lastModified;
+  Instant lastModified;
 
   String abbreviation;
   String electionName;

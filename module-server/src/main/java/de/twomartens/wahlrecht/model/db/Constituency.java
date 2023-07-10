@@ -29,10 +29,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @CompoundIndex(def = "{'number': 1, 'electionName': 1}")
 public class Constituency {
 
+  @EqualsAndHashCode.Exclude
   @Id
   ObjectId id;
+  @EqualsAndHashCode.Exclude
   @CreatedDate
   Instant created;
+  @EqualsAndHashCode.Exclude
   @LastModifiedDate
   Instant lastModified;
 

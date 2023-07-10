@@ -1,6 +1,6 @@
 package de.twomartens.wahlrecht.model.db;
 
-import java.util.Date;
+import java.time.Instant;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,12 +28,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Candidate {
 
+  @EqualsAndHashCode.Exclude
   @Id
   ObjectId id;
+  @EqualsAndHashCode.Exclude
   @CreatedDate
-  Date created;
+  Instant created;
+  @EqualsAndHashCode.Exclude
   @LastModifiedDate
-  Date lastModified;
+  Instant lastModified;
 
   @Indexed
   String name;

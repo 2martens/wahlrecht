@@ -1,9 +1,9 @@
 package de.twomartens.wahlrecht.model.db;
 
 import de.twomartens.wahlrecht.model.dto.v1.VotingThreshold;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Date;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,12 +31,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Election {
 
+  @EqualsAndHashCode.Exclude
   @Id
   ObjectId id;
+  @EqualsAndHashCode.Exclude
   @CreatedDate
-  Date created;
+  Instant created;
+  @EqualsAndHashCode.Exclude
   @LastModifiedDate
-  Date lastModified;
+  Instant lastModified;
 
   @Indexed(unique = true)
   String name;
