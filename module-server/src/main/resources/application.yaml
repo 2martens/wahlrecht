@@ -35,10 +35,13 @@ de.twomartens.wahlrecht:
 
 springdoc:
   swagger-ui:
+    display-request-duration: true
+    operationsSorter: method
+    disable-swagger-default-url: true
     path: '/wahlrecht/v1/doc/'
-  api-docs:
-    path: '/wahlrecht/v1/api-docs/'
   default-produces-media-type: 'application/json'
+  api-docs:
+    path: '/wahlrecht/v1/api-docs'
 
 openapi:
   #TODO write description/ changelog
