@@ -5,7 +5,6 @@ import de.twomartens.wahlrecht.mapper.v1.PartyInElectionMapper;
 import de.twomartens.wahlrecht.model.dto.ErrorMessage;
 import de.twomartens.wahlrecht.model.dto.v1.Election;
 import de.twomartens.wahlrecht.model.dto.v1.PartyInElection;
-import de.twomartens.wahlrecht.service.ConstituencyService;
 import de.twomartens.wahlrecht.service.ElectionService;
 import de.twomartens.wahlrecht.service.PartyService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -45,7 +44,6 @@ public class PartyController {
   private final ElectionMapper electionMapper = Mappers.getMapper(ElectionMapper.class);
   private final PartyService service;
   private final ElectionService electionService;
-  private final ConstituencyService constituencyService;
 
   @Operation(
       summary = "Returns all stored parties for given election name",
@@ -87,9 +85,7 @@ public class PartyController {
           @ApiResponse(responseCode = "200",
               description = "Party was modified"),
           @ApiResponse(responseCode = "401",
-              description = "Unauthorized",
-              content = {@Content(
-                  mediaType = "plain/text")}
+              description = "Unauthorized"
           )
       }
   )
