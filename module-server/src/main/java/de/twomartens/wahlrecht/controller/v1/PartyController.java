@@ -1,11 +1,8 @@
 package de.twomartens.wahlrecht.controller.v1;
 
-import de.twomartens.wahlrecht.mapper.v1.ElectionMapper;
 import de.twomartens.wahlrecht.mapper.v1.PartyInElectionMapper;
 import de.twomartens.wahlrecht.model.dto.ErrorMessage;
-import de.twomartens.wahlrecht.model.dto.v1.Election;
 import de.twomartens.wahlrecht.model.dto.v1.PartyInElection;
-import de.twomartens.wahlrecht.service.ElectionService;
 import de.twomartens.wahlrecht.service.PartyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -24,11 +21,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,9 +35,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PartyController {
 
   private final PartyInElectionMapper mapper = Mappers.getMapper(PartyInElectionMapper.class);
-  private final ElectionMapper electionMapper = Mappers.getMapper(ElectionMapper.class);
   private final PartyService service;
-  private final ElectionService electionService;
 
   @Operation(
       summary = "Returns all stored parties for given election name",
@@ -96,50 +88,5 @@ public class PartyController {
     return createdNew
         ? new ResponseEntity<>(HttpStatus.CREATED)
         : new ResponseEntity<>(HttpStatus.OK);
-  }
-
-  @PostMapping("/party")
-  public String submitCreatePartyForm(@ModelAttribute PartyInElection party, Model model) {
-    service.storeParty(mapper.mapToDB(party));
-    model.addAttribute("party", party);
-    model.addAttribute("isCreate", false);
-    return "partyUpdate";
-  }
-
-  @GetMapping("/party")
-  public String createPartyForm(Model model) {
-    model.addAttribute("party", new PartyInElection());
-    model.addAttribute("isCreate", true);
-    return "partyCreate";
-  }
-
-  @PostMapping("/party/{electionName}/{abbreviation}")
-  public String submitUpdatePartyForm(
-      @PathVariable String electionName,
-      @PathVariable String abbreviation,
-      @ModelAttribute PartyInElection party,
-      Model model) {
-    return submitCreatePartyForm(party, model);
-  }
-
-
-  @GetMapping("/party/{electionName}/{abbreviation}")
-  public String updatePartyForm(
-      @PathVariable String electionName,
-      @PathVariable String abbreviation,
-      Model model) {
-    PartyInElection party = mapper.mapToExternal(
-        service.getPartyByElectionNameAndAbbreviation(electionName, abbreviation));
-    model.addAttribute("party", party);
-    model.addAttribute("isCreate", false);
-
-    return "partyUpdate";
-  }
-
-  @ModelAttribute("elections")
-  Collection<Election> elections() {
-    return electionService.getElections().stream()
-        .map(electionMapper::mapToExternal)
-        .toList();
   }
 }

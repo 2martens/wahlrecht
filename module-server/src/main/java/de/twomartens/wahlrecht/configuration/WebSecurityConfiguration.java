@@ -3,6 +3,7 @@ package de.twomartens.wahlrecht.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.lang.NonNull;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -23,8 +24,7 @@ public class WebSecurityConfiguration {
     http
         .csrf().disable()
         .authorizeHttpRequests()
-            .requestMatchers("/wahlrecht/v1/election", "/wahlrecht/v1/party/**",
-                "/wahlrecht/v1/nomination/**")
+            .requestMatchers(HttpMethod.PUT, "/wahlrecht/v1/**")
             .authenticated()
             .and()
         .authorizeHttpRequests()
