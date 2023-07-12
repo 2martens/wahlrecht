@@ -27,6 +27,9 @@ spring:
     banner-mode: off
   profiles:
     default: dev
+  data.mongodb:
+    uri: ${MONGODB_CONNECTION_STRING}
+    auto-index-creation: true
 
 # properties for application
 de.twomartens.wahlrecht:
