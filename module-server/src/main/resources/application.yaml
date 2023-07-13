@@ -47,19 +47,20 @@ springdoc:
     path: '/wahlrecht/v1/api-docs'
 
 openapi:
-  #TODO write description/ changelog
   description: |
-    Open API Documentation for the Wahlrecht
+    Open API Documentation for the Wahlrecht API
 
-    ## Header 2
+    ## Calculate election results
 
-    __YOUR TEXT HERE__
+    If you want to calculate the result of the 2019 district election in Hamburg-Eimsbüttel,
+    first GET it with /wahlrecht/v1/electionResult/by-election-name/Bezirkswahl%202019,
+    and then POST it to /wahlrecht/v1/calculate.
 
     ## Changelog
 
     |Version | Change                                 | Author | Date       |
     | ------ | -------------------------------------- | ------ | ---------- |
-    | 1.0    | added API Versioning (and changelog)   | Jim    | 28.05.2023 |
+    | 1.0    | added API Versioning (and changelog)   | Jim    | 13.07.2023 |
 
   version: 1.0
   title: 'Wahlrecht API'
