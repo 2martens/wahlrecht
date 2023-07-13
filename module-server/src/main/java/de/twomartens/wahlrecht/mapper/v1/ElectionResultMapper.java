@@ -9,13 +9,17 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.ReportingPolicy;
+import org.mapstruct.factory.Mappers;
 
 @Mapper(collectionMappingStrategy = CollectionMappingStrategy.ADDER_PREFERRED,
     nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ElectionResultMapper {
 
-  de.twomartens.wahlrecht.model.dto.v1.ElectionResult mapToExternal(de.twomartens.wahlrecht.model.db.ElectionResult result);
+  VotingResultMapper VOTING_RESULT_MAPPER = Mappers.getMapper(VotingResultMapper.class);
+
+  de.twomartens.wahlrecht.model.dto.v1.ElectionResult mapToExternal(
+      de.twomartens.wahlrecht.model.db.ElectionResult result);
 
   Collection<de.twomartens.wahlrecht.model.dto.v1.VotingResult> mapToExternal(
       Collection<de.twomartens.wahlrecht.model.db.VotingResult> results);
@@ -35,6 +39,10 @@ public interface ElectionResultMapper {
       Map<Integer, Collection<de.twomartens.wahlrecht.model.dto.v1.VotingResult>> results);
 
   ElectionResult mapToInternal(de.twomartens.wahlrecht.model.dto.v1.ElectionResult result);
+
+  default VotingResult mapToInternal(de.twomartens.wahlrecht.model.dto.v1.VotingResult result) {
+    return VOTING_RESULT_MAPPER.mapToInternal(result);
+  }
 
   Collection<VotingResult> mapToInternal(
       Collection<de.twomartens.wahlrecht.model.dto.v1.VotingResult> results);

@@ -8,7 +8,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -35,13 +34,16 @@ public class PartyService {
 
   public PartyInElection getPartyByElectionNameAndAbbreviation(String electionName,
       String abbreviation) {
-    Optional<PartyInElection> optionalParty = partyRepository.findByAbbreviationAndElectionName(
-        abbreviation, electionName);
-    if (optionalParty.isEmpty()) {
+    if (parties == null) {
+      fetchParties();
+    }
+    PartyId partyId = new PartyId(electionName, abbreviation);
+    PartyInElection party = parties.get(partyId);
+    if (party == null) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND,
           "no party found for %s and %s".formatted(electionName, abbreviation));
     }
-    return optionalParty.get();
+    return party;
   }
 
   public boolean storeParty(PartyInElection partyInElection) {

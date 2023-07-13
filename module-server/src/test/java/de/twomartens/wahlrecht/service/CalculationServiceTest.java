@@ -116,6 +116,9 @@ class CalculationServiceTest {
   @Mock
   private NominationService nominationService;
 
+  @Mock
+  private ElectionService electionService;
+
   @BeforeAll
   static void setUp() {
     setUpCandidatesConstituency();
@@ -250,7 +253,7 @@ class CalculationServiceTest {
 
   @BeforeEach
   void setService() {
-    service = new CalculationService(nominationService);
+    service = new CalculationService(nominationService, electionService);
   }
 
   @Test
@@ -316,7 +319,7 @@ class CalculationServiceTest {
         FDP_BEZIRK_RESULT, 3,
         AFD_BEZIRK_RESULT, 3
     );
-    Map<VotingResult, Collection<ElectedCandidate>> electedCandidates = setUpConstituencyResults();
+    Map<String, Collection<ElectedCandidate>> electedCandidates = setUpConstituencyResults();
     when(nominationService.getNominationInternal(SPD_BEZIRK.getId())).thenReturn(SPD_BEZIRK);
     when(nominationService.getNominationInternal(CDU_BEZIRK.getId())).thenReturn(CDU_BEZIRK);
     when(nominationService.getNominationInternal(FDP_BEZIRK.getId())).thenReturn(FDP_BEZIRK);
@@ -397,8 +400,8 @@ class CalculationServiceTest {
   }
 
   @NonNull
-  private Map<VotingResult, Collection<ElectedCandidate>> setUpConstituencyResults() {
-    return Map.of(GRUENE_BEZIRK_RESULT, List.of(
+  private Map<String, Collection<ElectedCandidate>> setUpConstituencyResults() {
+    return Map.of(GRUENE_BEZIRK_RESULT.getNominationId().partyAbbreviation(), List.of(
         new ElectedCandidate(GRUENE_BEZIRK.getCandidate(1), Elected.CONSTITUENCY),
         new ElectedCandidate(GRUENE_BEZIRK.getCandidate(2), Elected.CONSTITUENCY),
         new ElectedCandidate(GRUENE_BEZIRK.getCandidate(3), Elected.CONSTITUENCY),

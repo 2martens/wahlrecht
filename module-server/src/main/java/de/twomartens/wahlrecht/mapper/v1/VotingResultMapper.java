@@ -6,13 +6,14 @@ import org.mapstruct.CollectionMappingStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.ReportingPolicy;
+import org.springframework.lang.NonNull;
 
 @Mapper(collectionMappingStrategy = CollectionMappingStrategy.ADDER_PREFERRED,
     nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
     unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface VotingResultMapper {
 
-  default de.twomartens.wahlrecht.model.dto.v1.VotingResult mapToExternal(VotingResult result) {
+  default de.twomartens.wahlrecht.model.dto.v1.VotingResult mapToExternal(@NonNull VotingResult result) {
     return new de.twomartens.wahlrecht.model.dto.v1.VotingResult(
         result.getNominationId().electionName(),
         result.getNominationId().partyAbbreviation(),
@@ -23,7 +24,7 @@ public interface VotingResultMapper {
     );
   }
 
-  default VotingResult mapToInternal(de.twomartens.wahlrecht.model.dto.v1.VotingResult result) {
+  default VotingResult mapToInternal(@NonNull de.twomartens.wahlrecht.model.dto.v1.VotingResult result) {
     return new VotingResult(
         new NominationId(result.electionName(), result.partyAbbreviation(),
             result.nominationName()),
