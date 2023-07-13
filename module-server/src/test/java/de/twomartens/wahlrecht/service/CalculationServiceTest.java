@@ -1,5 +1,7 @@
 package de.twomartens.wahlrecht.service;
 
+import static org.mockito.Mockito.when;
+
 import de.twomartens.wahlrecht.model.internal.Candidate;
 import de.twomartens.wahlrecht.model.internal.Constituency;
 import de.twomartens.wahlrecht.model.internal.Elected;
@@ -7,6 +9,7 @@ import de.twomartens.wahlrecht.model.internal.ElectedCandidate;
 import de.twomartens.wahlrecht.model.internal.ElectedResult;
 import de.twomartens.wahlrecht.model.internal.Election;
 import de.twomartens.wahlrecht.model.internal.Nomination;
+import de.twomartens.wahlrecht.model.internal.NominationId;
 import de.twomartens.wahlrecht.model.internal.SeatResult;
 import de.twomartens.wahlrecht.model.internal.VotingResult;
 import de.twomartens.wahlrecht.model.internal.VotingThreshold;
@@ -23,8 +26,12 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.lang.NonNull;
 
+@ExtendWith(MockitoExtension.class)
 class CalculationServiceTest {
 
   private static final String BEZIRKSWAHL = "Bezirkswahl 2019";
@@ -106,6 +113,9 @@ class CalculationServiceTest {
       871, 1907, 987);
   private CalculationService service;
 
+  @Mock
+  private NominationService nominationService;
+
   @BeforeAll
   static void setUp() {
     setUpCandidatesConstituency();
@@ -152,7 +162,7 @@ class CalculationServiceTest {
         .votesThroughHealing(votesThroughHealing)
         .votesOnNomination(votesOnNomination)
         .votesPerPosition(buildVotesPerPosition(votes))
-        .nomination(nomination)
+        .nominationId(nomination.getId())
         .build();
   }
 
@@ -223,7 +233,8 @@ class CalculationServiceTest {
 
   private static Nomination buildNomination(String partyAbbreviation,
       String name, boolean supportVotesOnNomination) {
-    return new Nomination(BEZIRKSWAHL, partyAbbreviation, name, supportVotesOnNomination);
+    return new Nomination(new NominationId(BEZIRKSWAHL, partyAbbreviation, name),
+        supportVotesOnNomination);
   }
 
   private static Collection<Candidate> buildCandidates(String... names) {
@@ -239,7 +250,7 @@ class CalculationServiceTest {
 
   @BeforeEach
   void setService() {
-    service = new CalculationService();
+    service = new CalculationService(nominationService);
   }
 
   @Test
@@ -252,16 +263,18 @@ class CalculationServiceTest {
         FDP_NIENDORF_RESULT,
         AFD_NIENDORF_RESULT
     );
-
+    when(nominationService.getNominationInternal(SPD_NIENDORF.getId())).thenReturn(SPD_NIENDORF);
+    when(nominationService.getNominationInternal(CDU_NIENDORF.getId())).thenReturn(CDU_NIENDORF);
+    when(nominationService.getNominationInternal(GRUENE_NIENDORF.getId())).thenReturn(GRUENE_NIENDORF);
     ElectedResult elected = service.calculateConstituency(NIENDORF, votingResults);
 
     Assertions.assertThat(elected.electedCandidatesByNomination())
-        .containsKey(SPD_NIENDORF)
-        .containsKey(CDU_NIENDORF)
-        .containsKey(GRUENE_NIENDORF)
-        .doesNotContainKey(LINKE_NIENDORF)
-        .doesNotContainKey(AFD_NIENDORF)
-        .doesNotContainKey(FDP_NIENDORF);
+        .containsKey(SPD_NIENDORF.getId())
+        .containsKey(CDU_NIENDORF.getId())
+        .containsKey(GRUENE_NIENDORF.getId())
+        .doesNotContainKey(LINKE_NIENDORF.getId())
+        .doesNotContainKey(AFD_NIENDORF.getId())
+        .doesNotContainKey(FDP_NIENDORF.getId());
   }
 
   @Test
@@ -285,12 +298,12 @@ class CalculationServiceTest {
     SeatResult result = service.calculateOverallSeatDistribution(election, votingResults);
 
     Assertions.assertThat(result.seatsPerNomination())
-        .containsEntry(SPD_BEZIRK, 12)
-        .containsEntry(CDU_BEZIRK, 9)
-        .containsEntry(LINKE_BEZIRK, 5)
-        .containsEntry(FDP_BEZIRK, 3)
-        .containsEntry(GRUENE_BEZIRK, 19)
-        .containsEntry(AFD_BEZIRK, 3);
+        .containsEntry(SPD_BEZIRK.getId(), 12)
+        .containsEntry(CDU_BEZIRK.getId(), 9)
+        .containsEntry(LINKE_BEZIRK.getId(), 5)
+        .containsEntry(FDP_BEZIRK.getId(), 3)
+        .containsEntry(GRUENE_BEZIRK.getId(), 19)
+        .containsEntry(AFD_BEZIRK.getId(), 3);
   }
 
   @Test
@@ -304,29 +317,35 @@ class CalculationServiceTest {
         AFD_BEZIRK_RESULT, 3
     );
     Map<VotingResult, Collection<ElectedCandidate>> electedCandidates = setUpConstituencyResults();
+    when(nominationService.getNominationInternal(SPD_BEZIRK.getId())).thenReturn(SPD_BEZIRK);
+    when(nominationService.getNominationInternal(CDU_BEZIRK.getId())).thenReturn(CDU_BEZIRK);
+    when(nominationService.getNominationInternal(FDP_BEZIRK.getId())).thenReturn(FDP_BEZIRK);
+    when(nominationService.getNominationInternal(GRUENE_BEZIRK.getId())).thenReturn(GRUENE_BEZIRK);
+    when(nominationService.getNominationInternal(LINKE_BEZIRK.getId())).thenReturn(LINKE_BEZIRK);
+    when(nominationService.getNominationInternal(AFD_BEZIRK.getId())).thenReturn(AFD_BEZIRK);
 
     ElectedResult result = service.calculateElectedOverallCandidates(seatsPerVotingResult,
         electedCandidates);
 
     Assertions.assertThat(result.electedCandidatesByNomination())
-        .anySatisfy((nomination, candidates) -> {
-          Assertions.assertThat(nomination).isEqualTo(SPD_BEZIRK);
+        .anySatisfy((id, candidates) -> {
+          Assertions.assertThat(id).isEqualTo(SPD_BEZIRK.getId());
           Assertions.assertThat(candidates)
               .anyMatch(candidate -> candidate.name().equals(GOTTLIEB_GABOR)
                   && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
               .anyMatch(candidate -> candidate.name().equals(RIEGEL_ANN_KATHRIN)
                   && candidate.elected() == Elected.OVERALL_VOTE_ORDER);
         })
-        .anySatisfy((nomination, candidates) -> {
-          Assertions.assertThat(nomination).isEqualTo(CDU_BEZIRK);
+        .anySatisfy((id, candidates) -> {
+          Assertions.assertThat(id).isEqualTo(CDU_BEZIRK.getId());
           Assertions.assertThat(candidates)
               .anyMatch(candidate -> candidate.name().equals(HOEFLICH_JUTTA)
                   && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
               .anyMatch(candidate -> candidate.name().equals(DR_LANGHEIN_A_W_HEINRICH)
                   && candidate.elected() == Elected.OVERALL_VOTE_ORDER);
         })
-        .anySatisfy((nomination, candidates) -> {
-          Assertions.assertThat(nomination).isEqualTo(LINKE_BEZIRK);
+        .anySatisfy((id, candidates) -> {
+          Assertions.assertThat(id).isEqualTo(LINKE_BEZIRK.getId());
           Assertions.assertThat(candidates)
               .anyMatch(candidate -> candidate.name().equals(PAGELS_MANUELA)
                   && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
@@ -335,8 +354,8 @@ class CalculationServiceTest {
               .anyMatch(candidate -> candidate.name().equals(KLEINERT_MIKEY)
                   && candidate.elected() == Elected.OVERALL_VOTE_ORDER);
         })
-        .anySatisfy((nomination, candidates) -> {
-          Assertions.assertThat(nomination).isEqualTo(FDP_BEZIRK);
+        .anySatisfy((id, candidates) -> {
+          Assertions.assertThat(id).isEqualTo(FDP_BEZIRK.getId());
           Assertions.assertThat(candidates)
               .anyMatch(candidate -> candidate.name().equals(KRUEGER_KLAUS)
                   && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
@@ -345,8 +364,8 @@ class CalculationServiceTest {
               .anyMatch(candidate -> candidate.name().equals(MUELLER_SOENKSEN_BURKHARDT)
                   && candidate.elected() == Elected.OVERALL_VOTE_ORDER);
         })
-        .anySatisfy((nomination, candidates) -> {
-          Assertions.assertThat(nomination).isEqualTo(AFD_BEZIRK);
+        .anySatisfy((id, candidates) -> {
+          Assertions.assertThat(id).isEqualTo(AFD_BEZIRK.getId());
           Assertions.assertThat(candidates)
               .anyMatch(candidate -> candidate.name().equals(SCHOEMER_DIRK)
                   && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)
@@ -355,8 +374,8 @@ class CalculationServiceTest {
               .anyMatch(candidate -> candidate.name().equals(PILLATZKE_JOERG)
                   && candidate.elected() == Elected.OVERALL_VOTE_ORDER);
         })
-        .anySatisfy((nomination, candidates) -> {
-          Assertions.assertThat(nomination).isEqualTo(GRUENE_BEZIRK);
+        .anySatisfy((id, candidates) -> {
+          Assertions.assertThat(id).isEqualTo(GRUENE_BEZIRK.getId());
           Assertions.assertThat(candidates)
               .anyMatch(candidate -> candidate.name().equals(KUHLMANN_DIETMAR)
                   && candidate.elected() == Elected.OVERALL_NOMINATION_ORDER)

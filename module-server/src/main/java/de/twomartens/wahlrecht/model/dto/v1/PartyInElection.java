@@ -17,11 +17,12 @@ import org.springframework.lang.NonNull;
 @ToString(onlyExplicitlyIncluded = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PartyInElection {
-    String electionName;
-    @Include
-    String abbreviation;
-    String name;
-    Nomination overallNomination;
-    @NonNull
-    Map<Integer, Nomination> constituencyNominations = new HashMap<>();
+
+  String electionName;
+  @Include
+  String abbreviation;
+  String name;
+  Nomination overallNomination;
+  @NonNull
+  Map<Integer, Nomination> constituencyNominations = new HashMap<>();
 }

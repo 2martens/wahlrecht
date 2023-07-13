@@ -6,18 +6,13 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
-import lombok.ToString.Include;
 
 @RequiredArgsConstructor
-@ToString(onlyExplicitlyIncluded = true)
 public class Nomination {
-
-  private final String electionName;
-  private final String partyAbbreviation;
-  @Include
-  private final String name;
+  @Getter
+  private final NominationId id;
   private final boolean supportVotesOnNomination;
   private final List<Candidate> candidates = new ArrayList<>();
   private final Map<Candidate, Integer> candidateToPosition = new HashMap<>();
@@ -51,5 +46,10 @@ public class Nomination {
 
   public boolean supportsVotesOnNomination() {
     return supportVotesOnNomination;
+  }
+
+  @Override
+  public String toString() {
+    return id.name();
   }
 }

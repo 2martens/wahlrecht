@@ -10,8 +10,8 @@ import lombok.Builder;
 public record SeatResult(Map<VotingResult, Integer> seatsPerResult,
                          LinkedList<Double> usedElectionNumbers) {
 
-  public Map<Nomination, Integer> seatsPerNomination() {
+  public Map<NominationId, Integer> seatsPerNomination() {
     return seatsPerResult.entrySet().stream()
-        .collect(Collectors.toMap(entry -> entry.getKey().getNomination(), Entry::getValue));
+        .collect(Collectors.toMap(entry -> entry.getKey().getNominationId(), Entry::getValue));
   }
 }

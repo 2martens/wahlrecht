@@ -7,19 +7,19 @@ import lombok.Getter;
 @Getter
 public class VotingResult {
 
+  private final NominationId nominationId;
   private final int votesOnNomination;
   private final int votesThroughHealing;
   private final Map<Integer, Integer> votesPerPosition;
-  private final Nomination nomination;
   private Integer totalVotes = null;
 
   @Builder
-  public VotingResult(int votesOnNomination, int votesThroughHealing,
-      Map<Integer, Integer> votesPerPosition, Nomination nomination) {
+  public VotingResult(NominationId nominationId, int votesOnNomination, int votesThroughHealing,
+      Map<Integer, Integer> votesPerPosition) {
     this.votesOnNomination = votesOnNomination;
     this.votesThroughHealing = votesThroughHealing;
     this.votesPerPosition = votesPerPosition;
-    this.nomination = nomination;
+    this.nominationId = nominationId;
   }
 
   public int getTotalVotes() {

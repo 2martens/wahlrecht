@@ -39,7 +39,7 @@ public class PartyService {
         abbreviation, electionName);
     if (optionalParty.isEmpty()) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-          "no party found for %s and %s" .formatted(electionName, abbreviation));
+          "no party found for %s and %s".formatted(electionName, abbreviation));
     }
     return optionalParty.get();
   }

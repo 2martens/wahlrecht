@@ -7,6 +7,7 @@ import de.twomartens.wahlrecht.model.internal.ElectedCandidate;
 import de.twomartens.wahlrecht.model.internal.ElectedResult;
 import de.twomartens.wahlrecht.model.internal.Election;
 import de.twomartens.wahlrecht.model.internal.Nomination;
+import de.twomartens.wahlrecht.model.internal.NominationId;
 import de.twomartens.wahlrecht.model.internal.SeatResult;
 import de.twomartens.wahlrecht.model.internal.VotingResult;
 import java.util.ArrayList;
@@ -20,13 +21,19 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
+@RequiredArgsConstructor
 @Service
 public class CalculationService {
 
+  private final NominationService nominationService;
+
   private final LinkedList<Double> electionNumberHistory = new LinkedList<>();
+
+
 
   public ElectedResult calculateConstituency(@NonNull Constituency constituency,
       @NonNull Collection<VotingResult> votingResults) {
@@ -127,7 +134,8 @@ public class CalculationService {
     Map<Candidate, ElectedCandidate> electedCandidateMap = alreadyElectedCandidates.stream()
         .collect(Collectors.toMap(ElectedCandidate::candidate, Function.identity()));
 
-    Nomination nomination = votingResult.getNomination();
+    NominationId nominationId = votingResult.getNominationId();
+    Nomination nomination = nominationService.getNominationInternal(nominationId);
     if (nomination.supportsVotesOnNomination()) {
       int seatsByNomination = calculateSeatsByNominationOrder(votingResult, numberOfSeats);
       seatsByVoteOrder = numberOfSeats - seatsByNomination;

@@ -11,9 +11,9 @@ import lombok.Builder;
 public record ElectedResult(Map<VotingResult, Collection<ElectedCandidate>> electedCandidates,
                             LinkedList<Double> usedElectionNumbers) {
 
-  public Map<Nomination, Collection<ElectedCandidate>> electedCandidatesByNomination() {
+  public Map<NominationId, Collection<ElectedCandidate>> electedCandidatesByNomination() {
     return electedCandidates.entrySet().stream()
-        .collect(Collectors.toMap(entry -> entry.getKey().getNomination(), Entry::getValue));
+        .collect(Collectors.toMap(entry -> entry.getKey().getNominationId(), Entry::getValue));
   }
 
 }
