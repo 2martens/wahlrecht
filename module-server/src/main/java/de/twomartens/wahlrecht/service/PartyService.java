@@ -32,20 +32,6 @@ public class PartyService {
     return parties;
   }
 
-  public PartyInElection getPartyByElectionNameAndAbbreviation(String electionName,
-      String abbreviation) {
-    if (parties == null) {
-      fetchParties();
-    }
-    PartyId partyId = new PartyId(electionName, abbreviation);
-    PartyInElection party = parties.get(partyId);
-    if (party == null) {
-      throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-          "no party found for %s and %s".formatted(electionName, abbreviation));
-    }
-    return party;
-  }
-
   public boolean storeParty(PartyInElection partyInElection) {
     if (parties == null) {
       fetchParties();

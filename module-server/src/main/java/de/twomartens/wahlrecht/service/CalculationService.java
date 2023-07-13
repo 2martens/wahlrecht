@@ -37,11 +37,10 @@ public class CalculationService {
   private final NominationService nominationService;
   private final ElectionService electionService;
   private final LinkedList<Double> electionNumberHistory = new LinkedList<>();
-  private StopWatch stopWatch;
 
   public ElectedCandidates determineElectedCandidates(@NonNull ElectionResult electionResult) {
     log.info("Calculate election result for election {}", electionResult.electionName());
-    stopWatch = new StopWatch();
+    StopWatch stopWatch = new StopWatch();
     stopWatch.start("determineElectedCandidates");
     Election election = electionService.getElectionInternal(electionResult.electionName());
     SeatResult seatResult = calculateOverallSeatDistribution(election,
