@@ -1,0 +1,1732 @@
+### SPD
+PUT http://localhost:12000/wahlrecht/v1/party
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+Content-Type: application/json
+
+{
+  "electionName": "Bezirkswahl 2019",
+  "abbreviation": "SPD",
+  "name": "Sozialdemokratische Partei Deutschlands - Kreisverband Eimsbüttel",
+  "overallNomination": {
+    "electionName": "Bezirkswahl 2019",
+    "partyAbbreviation": "SPD",
+    "name": "Bezirksliste SPD",
+    "supportVotesOnNomination": true,
+    "candidates": [
+      {
+        "name": "Gottlieb, Gabor",
+        "profession": ""
+      },
+      {
+        "name": "Meding, Sarah",
+        "profession": ""
+      },
+      {
+        "name": "Harringa, Nils",
+        "profession": ""
+      },
+      {
+        "name": "Nendza-Ammar, Charlotte",
+        "profession": ""
+      },
+      {
+        "name": "Rust, Rüdiger",
+        "profession": ""
+      },
+      {
+        "name": "Köster-Marjanovic, Hannelore",
+        "profession": ""
+      },
+      {
+        "name": "Riegel, Ann-Kathrin",
+        "profession": ""
+      },
+      {
+        "name": "Rüter, Monika",
+        "profession": ""
+      },
+      {
+        "name": "Heise, Elk",
+        "profession": ""
+      },
+      {
+        "name": "Fischbach-Pyttel, Carola",
+        "profession": ""
+      },
+      {
+        "name": "Schirmer, Stephan-Philipp",
+        "profession": ""
+      },
+      {
+        "name": "Telljohann, Katharina",
+        "profession": ""
+      },
+      {
+        "name": "Röder, Wilfried",
+        "profession": ""
+      },
+      {
+        "name": "Dr. Matiss, Claudia",
+        "profession": ""
+      },
+      {
+        "name": "Koßel, Uwe",
+        "profession": ""
+      },
+      {
+        "name": "Wagner, Saskia",
+        "profession": ""
+      },
+      {
+        "name": "Bäcker, Guido",
+        "profession": ""
+      },
+      {
+        "name": "Tiben-Thörner, Karin",
+        "profession": ""
+      },
+      {
+        "name": "Ptach, Stephan",
+        "profession": ""
+      },
+      {
+        "name": "Steinbiß, Emily",
+        "profession": ""
+      },
+      {
+        "name": "Berisha, Dafina",
+        "profession": ""
+      },
+      {
+        "name": "Meyer, Simon",
+        "profession": ""
+      },
+      {
+        "name": "Porr, Ulrike",
+        "profession": ""
+      },
+      {
+        "name": "Lange, Frederik",
+        "profession": ""
+      },
+      {
+        "name": "Oliva, Nora",
+        "profession": ""
+      },
+      {
+        "name": "Drossinakis, Panagiotis",
+        "profession": ""
+      },
+      {
+        "name": "Jacobs, Ruth",
+        "profession": ""
+      },
+      {
+        "name": "Bernstein, Til",
+        "profession": ""
+      },
+      {
+        "name": "Kröger, Manuela-Andrea",
+        "profession": ""
+      },
+      {
+        "name": "Dr. Enzmann, Dirk",
+        "profession": ""
+      },
+      {
+        "name": "Schilling, Alexandra",
+        "profession": ""
+      },
+      {
+        "name": "Abboud, Hussein",
+        "profession": ""
+      },
+      {
+        "name": "Petersen, Britt",
+        "profession": ""
+      },
+      {
+        "name": "Petersen, Johannes",
+        "profession": ""
+      },
+      {
+        "name": "Petersen, Doris",
+        "profession": ""
+      },
+      {
+        "name": "Frese, Gabor",
+        "profession": ""
+      },
+      {
+        "name": "Suh-von Bremen, Sun Won",
+        "profession": ""
+      },
+      {
+        "name": "Steppat, Wolfgang",
+        "profession": ""
+      },
+      {
+        "name": "Hildebrand, Denise",
+        "profession": ""
+      }
+    ]
+  },
+  "constituencyNominations": {
+    "1": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "SPD",
+      "name": "SPD Wahlkreisliste Eimsbüttel-Nord",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Meiburg, Ralf",
+          "profession": ""
+        },
+        {
+          "name": "Köster-Marjanovic, Hannelore",
+          "profession": ""
+        },
+        {
+          "name": "Frese, Gabor",
+          "profession": ""
+        },
+        {
+          "name": "Telljohann, Katharina",
+          "profession": ""
+        },
+        {
+          "name": "Thomsen, Jan Jacob",
+          "profession": ""
+        },
+        {
+          "name": "Westphalen, Solveig",
+          "profession": ""
+        }
+      ]
+    },
+    "2": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "SPD",
+      "name": "SPD Wahlkreisliste Eimsbüttel-Süd",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Altner, Moritz",
+          "profession": ""
+        },
+        {
+          "name": "Pinetzki, Tatjana",
+          "profession": ""
+        },
+        {
+          "name": "Heise, Elk",
+          "profession": ""
+        },
+        {
+          "name": "Tiben-Thörner, Karin",
+          "profession": ""
+        },
+        {
+          "name": "Dr. Enzmann, Dirk",
+          "profession": ""
+        },
+        {
+          "name": "Petersen, Doris",
+          "profession": ""
+        },
+        {
+          "name": "Grimm, Kai",
+          "profession": ""
+        },
+        {
+          "name": "Oliva, Nora",
+          "profession": ""
+        },
+        {
+          "name": "Dr. Kühling, Jürgen",
+          "profession": ""
+        },
+        {
+          "name": "Meding, Sarah",
+          "profession": ""
+        }
+      ]
+    },
+    "3": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "SPD",
+      "name": "SPD Wahlkreisliste HaRo",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Rügge, Paulina",
+          "profession": ""
+        },
+        {
+          "name": "Hamer, Philipp",
+          "profession": ""
+        },
+        {
+          "name": "Stallbaum, Angelika",
+          "profession": ""
+        },
+        {
+          "name": "Dethloff Jolunić, Vladana",
+          "profession": ""
+        },
+        {
+          "name": "Oehlmann, Roland",
+          "profession": ""
+        }
+      ]
+    },
+    "4": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "SPD",
+      "name": "SPD Wahlkreisliste Lokstedt",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Schütt, Ernst Christian",
+          "profession": ""
+        },
+        {
+          "name": "Hildebrand, Denise",
+          "profession": ""
+        },
+        {
+          "name": "Conrad, Martin",
+          "profession": ""
+        },
+        {
+          "name": "Dr. Matiss, Claudia",
+          "profession": ""
+        },
+        {
+          "name": "Dr. Hielscher, Johannes",
+          "profession": ""
+        }
+      ]
+    },
+    "5": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "SPD",
+      "name": "SPD Wahlkreisliste Niendorf",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Schwarzarius, Ines",
+          "profession": ""
+        },
+        {
+          "name": "Urbanski, Torge",
+          "profession": ""
+        },
+        {
+          "name": "Fischbach-Pyttel, Carola",
+          "profession": ""
+        },
+        {
+          "name": "Bäcker, Guido",
+          "profession": ""
+        },
+        {
+          "name": "Porr, Ulrike",
+          "profession": ""
+        },
+        {
+          "name": "Petersen, Johannes",
+          "profession": ""
+        },
+        {
+          "name": "Kröger, Manuela-Andrea",
+          "profession": ""
+        },
+        {
+          "name": "Steppat, Wolfgang",
+          "profession": ""
+        },
+        {
+          "name": "Canbay, Berfin",
+          "profession": ""
+        },
+        {
+          "name": "Schumacher, Wolfgang",
+          "profession": ""
+        }
+      ]
+    },
+    "6": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "SPD",
+      "name": "SPD Wahlkreisliste Schnelsen",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Armi, Koorosh",
+          "profession": ""
+        },
+        {
+          "name": "Dr. Röder, Petra",
+          "profession": ""
+        },
+        {
+          "name": "Börner, Sylvia",
+          "profession": ""
+        },
+        {
+          "name": "Zimmermann, Uwe",
+          "profession": ""
+        },
+        {
+          "name": "Bruchmann, Astrid",
+          "profession": ""
+        }
+      ]
+    },
+    "7": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "SPD",
+      "name": "SPD Wahlkreisliste Eidelstedt",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Bahr, Dagmar",
+          "profession": ""
+        },
+        {
+          "name": "Satzer, Janina",
+          "profession": ""
+        },
+        {
+          "name": "Brozzo, Walter",
+          "profession": ""
+        },
+        {
+          "name": "Huntemann, Alica",
+          "profession": ""
+        },
+        {
+          "name": "Özek, Ersin",
+          "profession": ""
+        },
+        {
+          "name": "Cuneo, Cristina",
+          "profession": ""
+        },
+        {
+          "name": "Melzer, Kjell-Jonas",
+          "profession": ""
+        },
+        {
+          "name": "Atasoy, Erzat",
+          "profession": ""
+        }
+      ]
+    },
+    "8": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "SPD",
+      "name": "SPD Wahlkreisliste Stellingen",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Urbanski, Annika",
+          "profession": ""
+        },
+        {
+          "name": "Meyer, Simon",
+          "profession": ""
+        },
+        {
+          "name": "Wagner, Saskia",
+          "profession": ""
+        },
+        {
+          "name": "Taubenheim, Patrick",
+          "profession": ""
+        },
+        {
+          "name": "Heidböhmer, Antje",
+          "profession": ""
+        },
+        {
+          "name": "Meister, Stephan",
+          "profession": ""
+        }
+      ]
+    }
+  }
+}
+### GRÜNE
+
+PUT http://localhost:12000/wahlrecht/v1/party
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+Content-Type: application/json
+
+{
+  "electionName": "Bezirkswahl 2019",
+  "abbreviation": "GRÜNE",
+  "name": "Bündnis 90/Die Grünen - Kreisverband Eimsbüttel",
+  "overallNomination": {
+    "electionName": "Bezirkswahl 2019",
+    "partyAbbreviation": "GRÜNE",
+    "name": "Bezirksliste GRÜNE",
+    "supportVotesOnNomination": true,
+    "candidates": [
+      {
+        "name": "Kern, Lisa",
+        "profession": ""
+      },
+      {
+        "name": "Hadji Mir Agha, Ali",
+        "profession": ""
+      },
+      {
+        "name": "Dr. Putz, Miriam",
+        "profession": ""
+      },
+      {
+        "name": "Kuhlmann, Dietmar",
+        "profession": ""
+      },
+      {
+        "name": "Dr. Hunter, Lynne",
+        "profession": ""
+      },
+      {
+        "name": "Schmidt-Tobler, Falk",
+        "profession": ""
+      },
+      {
+        "name": "Demirhan, Sina",
+        "profession": ""
+      },
+      {
+        "name": "Klein, Robert",
+        "profession": ""
+      },
+      {
+        "name": "Erk, Aramak",
+        "profession": ""
+      },
+      {
+        "name": "Martens, Jim",
+        "profession": ""
+      },
+      {
+        "name": "Warnecke, Anne Kathrin",
+        "profession": ""
+      },
+      {
+        "name": "Dr. Fischer, Jost Leonhardt",
+        "profession": ""
+      },
+      {
+        "name": "Kost, Cornelia",
+        "profession": ""
+      },
+      {
+        "name": "Brandt, Christopher",
+        "profession": ""
+      },
+      {
+        "name": "Schübel, Nina Joana",
+        "profession": ""
+      },
+      {
+        "name": "Schmidt, Lutz",
+        "profession": ""
+      },
+      {
+        "name": "Wolf, Rita",
+        "profession": ""
+      },
+      {
+        "name": "Alam, Leon",
+        "profession": ""
+      },
+      {
+        "name": "Schwarzwald, Cristina",
+        "profession": ""
+      },
+      {
+        "name": "Thies, Nico",
+        "profession": ""
+      },
+      {
+        "name": "Hasselmann, Annette",
+        "profession": ""
+      },
+      {
+        "name": "Koriath, Jan",
+        "profession": ""
+      },
+      {
+        "name": "Küll, Gabriela",
+        "profession": ""
+      },
+      {
+        "name": "Köhler, Kevin",
+        "profession": ""
+      },
+      {
+        "name": "Hericks, Susanne",
+        "profession": ""
+      },
+      {
+        "name": "Bohny, Carl Maria",
+        "profession": ""
+      },
+      {
+        "name": "Fester, Emilia",
+        "profession": ""
+      },
+      {
+        "name": "Hofmann, Klaus-Dieter",
+        "profession": ""
+      },
+      {
+        "name": "Neumann, Bernd",
+        "profession": ""
+      },
+      {
+        "name": "Braasch, Julian",
+        "profession": ""
+      },
+      {
+        "name": "Dorsch, Sebastian",
+        "profession": ""
+      },
+      {
+        "name": "Hasselmann, Harald",
+        "profession": ""
+      }
+    ]
+  },
+  "constituencyNominations": {
+    "1": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "GRÜNE",
+      "name": "GRÜNE Wahlkreisliste Eimsbüttel-Nord",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Warnecke, Anne Kathrin",
+          "profession": ""
+        },
+        {
+          "name": "Dr. Fischer, Jost Leonhardt",
+          "profession": ""
+        }
+      ]
+    },
+    "2": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "GRÜNE",
+      "name": "GRÜNE Wahlkreisliste Eimsbüttel-Süd",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Dr. Putz, Miriam",
+          "profession": ""
+        },
+        {
+          "name": "Schmidt-Tobler, Falk",
+          "profession": ""
+        }
+      ]
+    },
+    "3": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "GRÜNE",
+      "name": "GRÜNE Wahlkreisliste HaRo",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Schübel, Nina Joana",
+          "profession": ""
+        },
+        {
+          "name": "Koriath, Jan",
+          "profession": ""
+        }
+      ]
+    },
+    "4": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "GRÜNE",
+      "name": "GRÜNE Wahlkreisliste Lokstedt",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Kern, Lisa",
+          "profession": ""
+        },
+        {
+          "name": "Köhler, Kevin",
+          "profession": ""
+        }
+      ]
+    },
+    "5": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "GRÜNE",
+      "name": "GRÜNE Wahlkreisliste Niendorf",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Demirhan, Sina",
+          "profession": ""
+        },
+        {
+          "name": "Schmidt, Lutz",
+          "profession": ""
+        }
+      ]
+    },
+    "6": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "GRÜNE",
+      "name": "GRÜNE Wahlkreisliste Schnelsen",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Dr. Hunter, Lynne",
+          "profession": ""
+        },
+        {
+          "name": "Martens, Jim",
+          "profession": ""
+        }
+      ]
+    },
+    "7": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "GRÜNE",
+      "name": "GRÜNE Wahlkreisliste Eidelstedt",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Hadji Mir Agha, Ali",
+          "profession": ""
+        },
+        {
+          "name": "Hofmann, Klaus-Dieter",
+          "profession": ""
+        }
+      ]
+    },
+    "8": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "GRÜNE",
+      "name": "GRÜNE Wahlkreisliste Stellingen",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Kuhlmann, Dietmar",
+          "profession": ""
+        },
+        {
+          "name": "Thies, Nico",
+          "profession": ""
+        }
+      ]
+    }
+  }
+}
+### CDU
+
+PUT http://localhost:12000/wahlrecht/v1/party
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+Content-Type: application/json
+
+{
+  "electionName": "Bezirkswahl 2019",
+  "abbreviation": "CDU",
+  "name": "Christlich Demokratische Union - Kreisverband Eimsbüttel",
+  "overallNomination": {
+    "electionName": "Bezirkswahl 2019",
+    "partyAbbreviation": "CDU",
+    "name": "Bezirksliste CDU",
+    "supportVotesOnNomination": true,
+    "candidates": [
+      {
+        "name": "Höflich, Jutta",
+        "profession": ""
+      },
+      {
+        "name": "Könecke, Christian",
+        "profession": ""
+      },
+      {
+        "name": "Birnbaum, Andreas",
+        "profession": ""
+      },
+      {
+        "name": "Möller-Fiedler, Sybille",
+        "profession": ""
+      },
+      {
+        "name": "Kochmann, Franziska",
+        "profession": ""
+      },
+      {
+        "name": "von Deutsch, Christiane",
+        "profession": ""
+      },
+      {
+        "name": "Hoffmann, Bernd",
+        "profession": ""
+      },
+      {
+        "name": "Holst, Christian",
+        "profession": ""
+      },
+      {
+        "name": "Lau, Roman",
+        "profession": ""
+      },
+      {
+        "name": "Hille, Robert",
+        "profession": ""
+      },
+      {
+        "name": "Ahrens, Mareike",
+        "profession": ""
+      },
+      {
+        "name": "Dr. Langhein, A.W. Heinrich",
+        "profession": ""
+      },
+      {
+        "name": "Wichmann, Norbert",
+        "profession": ""
+      },
+      {
+        "name": "Lau, Johanna",
+        "profession": ""
+      },
+      {
+        "name": "Czernotzky, Birgit",
+        "profession": ""
+      },
+      {
+        "name": "von Sawilski, Marlies",
+        "profession": ""
+      },
+      {
+        "name": "Dönselmann, Malte",
+        "profession": ""
+      },
+      {
+        "name": "Jarzembowski, Daniel",
+        "profession": ""
+      },
+      {
+        "name": "Howe, Sönke",
+        "profession": ""
+      },
+      {
+        "name": "Recknagel, Dennis",
+        "profession": ""
+      },
+      {
+        "name": "Dieball, Laura",
+        "profession": ""
+      },
+      {
+        "name": "Josefowsky, Ernst Günther",
+        "profession": ""
+      },
+      {
+        "name": "Wysocki, Michael",
+        "profession": ""
+      },
+      {
+        "name": "Thomsen, Thomas",
+        "profession": ""
+      },
+      {
+        "name": "Greshake, Sascha",
+        "profession": ""
+      },
+      {
+        "name": "Thiesen, Marianne",
+        "profession": ""
+      },
+      {
+        "name": "Schüller, Michael",
+        "profession": ""
+      },
+      {
+        "name": "Jacobs, Jürgen",
+        "profession": ""
+      },
+      {
+        "name": "Weiler, Johannes",
+        "profession": ""
+      },
+      {
+        "name": "Howe, Raphaela",
+        "profession": ""
+      }
+    ]
+  },
+  "constituencyNominations": {
+    "1": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "CDU",
+      "name": "CDU Wahlkreisliste Eimsbüttel-Nord",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "von Sawilski, Marlies",
+          "profession": ""
+        },
+        {
+          "name": "Sangines Füchtner, Jorge Daniel",
+          "profession": ""
+        },
+        {
+          "name": "Rawalski, Simon",
+          "profession": ""
+        }
+      ]
+    },
+    "2": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "CDU",
+      "name": "CDU Wahlkreisliste Eimsbüttel-Süd",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Weiler, Johannes",
+          "profession": ""
+        },
+        {
+          "name": "Birnbaum, Andreas",
+          "profession": ""
+        },
+        {
+          "name": "Dr. Siebert, Diana",
+          "profession": ""
+        },
+        {
+          "name": "Recknagel, Dennis",
+          "profession": ""
+        },
+        {
+          "name": "Dr. Langhein, A.W.Heinrich",
+          "profession": ""
+        },
+        {
+          "name": "Thomsen, Thomas",
+          "profession": ""
+        }
+      ]
+    },
+    "3": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "CDU",
+      "name": "CDU Wahlkreisliste HaRo",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Greshake, Sascha",
+          "profession": ""
+        },
+        {
+          "name": "Kochmann, Franziska",
+          "profession": ""
+        },
+        {
+          "name": "Hille, Robert",
+          "profession": ""
+        },
+        {
+          "name": "von Grone, Eckbrecht",
+          "profession": ""
+        }
+      ]
+    },
+    "4": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "CDU",
+      "name": "CDU Wahlkreisliste Lokstedt",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Stonus, Andreas",
+          "profession": ""
+        },
+        {
+          "name": "Czernotzky, Birgit",
+          "profession": ""
+        },
+        {
+          "name": "Könecke, Christian",
+          "profession": ""
+        }
+      ]
+    },
+    "5": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "CDU",
+      "name": "CDU Wahlkreisliste Niendorf",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Kuhn, Rüdiger",
+          "profession": ""
+        },
+        {
+          "name": "Ahrens, Mareike",
+          "profession": ""
+        },
+        {
+          "name": "Wysocki, Michael",
+          "profession": ""
+        },
+        {
+          "name": "Dönselmann, Malte",
+          "profession": ""
+        },
+        {
+          "name": "Seehaber, Daniel",
+          "profession": ""
+        }
+      ]
+    },
+    "6": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "CDU",
+      "name": "CDU Wahlkreisliste Schnelsen",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Seif, Silke",
+          "profession": ""
+        },
+        {
+          "name": "Holst, Christian",
+          "profession": ""
+        },
+        {
+          "name": "Schüller, Michael",
+          "profession": ""
+        }
+      ]
+    },
+    "7": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "CDU",
+      "name": "CDU Wahlkreisliste Eidelstedt",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Ehrlich, Sören",
+          "profession": ""
+        },
+        {
+          "name": "Lau, Roman",
+          "profession": ""
+        },
+        {
+          "name": "Howe, Raphaela",
+          "profession": ""
+        },
+        {
+          "name": "Lau, Johanna",
+          "profession": ""
+        }
+      ]
+    },
+    "8": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "CDU",
+      "name": "CDU Wahlkreisliste Stellingen",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Brunckhorst, Hans-Hinrich",
+          "profession": ""
+        },
+        {
+          "name": "Orzechowski, Kurt",
+          "profession": ""
+        },
+        {
+          "name": "Kecke, Hubert",
+          "profession": ""
+        }
+      ]
+    }
+  }
+}
+
+### Piraten
+PUT http://localhost:12000/wahlrecht/v1/party
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+Content-Type: application/json
+
+{
+  "electionName": "Bezirkswahl 2019",
+  "abbreviation": "Piraten",
+  "name": "Piraten - Kreisverband Eimsbüttel",
+  "overallNomination": {
+    "electionName": "Bezirkswahl 2019",
+    "partyAbbreviation": "Piraten",
+    "name": "Bezirksliste Piraten",
+    "supportVotesOnNomination": true,
+    "candidates": [
+      {
+        "name": "Dr. Siebert-Schütz, Martin",
+        "profession": ""
+      },
+      {
+        "name": "Mewes, Christoph",
+        "profession": ""
+      },
+      {
+        "name": "Brümmer, Amadeus",
+        "profession": ""
+      }
+    ]
+  },
+  "constituencyNominations": {}
+}
+### LINKE
+PUT http://localhost:12000/wahlrecht/v1/party
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+Content-Type: application/json
+
+{
+  "electionName": "Bezirkswahl 2019",
+  "abbreviation": "LINKE",
+  "name": "Die LINKE - Kreisverband Eimsbüttel",
+  "overallNomination": {
+    "electionName": "Bezirkswahl 2019",
+    "partyAbbreviation": "LINKE",
+    "name": "Bezirksliste LINKE",
+    "supportVotesOnNomination": true,
+    "candidates": [
+      {
+        "name": "Pagels, Manuela",
+        "profession": ""
+      },
+      {
+        "name": "Wiegmann, Roland",
+        "profession": ""
+      },
+      {
+        "name": "Peters, Ralf",
+        "profession": ""
+      },
+      {
+        "name": "Hoyer, Jonas",
+        "profession": ""
+      },
+      {
+        "name": "Kleinert, Mikey",
+        "profession": ""
+      },
+      {
+        "name": "Schulte, Kolja",
+        "profession": ""
+      },
+      {
+        "name": "Huwald, Kristin",
+        "profession": ""
+      },
+      {
+        "name": "Dr. Ritter, Sabine",
+        "profession": ""
+      },
+      {
+        "name": "Pirling, David",
+        "profession": ""
+      },
+      {
+        "name": "Reipschläger, Bernhard",
+        "profession": ""
+      },
+      {
+        "name": "Arndt, Thomas",
+        "profession": ""
+      },
+      {
+        "name": "Artus, Holger",
+        "profession": ""
+      },
+      {
+        "name": "WLaab, Helene",
+        "profession": ""
+      }
+    ]
+  },
+  "constituencyNominations": {
+    "1": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "LINKE",
+      "name": "LINKE Wahlkreisliste Eimsbüttel-Nord",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Peters, Ralf",
+          "profession": ""
+        },
+        {
+          "name": "Rautenstrauch, Kirsten",
+          "profession": ""
+        },
+        {
+          "name": "Kopetsch, Lasse",
+          "profession": ""
+        },
+        {
+          "name": "Kittendorf, Bernd",
+          "profession": ""
+        },
+        {
+          "name": "Kahlert, Jürgen",
+          "profession": ""
+        },
+        {
+          "name": "Weinandy, Uwe",
+          "profession": ""
+        }
+      ]
+    },
+    "2": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "LINKE",
+      "name": "LINKE Wahlkreisliste Eimsbüttel-Süd",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Gutzeit, Peter",
+          "profession": ""
+        },
+        {
+          "name": "Pirling, David",
+          "profession": ""
+        },
+        {
+          "name": "Artus, Holger",
+          "profession": ""
+        },
+        {
+          "name": "Schrank, Myriam",
+          "profession": ""
+        },
+        {
+          "name": "Huwald, Kristin",
+          "profession": ""
+        },
+        {
+          "name": "Ehlers, Hermann",
+          "profession": ""
+        },
+        {
+          "name": "Behrendt, Peter",
+          "profession": ""
+        },
+        {
+          "name": "Voß, Lothar",
+          "profession": ""
+        }
+      ]
+    },
+    "3": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "LINKE",
+      "name": "LINKE Wahlkreisliste HaRo",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Schulte, Kolja",
+          "profession": ""
+        },
+        {
+          "name": "Iversen, Karin",
+          "profession": ""
+        },
+        {
+          "name": "Wiora, Rosemarie",
+          "profession": ""
+        },
+        {
+          "name": "Fritzsche, Olga",
+          "profession": ""
+        }
+      ]
+    },
+    "4": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "LINKE",
+      "name": "LINKE Wahlkreisliste Lokstedt",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Pagels, Manuela",
+          "profession": ""
+        },
+        {
+          "name": "Arndt, Thomas",
+          "profession": ""
+        },
+        {
+          "name": "Maruhn, Simone",
+          "profession": ""
+        }
+      ]
+    },
+    "5": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "LINKE",
+      "name": "LINKE Wahlkreisliste Niendorf",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Dr. Khenkhar, Malik",
+          "profession": ""
+        },
+        {
+          "name": "Radom, Claudia",
+          "profession": ""
+        },
+        {
+          "name": "Kara, Başak",
+          "profession": ""
+        }
+      ]
+    },
+    "6": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "LINKE",
+      "name": "LINKE Wahlkreisliste Schnelsen",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Wiegmann, Roland",
+          "profession": ""
+        },
+        {
+          "name": "Laab, Helene",
+          "profession": ""
+        },
+        {
+          "name": "Richter, Petra",
+          "profession": ""
+        },
+        {
+          "name": "Weinrich, Hermann",
+          "profession": ""
+        },
+        {
+          "name": "Griebner, Holger",
+          "profession": ""
+        }
+      ]
+    },
+    "7": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "LINKE",
+      "name": "LINKE Wahlkreisliste Eidelstedt",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Kleinert, Mikey",
+          "profession": ""
+        },
+        {
+          "name": "Fidan-Denizhan, Safiye",
+          "profession": ""
+        }
+      ]
+    },
+    "8": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "LINKE",
+      "name": "LINKE Wahlkreisliste Stellingen",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Hoyer, Jonas",
+          "profession": ""
+        },
+        {
+          "name": "Palm, Cecylia",
+          "profession": ""
+        }
+      ]
+    }
+  }
+}
+
+### FDP
+PUT http://localhost:12000/wahlrecht/v1/party
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+Content-Type: application/json
+
+{
+  "electionName": "Bezirkswahl 2019",
+  "abbreviation": "FDP",
+  "name": "Freie Demokratische Partei - Kreisverband Eimsbüttel",
+  "overallNomination": {
+    "electionName": "Bezirkswahl 2019",
+    "partyAbbreviation": "FDP",
+    "name": "Bezirksliste FDP",
+    "supportVotesOnNomination": true,
+    "candidates": [
+      {
+        "name": "Krüger, Klaus",
+        "profession": ""
+      },
+      {
+        "name": "Schwanke, Benjamin",
+        "profession": ""
+      },
+      {
+        "name": "Cleven, Martina",
+        "profession": ""
+      },
+      {
+        "name": "Zielinski, Mathias",
+        "profession": ""
+      },
+      {
+        "name": "Thiele, Camilla Joyce",
+        "profession": ""
+      },
+      {
+        "name": "Krüger, Hannelore",
+        "profession": ""
+      },
+      {
+        "name": "Welling, Jörg",
+        "profession": ""
+      },
+      {
+        "name": "Häffs, Marvin",
+        "profession": ""
+      },
+      {
+        "name": "Korb, Hendrik",
+        "profession": ""
+      },
+      {
+        "name": "Bahmer, Larissa",
+        "profession": ""
+      },
+      {
+        "name": "Langbehn, Marian",
+        "profession": ""
+      },
+      {
+        "name": "Szrubarski, Sebastian",
+        "profession": ""
+      },
+      {
+        "name": "Patzer, Heinrich-Otto",
+        "profession": ""
+      },
+      {
+        "name": "Sosin, Tatjana",
+        "profession": ""
+      },
+      {
+        "name": "Damm, Renate",
+        "profession": ""
+      },
+      {
+        "name": "Müller-Sönksen, Burkhardt",
+        "profession": ""
+      }
+    ]
+  },
+  "constituencyNominations": {
+    "1": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "FDP",
+      "name": "FDP Wahlkreisliste Eimsbüttel-Nord",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Schwanke, Benjamin",
+          "profession": ""
+        },
+        {
+          "name": "Cleven, Martina",
+          "profession": ""
+        }
+      ]
+    },
+    "2": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "FDP",
+      "name": "FDP Wahlkreisliste Eimsbüttel-Süd",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Zielinski, Mathias",
+          "profession": ""
+        },
+        {
+          "name": "Tillessen, Joachim",
+          "profession": ""
+        }
+      ]
+    },
+    "3": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "FDP",
+      "name": "FDP Wahlkreisliste HaRo",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Sosin, Tatjana",
+          "profession": ""
+        },
+        {
+          "name": "Korb, Hendrik",
+          "profession": ""
+        }
+      ]
+    },
+    "4": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "FDP",
+      "name": "FDP Wahlkreisliste Lokstedt",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Thiele, Camilla Joyce",
+          "profession": ""
+        }
+      ]
+    },
+    "5": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "FDP",
+      "name": "FDP Wahlkreisliste Niendorf",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Häffs, Marvin",
+          "profession": ""
+        },
+        {
+          "name": "Bahmer, Larissa",
+          "profession": ""
+        },
+        {
+          "name": "Patzer, Heinrich-Otto",
+          "profession": ""
+        }
+      ]
+    },
+    "6": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "FDP",
+      "name": "FDP Wahlkreisliste Schnelsen",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Krüger, Carsten",
+          "profession": ""
+        }
+      ]
+    },
+    "7": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "FDP",
+      "name": "FDP Wahlkreisliste Eidelstedt",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Szrubarski, Sebastian",
+          "profession": ""
+        }
+      ]
+    },
+    "8": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "FDP",
+      "name": "FDP Wahlkreisliste Stellingen",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Welling, Jörg",
+          "profession": ""
+        }
+      ]
+    }
+  }
+}
+### AfD
+PUT http://localhost:12000/wahlrecht/v1/party
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+Content-Type: application/json
+
+{
+  "electionName": "Bezirkswahl 2019",
+  "abbreviation": "AfD",
+  "name": "Alternative für Deutschland - Kreisverband Eimsbüttel",
+  "overallNomination": {
+    "electionName": "Bezirkswahl 2019",
+    "partyAbbreviation": "AfD",
+    "name": "Bezirksliste AfD",
+    "supportVotesOnNomination": true,
+    "candidates": [
+      {
+        "name": "Schömer, Dirk",
+        "profession": ""
+      },
+      {
+        "name": "Zimmermann, Elke",
+        "profession": ""
+      },
+      {
+        "name": "Pillatzke, Jörg",
+        "profession": ""
+      },
+      {
+        "name": "Pohl, Christian",
+        "profession": ""
+      },
+      {
+        "name": "Hanssen, Wolfgang",
+        "profession": ""
+      },
+      {
+        "name": "Lemke, Martin",
+        "profession": ""
+      },
+      {
+        "name": "Cremer-Thursby, Marc",
+        "profession": ""
+      },
+      {
+        "name": "Schultz, Thomas",
+        "profession": ""
+      },
+      {
+        "name": "Ziob, Peter",
+        "profession": ""
+      }
+    ]
+  },
+  "constituencyNominations": {
+    "2": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "AfD",
+      "name": "AfD Wahlkreisliste Eimsbüttel-Süd",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Lemke, Martin",
+          "profession": ""
+        }
+      ]
+    },
+    "3": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "AfD",
+      "name": "AfD Wahlkreisliste HaRo",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Cremer-Thursby, Marc",
+          "profession": ""
+        }
+      ]
+    },
+    "4": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "AfD",
+      "name": "AfD Wahlkreisliste Lokstedt",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Pohl, Christian",
+          "profession": ""
+        }
+      ]
+    },
+    "5": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "AfD",
+      "name": "AfD Wahlkreisliste Niendorf",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Hanssen, Wolfgang",
+          "profession": ""
+        }
+      ]
+    },
+    "6": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "AfD",
+      "name": "AfD Wahlkreisliste Schnelsen",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Pillatzke, Jörg",
+          "profession": ""
+        }
+      ]
+    },
+    "7": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "AfD",
+      "name": "AfD Wahlkreisliste Eidelstedt",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Zimmermann, Elke",
+          "profession": ""
+        }
+      ]
+    },
+    "8": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "AfD",
+      "name": "AfD Wahlkreisliste Stellingen",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Schömer, Dirk",
+          "profession": ""
+        }
+      ]
+    }
+  }
+}
+### JfE
+PUT http://localhost:12000/wahlrecht/v1/party
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+Content-Type: application/json
+
+{
+  "electionName": "Bezirkswahl 2019",
+  "abbreviation": "JfE",
+  "name": "Jekaterina für Eidelstedt",
+  "overallNomination": null,
+  "constituencyNominations": {
+    "7": {
+      "electionName": "Bezirkswahl 2019",
+      "partyAbbreviation": "JfE",
+      "name": "JfE Wahlkreisliste Eidelstedt",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Weiner, Jekaterina",
+          "profession": ""
+        }
+      ]
+    }
+  }
+}
