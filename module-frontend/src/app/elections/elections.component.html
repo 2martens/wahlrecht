@@ -1,0 +1,5 @@
+<ul *ngIf="($elections | async)?.length">
+  <li *ngFor="let election of ($elections | async)">
+    {{election.name}}
+  </li>
+</ul>
