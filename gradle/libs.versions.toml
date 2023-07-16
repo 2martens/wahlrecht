@@ -13,6 +13,7 @@ mapstruct = "1.5.3.Final"
 junit = "5.9.2"
 assertj = "3.24.2"
 mockito = "5.3.0"
+keycloak = "22.0.0"
 plugin-nebula-release = "17.1.0"
 plugin-lombok = "8.0.1"
 plugin-gradle-versions = "0.46.0"
@@ -28,6 +29,7 @@ spring-boot-mongo = { module = "org.springframework.boot:spring-boot-starter-dat
 spring-boot-validation = { module = "org.springframework.boot:spring-boot-starter-validation" }
 spring-boot-test = { module = "org.springframework.boot:spring-boot-starter-test" }
 spring-boot-security = { module = "org.springframework.boot:spring-boot-starter-security" }
+spring-boot-oauth2-resource-server = { module = "org.springframework.boot:spring-boot-starter-oauth2-resource-server" }
 spring-boot-config = { module = "org.springframework.boot:spring-boot-configuration-processor", version.ref = "spring-boot" }
 spring-cloud = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "spring-cloud" }
 spring-cloud-starter = { module = "org.springframework.cloud:spring-cloud-starter" }
@@ -36,6 +38,8 @@ spring-grpc = { module = "net.devh:grpc-spring-boot-starter", version.ref = "spr
 spring-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "spring-doc" }
 spring-sec = { module = "org.springdoc:springdoc-openapi-starter-common", version.ref = "spring-doc" }
 spring-openapi = { module = "org.springdoc:springdoc-openapi-starter-webmvc-api", version.ref = "spring-doc" }
+keycloak-core = { module = "org.keycloak:keycloak-core", version.ref = "keycloak" }
+keycloak-policy-enforcer = { module = "org.keycloak:keycloak-policy-enforcer", version.ref = "keycloak" }
 grpc-api = { module = "io.grpc:grpc-api", version.ref = "grpc" }
 grpc-context = { module = "io.grpc:grpc-context", version.ref = "grpc" }
 grpc-core = { module = "io.grpc:grpc-core", version.ref = "grpc" }
@@ -104,6 +108,14 @@ spring-boot-server = [
     "spring-sec",
     "spring-ui",
 ]
+
+spring-boot-security = [
+    "spring-boot-security",
+    "spring-boot-oauth2-resource-server",
+    "keycloak-core",
+    "keycloak-policy-enforcer"
+]
+
 test = [
     "assertj",
     "junit-jupiter",

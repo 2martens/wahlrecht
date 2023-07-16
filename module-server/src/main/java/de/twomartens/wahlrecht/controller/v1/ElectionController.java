@@ -46,6 +46,8 @@ public class ElectionController {
       }
   )
   @GetMapping(value = "/elections", produces = MediaType.APPLICATION_JSON_VALUE)
+  @SecurityRequirement(name = "bearerAuth")
+  @SecurityRequirement(name = "oauth2")
   public ResponseEntity<Collection<Election>> getElections() {
     List<Election> elections = service.getElections().stream().map(mapper::mapToExternal).toList();
     return ResponseEntity.ok()
@@ -68,7 +70,8 @@ public class ElectionController {
       }
   )
   @PutMapping("/election")
-  @SecurityRequirement(name = "basicAuth")
+  @SecurityRequirement(name = "bearerAuth")
+  @SecurityRequirement(name = "oauth2")
   public ResponseEntity<?> putElection(@RequestBody Election election) {
     boolean createdNew = service.storeElection(mapper.mapToDB(election));
     return createdNew

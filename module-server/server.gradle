@@ -4,7 +4,7 @@ plugins {
 
 dependencies {
   implementation libs.mapstruct.base
-  implementation libs.spring.boot.security
+  implementation libs.bundles.spring.boot.security
   annotationProcessor libs.mapstruct.processor
 
 }

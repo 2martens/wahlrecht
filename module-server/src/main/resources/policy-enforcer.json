@@ -1,0 +1,6 @@
+{
+  "realm": "wahlrecht",
+  "auth-server-url": "https://id.2martens.de",
+  "resource": "wahlrecht",
+  "http-method-as-scope": true
+}

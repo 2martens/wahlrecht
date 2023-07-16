@@ -30,6 +30,12 @@ spring:
   data.mongodb:
     uri: ${MONGODB_CONNECTION_STRING}
     auto-index-creation: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://id.2martens.de/realms/wahlrecht/protocol/openid-connect/certs
+
 
 # properties for application
 de.twomartens.wahlrecht:
@@ -49,6 +55,16 @@ springdoc:
 openapi:
   description: |
     Open API Documentation for the Wahlrecht API
+    
+    ## Authenticate
+    
+    The API is secured by the need to provide bearer tokens. Anonymous access is supported
+    with the user "anonymous" with password "anonymous". It grants access to all GET
+    operations as well as the calculation of results.
+    
+    For changes to the database-stored data, you need a proper authorized user.
+    
+    The client_id is "wahlrecht", if you are on the Swagger UI and want to authorize there.
 
     ## Calculate election results
 

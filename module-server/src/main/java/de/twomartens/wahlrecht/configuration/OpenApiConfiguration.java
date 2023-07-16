@@ -1,6 +1,8 @@
 package de.twomartens.wahlrecht.configuration;
 
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.OAuthFlow;
+import io.swagger.v3.oas.annotations.security.OAuthFlows;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.models.OpenAPI;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,9 +10,21 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @SecurityScheme(
-    name = "basicAuth",
+    name = "bearerAuth",
     type = SecuritySchemeType.HTTP,
-    scheme = "basic"
+    scheme = "bearer",
+    bearerFormat = "JWT"
+)
+@SecurityScheme(
+    name = "oauth2",
+    type = SecuritySchemeType.OAUTH2,
+    flows = @OAuthFlows(
+        implicit = @OAuthFlow(
+            authorizationUrl = "https://id.2martens.de/realms/wahlrecht/protocol/openid-connect/auth",
+            tokenUrl = "https://id.2martens.de/realms/wahlrecht/protocol/openid-connect/token",
+            scopes = {}
+        )
+    )
 )
 @Configuration
 public class OpenApiConfiguration {

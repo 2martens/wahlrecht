@@ -55,6 +55,8 @@ public class ElectionResultController {
       }
   )
   @GetMapping(value = "/electionResult/by-election-name/{electionName}", produces = MediaType.APPLICATION_JSON_VALUE)
+  @SecurityRequirement(name = "bearerAuth")
+  @SecurityRequirement(name = "oauth2")
   public ResponseEntity<ElectionResult> getElectionByName(
       @PathVariable @Parameter(description = "the election name", example = "Bezirkswahl 2019") String electionName) {
     ElectionResult result = mapper.mapToExternal(service.getElectionResult(electionName));
@@ -78,7 +80,8 @@ public class ElectionResultController {
       }
   )
   @PutMapping("/electionResult")
-  @SecurityRequirement(name = "basicAuth")
+  @SecurityRequirement(name = "bearerAuth")
+  @SecurityRequirement(name = "oauth2")
   public ResponseEntity<?> putElection(@RequestBody ElectionResult electionResult) {
     boolean createdNew = service.storeResult(mapper.mapToDB(electionResult));
     return createdNew

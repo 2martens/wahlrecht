@@ -58,6 +58,8 @@ public class PartyController {
       }
   )
   @GetMapping(value = "/parties/by-election-name/{electionName}", produces = MediaType.APPLICATION_JSON_VALUE)
+  @SecurityRequirement(name = "bearerAuth")
+  @SecurityRequirement(name = "oauth2")
   public ResponseEntity<Collection<PartyInElection>> getPartiesByElectionName(
       @PathVariable @Parameter(description = "the election name", example = "Bezirkswahl 2019") String electionName) {
     List<PartyInElection> parties = service.getPartiesByElectionName(electionName).stream()
@@ -82,7 +84,8 @@ public class PartyController {
       }
   )
   @PutMapping("/party")
-  @SecurityRequirement(name = "basicAuth")
+  @SecurityRequirement(name = "bearerAuth")
+  @SecurityRequirement(name = "oauth2")
   public ResponseEntity<?> putParty(@RequestBody PartyInElection party) {
     boolean createdNew = service.storeParty(mapper.mapToDB(party));
     return createdNew
