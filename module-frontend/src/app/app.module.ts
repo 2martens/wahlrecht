@@ -36,7 +36,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
         flow: "standard"
       },
       shouldAddToken: (request) => {
-        const { method, url } = request;
+        const { url } = request;
         return url.startsWith(environment.backendURL);
       },
       loadUserProfileAtStartUp: true
