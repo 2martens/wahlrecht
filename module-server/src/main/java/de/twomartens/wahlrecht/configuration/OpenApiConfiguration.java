@@ -21,8 +21,7 @@ import org.springframework.context.annotation.Configuration;
     flows = @OAuthFlows(
         implicit = @OAuthFlow(
             authorizationUrl = "https://id.2martens.de/realms/wahlrecht/protocol/openid-connect/auth",
-            tokenUrl = "https://id.2martens.de/realms/wahlrecht/protocol/openid-connect/token",
-            scopes = {}
+            tokenUrl = "https://id.2martens.de/realms/wahlrecht/protocol/openid-connect/token"
         )
     )
 )
