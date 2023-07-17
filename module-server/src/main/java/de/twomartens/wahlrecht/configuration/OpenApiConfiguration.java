@@ -20,8 +20,8 @@ import org.springframework.context.annotation.Configuration;
     type = SecuritySchemeType.OAUTH2,
     flows = @OAuthFlows(
         implicit = @OAuthFlow(
-            authorizationUrl = "https://id.2martens.de/realms/wahlrecht/protocol/openid-connect/auth",
-            tokenUrl = "https://id.2martens.de/realms/wahlrecht/protocol/openid-connect/token"
+            authorizationUrl = "https://id.2martens.de/realms/2martens/protocol/openid-connect/auth",
+            tokenUrl = "https://id.2martens.de/realms/2martens/protocol/openid-connect/token"
         )
     )
 )
