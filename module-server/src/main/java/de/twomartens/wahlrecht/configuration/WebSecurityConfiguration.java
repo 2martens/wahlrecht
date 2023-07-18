@@ -31,7 +31,6 @@ public class WebSecurityConfiguration {
 
   private static final Collection<String> PERMITTED_PATHS = List.of(
       "/wahlrecht/healthCheck",
-      "/wahlrecht/v1/getToken",
       "/wahlrecht/v1/doc/**",
       "/wahlrecht/v1/api-docs/**",
       "/error");
