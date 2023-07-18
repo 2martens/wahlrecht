@@ -11,45 +11,45 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
-import {ElectionsComponent} from './elections/elections.component';
 import {PermissionDeniedComponent} from './permission-denied/permission-denied.component';
-import {MessagesComponent} from './messages/messages.component';
 import {HttpClientModule} from "@angular/common/http";
 import {environment} from "../environments/environment";
 import {NavigationComponent} from './navigation/navigation.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatTableModule} from "@angular/material/table";
+import {StoreModule} from '@ngrx/store';
+import {ElectionsModule} from "./elections/elections.module";
+import {EffectsModule} from '@ngrx/effects';
+import {MessagesModule} from "./messages/messages.module";
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
-    keycloak.init({
-      config: {
-        url: environment.keycloakURL,
-        realm: environment.realm,
-        clientId: environment.clientId,
-      },
-      initOptions: {
-        onLoad: 'check-sso',
-        silentCheckSsoRedirectUri:
-          window.location.origin + '/assets/silent-check-sso.html',
-        flow: "standard"
-      },
-      shouldAddToken: (request) => {
-        const { url } = request;
-        return url.startsWith(environment.backendURL);
-      },
-      loadUserProfileAtStartUp: true
-    });
+      keycloak.init({
+        config: {
+          url: environment.keycloakURL,
+          realm: environment.realm,
+          clientId: environment.clientId,
+        },
+        initOptions: {
+          onLoad: 'check-sso',
+          silentCheckSsoRedirectUri:
+              window.location.origin + '/assets/silent-check-sso.html',
+          flow: "standard"
+        },
+        shouldAddToken: (request) => {
+          const {url} = request;
+          return url.startsWith(environment.backendURL);
+        },
+        loadUserProfileAtStartUp: true
+      });
 }
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    ElectionsComponent,
     PermissionDeniedComponent,
-    MessagesComponent,
     NavigationComponent
   ],
   imports: [
@@ -66,7 +66,11 @@ function initializeKeycloak(keycloak: KeycloakService) {
     HttpClientModule,
     MatSidenavModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    ElectionsModule,
+    MessagesModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([])
   ],
   providers: [
     {

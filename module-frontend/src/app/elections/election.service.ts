@@ -1,9 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {Election} from "./election";
-import {catchError, Observable, of, tap} from "rxjs";
-import {MessageService} from "../messages/message.service";
+import {Election} from "./model/election";
+import {catchError, Observable, of} from "rxjs";
+import {Store} from "@ngrx/store";
+import {electionByName} from "./store";
+import {MessagesService} from "../messages/messages.service";
+import {MessageType} from "../messages/model/message-type";
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +20,18 @@ export class ElectionService {
   };
 
   constructor(private http: HttpClient,
-              private messageService: MessageService) { }
+              private store: Store,
+              private messageService: MessagesService) { }
 
   getElections(): Observable<Election[]> {
-    return this.http.get<Election[]>(this.electionsURL)
+    return this.http.get<Election[]>(this.electionsURL, this.httpOptions)
       .pipe(
-        tap(_ => this.log('fetched elections')),
         catchError(this.handleError<Election[]>('getElections', []))
       );
+  }
+
+  selectElection(name: string) {
+    return this.store.select(electionByName(name));
   }
 
   /**
@@ -39,16 +46,22 @@ export class ElectionService {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+      if (error.status == 401) {
+        this.log(MessageType.UNAUTHENTICATED);
+      }
+      if (error.status == 403) {
+        this.log(MessageType.UNAUTHORIZED);
+      }
+      if (error.status == 500) {
+        this.log(MessageType.INTERNAL_SERVER_ERROR);
+      }
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
 
-  /** Log a HeroService message with the MessageService */
-  private log(message: string) {
-    this.messageService.add(`ElectionService: ${message}`);
+  private log(type: MessageType) {
+    this.messageService.logMessage('ElectionService', type);
   }
 }

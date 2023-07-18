@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {ElectionService} from "../elections/election.service";
-import {Election} from "../elections/election";
+import {Election} from "../elections/model/election";
 import {Subscription} from "rxjs";
 
 @Component({

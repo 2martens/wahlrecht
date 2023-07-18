@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {KeycloakService} from "keycloak-angular";
-import {Election} from "./election";
-import {ElectionService} from "./election.service";
+import {Election} from "./model/election";
 import {Observable} from "rxjs";
+import {Store} from "@ngrx/store";
+import {allElections} from "./store";
+import {loadAllElectionsAction} from "./store/elections.actions";
 
 @Component({
   selector: 'app-elections',
@@ -10,12 +12,13 @@ import {Observable} from "rxjs";
   styleUrls: ['./elections.component.scss']
 })
 export class ElectionsComponent implements OnInit{
-  $elections: Observable<Election[]> = this.electionService.getElections();
+  $elections: Observable<Election[]> = this.store.select<Election[]>(allElections());
 
   constructor(private keycloakService: KeycloakService,
-              private electionService: ElectionService) {
+              private store: Store) {
   }
 
   ngOnInit() {
+    this.store.dispatch(loadAllElectionsAction());
   }
 }

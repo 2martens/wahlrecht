@@ -20,8 +20,13 @@
       </button>
       <span>Wahlrecht</span>
       <span class="spacer"></span>
-      <span class="logged-user">Logged in as {{loggedUserName}}</span>
-      <button mat-raised-button class="app-nav-icon" (click)="logout()">Logout</button>
+      <ng-container *ngIf="isLoggedIn$ | async; else loginButton">
+        <span class="logged-user">Logged in as {{loggedUserName}}</span>
+        <button mat-raised-button class="app-nav-icon" (click)="logout()">Logout</button>
+      </ng-container>
+      <ng-template #loginButton>
+        <button mat-raised-button class="app-nav-icon" (click)="login()" i18n>Login</button>
+      </ng-template>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>
