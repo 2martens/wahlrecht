@@ -1,15 +1,27 @@
-# Template
+# Wahlrecht (Electoral Law)
 
-Contains a template for a new Java project. By utilising the buildSrc Gradle pattern,
-this template provides a fast start for plain Java projects as well as Spring Boot projects.
+This application allows the storage of core election data (elections, parties, nominations, 
+candidates, election results) and the calculation of election results. This can be used to
+quickly get the list of elected candidates from each party based on a final, incomplete
+or fictional election result.
 
-It also contains some modules which each show a different way to use the template:
-- module-server: A Spring Boot server project
-- module-plain: A plain Java project
-- module-lib: A Java library that can be used in other modules
+## Motivation
 
-To use the template, simply copy the contents of this repository into a new repository.
-Then, replace all occurrences of `template` and `Template` with the name of your project.
-Finally, replace the contents of this README with the README of your project.
+The electoral law for the district and city elections in Hamburg is rather complex on the side
+of counting the results. This application takes away the complex part of determining the
+elected candidates based on the vote results. This allows, for example, playing around with
+what-if scenarios: What if one party gets 100 more votes in one constituency, how would that
+change the set of elected candidates?
 
-The settings.gradle file needs to be changed to import the modules that you want to use.
+Another motivation: the official list of vote results per candidate is only available in a PDF
+and not in machine-readable format. All vote results for each candidate were extracted manually
+from that PDF and are now available in easy-to-consume JSON format.
+
+## Correctness
+
+The correctness of the calculation was tested with the final election results from the 2019
+district election. When calculating, the application returns the utilized election numbers which
+can be used to compare with the official calculation as documented by the Statistikamt Nord.
+Except rounding differences a couple positions after the point, the numbers are equal.
+
+Furthermore, unit tests check those results automatically.
