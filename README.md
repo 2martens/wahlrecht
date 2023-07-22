@@ -25,3 +25,8 @@ can be used to compare with the official calculation as documented by the Statis
 Except rounding differences a couple positions after the point, the numbers are equal.
 
 Furthermore, unit tests check those results automatically.
+
+## Data source
+
+The source for the data that will be available on the hosted service is the Statistikamt Nord.
+All information can be obtained from there (in German): https://www.statistik-nord.de/wahlen/wahlen-in-hamburg/bezirksversammlungswahlen/2019#c7624
