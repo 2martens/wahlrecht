@@ -1,12 +1,12 @@
 package de.twomartens.wahlrecht.configuration;
 
 
+import de.twomartens.wahlrecht.security.SpringPolicyEnforcerFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import org.keycloak.adapters.authorization.integration.jakarta.ServletPolicyEnforcerFilter;
 import org.keycloak.adapters.authorization.spi.ConfigurationResolver;
 import org.keycloak.adapters.authorization.spi.HttpRequest;
 import org.keycloak.representations.adapters.config.PolicyEnforcerConfig;
@@ -16,6 +16,7 @@ import org.keycloak.util.JsonSerialization;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.lang.NonNull;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -54,6 +55,10 @@ public class WebSecurityConfiguration {
           .permitAll()
           .and()
         .authorizeHttpRequests()
+          .requestMatchers(HttpMethod.OPTIONS)
+          .permitAll()
+          .and()
+        .authorizeHttpRequests()
           .anyRequest()
           .authenticated()
           .and()
@@ -67,15 +72,20 @@ public class WebSecurityConfiguration {
     return NimbusJwtDecoder.withJwkSetUri(this.jwkSetUri).build();
   }
 
-  private ServletPolicyEnforcerFilter createPolicyEnforcerFilter() {
-    return new ServletPolicyEnforcerFilter(new ConfigurationResolver() {
+  private SpringPolicyEnforcerFilter createPolicyEnforcerFilter() {
+    return new SpringPolicyEnforcerFilter(new ConfigurationResolver() {
       @Override
       public PolicyEnforcerConfig resolve(HttpRequest request) {
         try {
           PolicyEnforcerConfig policyEnforcerConfig = JsonSerialization.readValue(
               getClass().getResourceAsStream("/policy-enforcer.json"), PolicyEnforcerConfig.class);
           policyEnforcerConfig.setCredentials(Map.of("secret", clientSecret));
-          policyEnforcerConfig.setPaths(PATHS);
+          if (request.getMethod().equals(HttpMethod.OPTIONS.name())) {
+            // always allow options request
+            policyEnforcerConfig.setEnforcementMode(EnforcementMode.DISABLED);
+          } else {
+            policyEnforcerConfig.setPaths(PATHS);
+          }
 
           return policyEnforcerConfig;
         } catch (IOException e) {
