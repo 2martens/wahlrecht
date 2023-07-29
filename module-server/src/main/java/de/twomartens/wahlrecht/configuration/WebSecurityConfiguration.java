@@ -31,7 +31,8 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfiguration {
 
   private static final Collection<String> PERMITTED_PATHS = List.of(
-      "/wahlrecht/healthCheck",
+      "/wahlrecht/v1/healthCheck",
+      "/actuator/**",
       "/wahlrecht/v1/doc/**",
       "/wahlrecht/v1/api-docs/**",
       "/error");
