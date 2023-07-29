@@ -5,7 +5,7 @@ plugins {
 
 checkstyle {
     toolVersion = "10.0"
-    setIgnoreFailures(false)
+    isIgnoreFailures = false
     maxWarnings = 0
 
     configFile = rootProject.file("config/checkstyle/checkstyle.xml")
