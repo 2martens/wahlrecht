@@ -1,6 +1,0 @@
-plugins {
-  id 'idea'
-  id 'eclipse'
-}
-
-group = projectgroup

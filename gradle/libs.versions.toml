@@ -14,10 +14,11 @@ junit = "5.9.2"
 assertj = "3.24.2"
 mockito = "5.3.0"
 keycloak = "22.0.0"
-plugin-nebula-release = "17.1.0"
+plugin-nebula-release = "17.2.2"
 plugin-lombok = "8.0.1"
 plugin-gradle-versions = "0.46.0"
 plugin-version-catalog = "0.8.0"
+plugin-kotlin-gradle = "1.9.0"
 
 [libraries]
 spring-boot = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
@@ -72,6 +73,7 @@ plugin-springboot = { module = "org.springframework.boot:spring-boot-gradle-plug
 plugin-lombok = { module = "io.freefair.gradle:lombok-plugin", version.ref = "plugin-lombok" }
 plugin-gradle-versions = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "plugin-gradle-versions" }
 plugin-version-catalog = { module = "nl.littlerobots.vcu:plugin", version.ref = "plugin-version-catalog" }
+plugin-kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "plugin-kotlin-gradle" }
 
 [bundles]
 logging = [
