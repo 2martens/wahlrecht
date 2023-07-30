@@ -12,10 +12,11 @@ import org.keycloak.adapters.authorization.spi.ConfigurationResolver
 import org.keycloak.adapters.authorization.spi.HttpRequest
 import org.keycloak.representations.adapters.config.PolicyEnforcerConfig
 import java.io.IOException
+import java.util.concurrent.ConcurrentHashMap
 
 
 class SpringPolicyEnforcerFilter(private val configResolver: ConfigurationResolver) : Filter {
-    private val policyEnforcer: MutableMap<PolicyEnforcerConfig, SpringPolicyEnforcer> = mutableMapOf()
+    private val policyEnforcer: MutableMap<PolicyEnforcerConfig, SpringPolicyEnforcer> = ConcurrentHashMap()
 
     @Throws(IOException::class, ServletException::class)
     override fun doFilter(servletRequest: ServletRequest, servletResponse: ServletResponse?, filterChain: FilterChain) {
