@@ -18,7 +18,7 @@ dependencies {
     runtimeOnly(libs.bundles.logging)
 
     testImplementation(libs.bundles.test)
-    testImplementation(kotlin("test-junit5"))
+    testRuntimeOnly(libs.junit.launcher)
 }
 
 configurations {
