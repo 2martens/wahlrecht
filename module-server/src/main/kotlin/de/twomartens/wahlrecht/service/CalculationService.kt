@@ -5,7 +5,6 @@ import mu.KotlinLogging
 import org.springframework.lang.NonNull
 import org.springframework.stereotype.Service
 import org.springframework.util.StopWatch
-import java.util.*
 import kotlin.math.roundToInt
 
 @Service
@@ -13,7 +12,7 @@ class CalculationService(
     private val nominationService: NominationService,
     private val electionService: ElectionService
 ) {
-    private val electionNumberHistory = LinkedList<Double>()
+    private val electionNumberHistory: MutableList<Double> = mutableListOf()
 
     fun determineElectedCandidates(electionResult: ElectionResult): ElectedCandidates {
         log.info("Calculate election result for election {}", electionResult.electionName)
@@ -34,7 +33,7 @@ class CalculationService(
         }
         val electedCandidatesMap = constituencyResults.entries.asSequence()
             .flatMap { it.value.electedCandidates.entries.asSequence() }
-            .groupingBy(keySelector = { it.key.nominationId.partyAbbreviation })
+            .groupingBy { it.key.nominationId.partyAbbreviation }
             .fold(listOf<ElectedCandidate>()) { accumulator, element -> accumulator + element.value }
         val remainingSeatsPerParty = seatResult.seatsPerResult.entries.asSequence()
             .map {
