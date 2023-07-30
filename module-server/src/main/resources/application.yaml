@@ -14,7 +14,7 @@ management:
       show-details: always
       probes.enabled: true
       group:
-        readiness.include: readinessState,diskSpace,grpcChannel,grpc,rest
+        readiness.include: readinessState,diskSpace,rest
         liveness.include: livenessState
   endpoints.web.exposure.include: '*'
   # activate percentiles for web and grpc requests
