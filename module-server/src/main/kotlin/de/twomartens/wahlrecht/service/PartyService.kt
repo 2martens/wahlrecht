@@ -38,9 +38,9 @@ class PartyService(
         if (!needsUpdate) {
             return false
         }
-        val constituencyNominations: MutableMap<Int, Nomination?> = mutableMapOf()
+        val constituencyNominations: MutableMap<Int, Nomination> = mutableMapOf()
         result.constituencyNominations
-            .forEach { constituencyNominations[it.key] = nominationService.storeNomination(it.value) }
+            .forEach { constituencyNominations[it.key] = nominationService.storeNomination(it.value)!! }
         if (existing != null) {
             existing.name = partyInElection.name
             if (constituencyNominations.isEmpty()) {

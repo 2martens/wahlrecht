@@ -12,11 +12,11 @@ import java.time.Instant
 @Document
 @CompoundIndex(def = "{'abbreviation': 1, 'electionName': 1}")
 data class PartyInElection(
-    var abbreviation: String,
     var electionName: String,
+    var abbreviation: String,
     var name: String,
-    var overallNomination: Nomination,
-    var constituencyNominations: Map<Int, Nomination?>
+    var overallNomination: Nomination?,
+    var constituencyNominations: Map<Int, Nomination>
 ) {
     @Id
     var id: ObjectId = ObjectId()
