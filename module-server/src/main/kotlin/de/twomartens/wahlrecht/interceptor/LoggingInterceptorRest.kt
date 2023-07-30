@@ -68,7 +68,7 @@ class LoggingInterceptorRest(
             try {
                 val responseSize = responseWrapper.contentSize
                 val responseHeaders = extractHeaders(
-                    responseWrapper.headerNames.iterator()
+                    headerNames = responseWrapper.headerNames.iterator()
                 ) { responseWrapper.getHeaders(it).iterator() }
                 if (
                     (responseLogBehaviour == FieldLogBehaviour.ONLY_ON_ERROR && isError(httpStatusCode)
@@ -82,7 +82,9 @@ class LoggingInterceptorRest(
                 }
                 val query = if (httpRequest.queryString != null) "?${httpRequest.queryString}" else ""
                 val requestUrl = URL("${httpRequest.requestURL}$query")
-                val requestHeaders = extractHeaders(httpRequest.headerNames.asIterator()) {
+                val requestHeaders = extractHeaders(
+                    headerNames = httpRequest.headerNames.asIterator(),
+                    ignoreList = listOf("authorization")) {
                     httpRequest.getHeaders(it).asIterator()
                 }
                 var requestBody: String? = null
@@ -336,11 +338,13 @@ class LoggingInterceptorRest(
 
         private fun extractHeaders(
             headerNames: Iterator<String>,
+            ignoreList: List<String> = emptyList(),
             headerValuesSupplier: Function<String, Iterator<String>>
         ): Map<String, MutableCollection<String>> {
             val requestHeaders: MutableMap<String, MutableCollection<String>> = mutableMapOf()
             while (headerNames.hasNext()) {
                 val name = headerNames.next()
+                if (name in ignoreList) continue
                 val values = requestHeaders.computeIfAbsent(name) { mutableSetOf() }
                 val headerValues = headerValuesSupplier.apply(name)
                 while (headerValues.hasNext()) {
