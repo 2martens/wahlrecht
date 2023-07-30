@@ -14,10 +14,9 @@ import org.keycloak.representations.adapters.config.PolicyEnforcerConfig
 import java.io.IOException
 import java.util.*
 
-private val log = KotlinLogging.logger {}
 
 class SpringPolicyEnforcerFilter(private val configResolver: ConfigurationResolver?) : Filter {
-    private var policyEnforcer: MutableMap<PolicyEnforcerConfig, SpringPolicyEnforcer> = Collections.synchronizedMap(HashMap())
+    private val policyEnforcer: MutableMap<PolicyEnforcerConfig, SpringPolicyEnforcer> = Collections.synchronizedMap(HashMap())
 
     @Throws(IOException::class, ServletException::class)
     override fun doFilter(servletRequest: ServletRequest, servletResponse: ServletResponse?, filterChain: FilterChain) {
@@ -70,5 +69,9 @@ class SpringPolicyEnforcerFilter(private val configResolver: ConfigurationResolv
                 .credentials(enforcerConfig.credentials)
                 .bearerOnly(false)
                 .enforcerConfig(enforcerConfig).build(), enforcerConfig)
+    }
+
+    companion object {
+        private val log = KotlinLogging.logger {}
     }
 }

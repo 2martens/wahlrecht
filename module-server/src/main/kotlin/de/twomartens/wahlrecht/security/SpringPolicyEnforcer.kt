@@ -10,8 +10,6 @@ import org.keycloak.representations.adapters.config.PolicyEnforcerConfig
 import org.keycloak.representations.adapters.config.PolicyEnforcerConfig.EnforcementMode
 import org.keycloak.representations.idm.authorization.Permission
 
-private val log = KotlinLogging.logger {}
-
 class SpringPolicyEnforcer(private val policyEnforcer: PolicyEnforcer,
                            private val policyEnforcerConfig: PolicyEnforcerConfig) {
 
@@ -59,5 +57,9 @@ class SpringPolicyEnforcer(private val policyEnforcer: PolicyEnforcer,
                 return true
             }
         }
+    }
+
+    companion object {
+        private val log = KotlinLogging.logger {}
     }
 }

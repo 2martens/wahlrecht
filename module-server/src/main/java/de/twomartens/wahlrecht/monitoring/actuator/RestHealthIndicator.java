@@ -1,9 +1,6 @@
 package de.twomartens.wahlrecht.monitoring.actuator;
 
 import de.twomartens.wahlrecht.interceptor.HeaderInterceptorRest;
-import java.security.SecureRandom;
-import java.time.Clock;
-import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
@@ -12,6 +9,10 @@ import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
+import java.security.SecureRandom;
+import java.time.Clock;
+import java.util.Optional;
 
 /**
  * A Health check which checks if the rest services are working.
