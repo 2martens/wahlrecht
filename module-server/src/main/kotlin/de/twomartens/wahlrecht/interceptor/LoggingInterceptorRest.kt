@@ -256,7 +256,7 @@ class LoggingInterceptorRest(
         addLogString(stringMapMessage, PARAM_BUSINESS_TYPE, logMessage.businessType)
         addLogString(stringMapMessage, PARAM_REQUEST_BODY, cutToMaxLength(logMessage.requestBody))
         addLogString(stringMapMessage, PARAM_RESPONSE_BODY, cutToMaxLength(logMessage.responseBody))
-        log.debug(MARKER, stringMapMessage.toString(), logMessage.throwable)
+        log.debug(MARKER, stringMapMessage.asString(), logMessage.throwable)
     }
 
     private fun getDurationBetweenRequestAndResponseTime(logMessage: LogMessage): Duration {

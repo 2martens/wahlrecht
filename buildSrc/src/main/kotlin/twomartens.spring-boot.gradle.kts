@@ -12,7 +12,6 @@ dependencies {
 
     implementation(libs.bundles.spring.boot)
     testImplementation(libs.spring.boot.test)
-    annotationProcessor(libs.spring.boot.config)
 }
 
 sourceSets {
@@ -31,7 +30,7 @@ idea {
     }
 }
 
-val integrationTestImplementation by configurations.getting {
+val integrationTestImplementation: Configuration by configurations.getting {
     extendsFrom(configurations.testImplementation.get())
 }
 
@@ -69,4 +68,16 @@ tasks.bootJar {
 tasks.jar {
     enabled = true
     archiveClassifier.set("")
+}
+
+tasks.bootDistZip {
+    dependsOn(tasks.jar)
+}
+
+tasks.bootDistTar {
+    dependsOn(tasks.jar)
+}
+
+tasks.bootStartScripts {
+    dependsOn(tasks.jar)
 }

@@ -1,37 +1,30 @@
-package de.twomartens.wahlrecht.monitoring.actuator;
+package de.twomartens.wahlrecht.monitoring.actuator
 
-import de.twomartens.wahlrecht.monitoring.statusprobe.StatusProbe;
-import java.time.Clock;
-import java.util.Optional;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.actuate.health.Health;
-import org.springframework.boot.actuate.health.Health.Builder;
-import org.springframework.boot.actuate.health.HealthIndicator;
+import de.twomartens.wahlrecht.monitoring.statusprobe.StatusProbe
+import org.springframework.boot.actuate.health.Health
+import org.springframework.boot.actuate.health.HealthIndicator
+import java.time.Clock
 
-@Slf4j
-public abstract class AbstractStatusProbeHealthIndicator extends AbstractHealthIndicator
-    implements HealthIndicator {
+abstract class AbstractStatusProbeHealthIndicator(
+    timeProvider: Clock, headerInterceptor: Preparable,
+    private val statusProbe: StatusProbe
+) : AbstractHealthIndicator(timeProvider, headerInterceptor), HealthIndicator {
+    override fun determineHealth(): Health {
+        val healthBuilder = Health.status(statusProbe.status)
+        if (statusProbe.lastStatusChange != null) {
+            healthBuilder.withDetail(LAST_STATUS_CHANGE_KEY, statusProbe.lastStatusChange)
+        }
+        if (statusProbe.throwable != null) {
+            healthBuilder.withException(statusProbe.throwable)
+        }
+        if (statusProbe.message != null) {
+            healthBuilder.withDetail(MESSAGE_KEY, statusProbe.message)
+        }
+        return healthBuilder.build()
+    }
 
-  public static final String MESSAGE_KEY = "message";
-  public static final String LAST_STATUS_CHANGE_KEY = "lastStatusChange";
-
-  private final StatusProbe statusProbe;
-
-  public AbstractStatusProbeHealthIndicator(Clock timeProvider, Preparable headerInterceptor,
-      StatusProbe statusProbe) {
-    super(timeProvider, headerInterceptor);
-    this.statusProbe = statusProbe;
-  }
-
-  @Override
-  protected Health determineHealth() {
-    Builder healthBuilder = Health.status(statusProbe.getStatus());
-    Optional.ofNullable(statusProbe.getLastStatusChange())
-        .ifPresent(l -> healthBuilder.withDetail(LAST_STATUS_CHANGE_KEY, l));
-    Optional.ofNullable(statusProbe.getThrowable()).ifPresent(healthBuilder::withException);
-    Optional.ofNullable(statusProbe.getMessage())
-        .ifPresent(m -> healthBuilder.withDetail(MESSAGE_KEY, m));
-    return healthBuilder.build();
-  }
-
+    companion object {
+        const val MESSAGE_KEY = "message"
+        const val LAST_STATUS_CHANGE_KEY = "lastStatusChange"
+    }
 }

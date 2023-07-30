@@ -1,18 +1,22 @@
-package de.twomartens.wahlrecht.monitoring.statusprobe;
+package de.twomartens.wahlrecht.monitoring.statusprobe
 
-import java.time.Duration;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
-import org.springframework.scheduling.support.PeriodicTrigger;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler
+import org.springframework.scheduling.support.PeriodicTrigger
+import java.time.Duration
 
-public interface ScheduledStatusProbe {
+interface ScheduledStatusProbe {
+    fun runScheduledTask()
+    fun scheduleTask(
+        threadPoolTaskScheduler: ThreadPoolTaskScheduler,
+        schedulePeriod: Duration
+    ) {
+        val periodicTrigger = PeriodicTrigger(
+            Duration.ofSeconds(schedulePeriod.toSeconds())
+        )
+        threadPoolTaskScheduler.schedule(periodicTrigger) { runScheduledTask() }
+    }
+}
 
-  void runScheduledTask();
-
-  default void scheduleTask(ThreadPoolTaskScheduler threadPoolTaskScheduler,
-      Duration schedulePeriod) {
-    PeriodicTrigger periodicTrigger = new PeriodicTrigger(
-        Duration.ofSeconds(schedulePeriod.toSeconds()));
-    threadPoolTaskScheduler.schedule(this::runScheduledTask, periodicTrigger);
-  }
-
+fun ThreadPoolTaskScheduler.schedule(periodicTrigger: PeriodicTrigger, task: Runnable) {
+    this.schedule(task, periodicTrigger)
 }

@@ -1,5 +1,3 @@
-package de.twomartens.wahlrecht.model.internal;
+package de.twomartens.wahlrecht.model.internal
 
-public record ConstituencyId(String electionName, Integer number) {
-
-}
+data class ConstituencyId(val electionName: String, val number: Int)

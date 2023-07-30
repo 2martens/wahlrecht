@@ -1,33 +1,25 @@
-package de.twomartens.wahlrecht.monitoring.statusprobe;
+package de.twomartens.wahlrecht.monitoring.statusprobe
 
-import java.time.Clock;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.springframework.boot.actuate.health.Status;
+import org.springframework.boot.actuate.health.Status
+import java.time.Clock
+import java.util.concurrent.atomic.AtomicInteger
 
-public class CountBasedStatusProbe extends StatusProbe {
+class CountBasedStatusProbe(
+    private val maxFailureCount: Int, clock: Clock, criticality: StatusProbeCriticality, name: String,
+    statusProbeLogger: StatusProbeLogger
+) : StatusProbe(clock, criticality, name, statusProbeLogger) {
+    private val failureCount = AtomicInteger(0)
 
-  private final AtomicInteger failureCount = new AtomicInteger(0);
-
-  private final int maxFailureCount;
-
-  public CountBasedStatusProbe(int maxFailureCount, Clock clock, StatusProbeCriticality criticality, String name,
-      StatusProbeLogger statusProbeLogger) {
-    super(clock, criticality, name, statusProbeLogger);
-    this.maxFailureCount = maxFailureCount;
-  }
-
-  @Override
-  protected synchronized void setStatus(Status status, Throwable throwable, String message) {
-    if (status == Status.DOWN) {
-      int failureCount = this.failureCount.incrementAndGet();
-      if (failureCount > maxFailureCount) {
-        super.setStatus(status, throwable, message);
-      }
-    } else if (status == Status.UP) {
-      this.failureCount.set(0);
-      super.setStatus(status, throwable, message);
+    @Synchronized
+    override fun setStatus(status: Status, throwable: Throwable?, message: String?) {
+        if (status === Status.DOWN) {
+            val failureCount = failureCount.incrementAndGet()
+            if (failureCount > maxFailureCount) {
+                super.setStatus(status, throwable, message)
+            }
+        } else if (status === Status.UP) {
+            failureCount.set(0)
+            super.setStatus(status, throwable, message)
+        }
     }
-  }
-
-
 }

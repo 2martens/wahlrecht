@@ -12,18 +12,16 @@ import org.keycloak.adapters.authorization.spi.ConfigurationResolver
 import org.keycloak.adapters.authorization.spi.HttpRequest
 import org.keycloak.representations.adapters.config.PolicyEnforcerConfig
 import java.io.IOException
-import java.util.*
 
 
-class SpringPolicyEnforcerFilter(private val configResolver: ConfigurationResolver?) : Filter {
-    private val policyEnforcer: MutableMap<PolicyEnforcerConfig, SpringPolicyEnforcer> = Collections.synchronizedMap(HashMap())
+class SpringPolicyEnforcerFilter(private val configResolver: ConfigurationResolver) : Filter {
+    private val policyEnforcer: MutableMap<PolicyEnforcerConfig, SpringPolicyEnforcer> = mutableMapOf()
 
     @Throws(IOException::class, ServletException::class)
     override fun doFilter(servletRequest: ServletRequest, servletResponse: ServletResponse?, filterChain: FilterChain) {
         val request = servletRequest as HttpServletRequest
         val response = servletResponse as HttpServletResponse?
-        val httpRequest = ServletHttpRequest(request
-        ) { extractBearerToken(request) }
+        val httpRequest = ServletHttpRequest(request) { extractBearerToken(request) }
         val policyEnforcer = getOrCreatePolicyEnforcer(httpRequest)
         val authzContext = policyEnforcer.enforce(httpRequest, ServletHttpResponse(response))
         request.setAttribute(AuthorizationContext::class.java.name, authzContext)
@@ -55,9 +53,7 @@ class SpringPolicyEnforcerFilter(private val configResolver: ConfigurationResolv
     }
 
     private fun getOrCreatePolicyEnforcer(request: HttpRequest): SpringPolicyEnforcer {
-        return policyEnforcer.computeIfAbsent(configResolver!!.resolve(request)) { enforcerConfig: PolicyEnforcerConfig ->
-            createPolicyEnforcer(enforcerConfig)
-        }
+        return policyEnforcer.computeIfAbsent(configResolver.resolve(request)) { createPolicyEnforcer(it) }
     }
 
     private fun createPolicyEnforcer(enforcerConfig: PolicyEnforcerConfig): SpringPolicyEnforcer {

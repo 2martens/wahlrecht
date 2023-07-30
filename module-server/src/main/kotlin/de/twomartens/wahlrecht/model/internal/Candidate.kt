@@ -1,5 +1,3 @@
-package de.twomartens.wahlrecht.model.internal;
+package de.twomartens.wahlrecht.model.internal
 
-public record Candidate(String name, String profession) {
-
-}
+data class Candidate(val name: String, val profession: String)

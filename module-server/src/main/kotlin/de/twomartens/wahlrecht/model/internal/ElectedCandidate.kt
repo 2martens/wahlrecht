@@ -1,13 +1,6 @@
-package de.twomartens.wahlrecht.model.internal;
+package de.twomartens.wahlrecht.model.internal
 
-
-public record ElectedCandidate(Candidate candidate, Elected elected) {
-
-  public String name() {
-    return candidate.name();
-  }
-
-  public String profession() {
-    return candidate.profession();
-  }
+data class ElectedCandidate(val candidate: Candidate, val elected: Elected) {
+    val name by candidate::name
+    val profession by candidate::profession
 }

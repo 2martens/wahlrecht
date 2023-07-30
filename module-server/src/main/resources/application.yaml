@@ -41,6 +41,11 @@ spring:
 de.twomartens.wahlrecht:
   defaultTimeZone: Europe/Berlin
   greeting: "Hello %s"
+  statusprobe:
+    scheduleDuration: 60
+    maxKafkaFailureDuration: 5
+    maxBlobFailureCount: 5
+    maxFailurePercent: 50
 
 springdoc:
   swagger-ui:

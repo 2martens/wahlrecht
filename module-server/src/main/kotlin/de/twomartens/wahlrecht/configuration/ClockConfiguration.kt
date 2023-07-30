@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration
 import java.time.Clock
 
 @Configuration
-open class ClockConfiguration(val serviceProperties: ServiceProperties) {
+open class ClockConfiguration(private val serviceProperties: ServiceProperties) {
 
     @Bean
     open fun clock(): Clock {

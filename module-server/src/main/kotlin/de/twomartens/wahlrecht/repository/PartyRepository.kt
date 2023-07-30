@@ -1,14 +1,8 @@
-package de.twomartens.wahlrecht.repository;
+package de.twomartens.wahlrecht.repository
 
-import de.twomartens.wahlrecht.model.db.PartyInElection;
-import java.util.Collection;
-import java.util.Optional;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import de.twomartens.wahlrecht.model.db.PartyInElection
+import org.springframework.data.mongodb.repository.MongoRepository
 
-public interface PartyRepository extends MongoRepository<PartyInElection, String> {
-
-  Optional<PartyInElection> findByAbbreviationAndElectionName(String abbreviation,
-      String electionName);
-
-  Collection<PartyInElection> findByElectionName(String name);
+interface PartyRepository : MongoRepository<PartyInElection, String> {
+    fun findByElectionName(name: String): Collection<PartyInElection>
 }

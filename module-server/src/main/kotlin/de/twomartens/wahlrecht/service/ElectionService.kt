@@ -1,78 +1,60 @@
-package de.twomartens.wahlrecht.service;
+package de.twomartens.wahlrecht.service
 
-import de.twomartens.wahlrecht.mapper.v1.ElectionMapper;
-import de.twomartens.wahlrecht.model.db.Constituency;
-import de.twomartens.wahlrecht.model.db.Election;
-import de.twomartens.wahlrecht.repository.ElectionRepository;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import lombok.RequiredArgsConstructor;
-import org.mapstruct.factory.Mappers;
-import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Service;
+import de.twomartens.wahlrecht.mapper.v1.ElectionMapper
+import de.twomartens.wahlrecht.model.db.Constituency
+import de.twomartens.wahlrecht.model.db.Election
+import de.twomartens.wahlrecht.repository.ElectionRepository
+import org.mapstruct.factory.Mappers
+import org.springframework.stereotype.Service
 
-@RequiredArgsConstructor
 @Service
-public class ElectionService {
-
-  private final ElectionRepository electionRepository;
-  private final ConstituencyService constituencyService;
-  private final ElectionMapper electionMapper = Mappers.getMapper(ElectionMapper.class);
-
-  private Map<String, Election> elections;
-
-  public Collection<Election> getElections() {
-    return electionRepository.findAll();
-  }
-
-  public Election getElection(String electionName) {
-    if (elections == null) {
-      fetchElections();
-    }
-    return elections.get(electionName);
-  }
-
-  public de.twomartens.wahlrecht.model.internal.Election getElectionInternal(String electionName) {
-    return electionMapper.mapToInternal(getElection(electionName));
-  }
-
-  public boolean storeElection(@NonNull Election election) {
-    if (elections == null) {
-      fetchElections();
-    }
-    boolean createdNew = true;
-    String electionName = election.getName();
-    Election existing = elections.get(electionName);
-
-    if (election.equals(existing)) {
-      return false;
+class ElectionService(
+    private val electionRepository: ElectionRepository,
+    private val constituencyService: ConstituencyService
+) {
+    private val electionMapper = Mappers.getMapper(ElectionMapper::class.java)
+    private val _elections: MutableMap<String, Election> by lazy {
+        fetchElections()
     }
 
-    Collection<Constituency> constituencies = new ArrayList<>();
-    election.getConstituencies()
-        .forEach(constituency -> constituencies.add(
-            constituencyService.storeConstituency(constituency)));
+    val elections: Map<String, Election> = _elections
 
-    if (existing != null) {
-      existing.setDay(election.getDay());
-      existing.setTotalNumberOfSeats(election.getTotalNumberOfSeats());
-      existing.setVotingThreshold(election.getVotingThreshold());
-      election = existing;
-      createdNew = false;
+    private fun getElection(electionName: String): Election? {
+        return elections[electionName]
     }
 
-    election.setConstituencies(constituencies);
-    Election stored = electionRepository.save(election);
-    elections.put(electionName, stored);
+    fun getElectionInternal(electionName: String): de.twomartens.wahlrecht.model.internal.Election {
+        return electionMapper.mapToInternal(getElection(electionName)!!)
+    }
 
-    return createdNew;
-  }
+    fun storeElection(election: Election): Boolean {
+        var result = election
+        var createdNew = true
+        val electionName = election.name
+        val existing = elections[electionName]
+        if (election == existing) {
+            return false
+        }
+        val constituencies: MutableCollection<Constituency> = mutableListOf()
+        result.constituencies
+            .forEach { constituencies.add(constituencyService.storeConstituency(it)) }
+        if (existing != null) {
+            existing.day = election.day
+            existing.totalNumberOfSeats = election.totalNumberOfSeats
+            existing.votingThreshold = election.votingThreshold
+            result = existing
+            createdNew = false
+        }
+        result.constituencies = constituencies
+        val stored = electionRepository.save(result)
+        _elections[electionName] = stored
+        return createdNew
+    }
 
-  private void fetchElections() {
-    elections = electionRepository.findAll().stream()
-        .collect(Collectors.toMap(Election::getName, Function.identity()));
-  }
+    private fun fetchElections(): MutableMap<String, Election> {
+        return electionRepository.findAll().asSequence()
+            .map { Pair(it.name, it) }
+            .toMap()
+            .toMutableMap()
+    }
 }

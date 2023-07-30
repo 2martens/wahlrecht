@@ -1,66 +1,49 @@
-package de.twomartens.wahlrecht.service;
+package de.twomartens.wahlrecht.service
 
-import de.twomartens.wahlrecht.model.db.ElectionResult;
-import de.twomartens.wahlrecht.repository.ElectionResultRepository;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
+import de.twomartens.wahlrecht.model.db.ElectionResult
+import de.twomartens.wahlrecht.repository.ElectionResultRepository
+import org.springframework.http.HttpStatus
+import org.springframework.stereotype.Service
+import org.springframework.web.server.ResponseStatusException
 
-@RequiredArgsConstructor
 @Service
-public class ElectionResultService {
-
-  private final ElectionResultRepository repository;
-
-  private Map<String, ElectionResult> electionResults;
-
-  public ElectionResult getElectionResult(String electionName) {
-    if (electionResults == null) {
-      fetchResults();
+class ElectionResultService(private val repository: ElectionResultRepository) {
+    private val electionResults: MutableMap<String, ElectionResult> by lazy {
+        fetchResults()
     }
-    ElectionResult electionResult = electionResults.get(electionName);
-    if (electionResult == null) {
-      throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-          "no election result found for %s".formatted(electionName));
-    }
-    return electionResult;
-  }
-
-  public boolean storeResult(ElectionResult result) {
-    if (electionResults == null) {
-      fetchResults();
+    fun getElectionResult(electionName: String): ElectionResult {
+        return electionResults[electionName]
+            ?: throw ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "no election result found for $electionName"
+            )
     }
 
-    String id = result.getElectionName();
-    ElectionResult existing = electionResults.get(id);
-    boolean needsUpdate = !result.equals(existing);
+    fun storeResult(electionResult: ElectionResult): Boolean {
+        var result = electionResult
 
-    if (!needsUpdate) {
-      return false;
+        val id = result.electionName
+        val existing = electionResults[id]
+        val needsUpdate = result != existing
+        if (!needsUpdate) {
+            return false
+        }
+        var createdNew = true
+        if (existing != null) {
+            existing.overallResults = result.overallResults
+            existing.constituencyResults = result.constituencyResults
+            result = existing
+            createdNew = false
+        }
+        val stored = repository.save(result)
+        electionResults[id] = stored
+        return createdNew
     }
 
-    boolean createdNew = true;
-    if (existing != null) {
-      existing.setOverallResults(result.getOverallResults());
-      existing.setConstituencyResults(result.getConstituencyResults());
-      result = existing;
-      createdNew = false;
+    private fun fetchResults(): MutableMap<String, ElectionResult> {
+        return repository.findAll().asSequence()
+            .map { Pair(it.electionName, it) }
+            .toMap()
+            .toMutableMap()
     }
-
-    ElectionResult stored = repository.save(result);
-    electionResults.put(id, stored);
-
-    return createdNew;
-  }
-
-  private void fetchResults() {
-    electionResults = repository.findAll().stream()
-        .collect(Collectors.toMap(
-            ElectionResult::getElectionName,
-            Function.identity()));
-  }
 }

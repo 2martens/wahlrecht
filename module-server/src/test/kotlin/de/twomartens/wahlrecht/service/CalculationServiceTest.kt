@@ -11,7 +11,6 @@ import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
 import java.time.LocalDate
 import java.time.Month
-import java.util.*
 import kotlin.collections.set
 
 @ExtendWith(MockitoExtension::class)
@@ -261,12 +260,9 @@ class CalculationServiceTest {
         }
 
         private fun buildCandidates(vararg names: String): Collection<Candidate> {
-            return Arrays.stream(names).map { name: String? ->
-                Candidate(
-                    name,
-                    ""
-                )
-            }.toList()
+            return names
+                .map { Candidate(it, "") }
+                .toList()
         }
 
         private fun buildVotesPerPosition(vararg votes: Int): Map<Int, Int> {
@@ -339,13 +335,13 @@ class CalculationServiceTest {
 
     @Test
     fun shouldCalculateOverallCandidatesCorrectly() {
-        val seatsPerVotingResult = java.util.Map.of(
-            SPD_BEZIRK_RESULT, 2,
-            CDU_BEZIRK_RESULT, 2,
-            LINKE_BEZIRK_RESULT, 3,
-            GRUENE_BEZIRK_RESULT, 8,
-            FDP_BEZIRK_RESULT, 3,
-            AFD_BEZIRK_RESULT, 3
+        val seatsPerVotingResult = mapOf(
+            Pair(SPD_BEZIRK_RESULT, 2),
+            Pair(CDU_BEZIRK_RESULT, 2),
+            Pair(LINKE_BEZIRK_RESULT, 3),
+            Pair(GRUENE_BEZIRK_RESULT, 8),
+            Pair(FDP_BEZIRK_RESULT, 3),
+            Pair(AFD_BEZIRK_RESULT, 3)
         )
         val electedCandidates = setUpConstituencyResults()
         Mockito.`when`(nominationService.getNominationInternal(SPD_BEZIRK.id)).thenReturn(SPD_BEZIRK)
@@ -363,13 +359,13 @@ class CalculationServiceTest {
                 Assertions.assertThat(id).isEqualTo(SPD_BEZIRK.id)
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(GOTTLIEB_GABOR)
-                                && candidate.elected() === Elected.OVERALL_NOMINATION_ORDER)
+                        (candidate.name == GOTTLIEB_GABOR
+                                && candidate.elected == Elected.OVERALL_NOMINATION_ORDER)
                     }
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(RIEGEL_ANN_KATHRIN)
-                                && candidate.elected === Elected.OVERALL_VOTE_ORDER)
+                        (candidate.name == RIEGEL_ANN_KATHRIN
+                                && candidate.elected == Elected.OVERALL_VOTE_ORDER)
                     }
             }
             .anySatisfy { id, candidates ->
@@ -377,14 +373,13 @@ class CalculationServiceTest {
                     .isEqualTo(CDU_BEZIRK.id)
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(HOEFLICH_JUTTA)
-                                && candidate.elected() === Elected.OVERALL_NOMINATION_ORDER)
+                        (candidate.name == HOEFLICH_JUTTA
+                                && candidate.elected == Elected.OVERALL_NOMINATION_ORDER)
                     }
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name()
-                            .equals(DR_LANGHEIN_A_W_HEINRICH)
-                                && candidate.elected() === Elected.OVERALL_VOTE_ORDER)
+                        (candidate.name == DR_LANGHEIN_A_W_HEINRICH
+                                && candidate.elected == Elected.OVERALL_VOTE_ORDER)
                     }
             }
             .anySatisfy { id, candidates ->
@@ -392,18 +387,18 @@ class CalculationServiceTest {
                     .isEqualTo(LINKE_BEZIRK.id)
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(PAGELS_MANUELA)
-                                && candidate.elected() === Elected.OVERALL_NOMINATION_ORDER)
+                        (candidate.name == PAGELS_MANUELA
+                                && candidate.elected == Elected.OVERALL_NOMINATION_ORDER)
                     }
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(WIEGMANN_ROLAND)
-                                && candidate.elected() === Elected.OVERALL_NOMINATION_ORDER)
+                        (candidate.name == WIEGMANN_ROLAND
+                                && candidate.elected == Elected.OVERALL_NOMINATION_ORDER)
                     }
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(KLEINERT_MIKEY)
-                                && candidate.elected() === Elected.OVERALL_VOTE_ORDER)
+                        (candidate.name == KLEINERT_MIKEY
+                                && candidate.elected == Elected.OVERALL_VOTE_ORDER)
                     }
             }
             .anySatisfy { id, candidates ->
@@ -411,19 +406,18 @@ class CalculationServiceTest {
                     .isEqualTo(FDP_BEZIRK.id)
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(KRUEGER_KLAUS)
-                                && candidate.elected() === Elected.OVERALL_NOMINATION_ORDER)
+                        (candidate.name == KRUEGER_KLAUS
+                                && candidate.elected == Elected.OVERALL_NOMINATION_ORDER)
                     }
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(SCHWANKE_BENJAMIN)
-                                && candidate.elected() === Elected.OVERALL_NOMINATION_ORDER)
+                        (candidate.name == SCHWANKE_BENJAMIN
+                                && candidate.elected == Elected.OVERALL_NOMINATION_ORDER)
                     }
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name()
-                            .equals(MUELLER_SOENKSEN_BURKHARDT)
-                                && candidate.elected() === Elected.OVERALL_VOTE_ORDER)
+                        (candidate.name == MUELLER_SOENKSEN_BURKHARDT
+                                && candidate.elected == Elected.OVERALL_VOTE_ORDER)
                     }
             }
             .anySatisfy { id, candidates ->
@@ -431,18 +425,18 @@ class CalculationServiceTest {
                     .isEqualTo(AFD_BEZIRK.id)
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(SCHOEMER_DIRK)
-                                && candidate.elected() === Elected.OVERALL_NOMINATION_ORDER)
+                        (candidate.name == SCHOEMER_DIRK
+                                && candidate.elected == Elected.OVERALL_NOMINATION_ORDER)
                     }
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(ZIMMERMANN_ELKE)
-                                && candidate.elected() === Elected.OVERALL_NOMINATION_ORDER)
+                        (candidate.name == ZIMMERMANN_ELKE
+                                && candidate.elected == Elected.OVERALL_NOMINATION_ORDER)
                     }
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(PILLATZKE_JOERG)
-                                && candidate.elected() === Elected.OVERALL_VOTE_ORDER)
+                        (candidate.name == PILLATZKE_JOERG
+                                && candidate.elected == Elected.OVERALL_VOTE_ORDER)
                     }
             }
             .anySatisfy { id, candidates ->
@@ -450,62 +444,63 @@ class CalculationServiceTest {
                     .isEqualTo(GRUENE_BEZIRK.id)
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(KUHLMANN_DIETMAR)
-                                && candidate.elected() === Elected.OVERALL_NOMINATION_ORDER)
+                        (candidate.name == KUHLMANN_DIETMAR
+                                && candidate.elected == Elected.OVERALL_NOMINATION_ORDER)
                     }
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(KLEIN_ROBERT)
-                                && candidate.elected() === Elected.OVERALL_NOMINATION_ORDER)
+                        (candidate.name == KLEIN_ROBERT
+                                && candidate.elected == Elected.OVERALL_NOMINATION_ORDER)
                     }
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(ERK_ARAMAK)
-                                && candidate.elected() === Elected.OVERALL_NOMINATION_ORDER)
+                        (candidate.name == ERK_ARAMAK
+                                && candidate.elected == Elected.OVERALL_NOMINATION_ORDER)
                     }
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(MARTENS_JIM)
-                                && candidate.elected() === Elected.OVERALL_NOMINATION_ORDER)
+                        (candidate.name == MARTENS_JIM
+                                && candidate.elected == Elected.OVERALL_NOMINATION_ORDER)
                     }
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name()
-                            .equals(DR_FISCHER_JOST_LEONHARDT)
-                                && candidate.elected() === Elected.OVERALL_NOMINATION_ORDER)
+                        (candidate.name == DR_FISCHER_JOST_LEONHARDT
+                                && candidate.elected == Elected.OVERALL_NOMINATION_ORDER)
                     }
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(KUELL_GABRIELA)
-                                && candidate.elected() === Elected.OVERALL_VOTE_ORDER)
+                        (candidate.name == KUELL_GABRIELA
+                                && candidate.elected == Elected.OVERALL_VOTE_ORDER)
                     }
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(BOHNY_CARL_MARIA)
-                                && candidate.elected() === Elected.OVERALL_VOTE_ORDER)
+                        (candidate.name == BOHNY_CARL_MARIA
+                                && candidate.elected == Elected.OVERALL_VOTE_ORDER)
                     }
                 Assertions.assertThat(candidates)
                     .anyMatch { candidate ->
-                        (candidate.name().equals(DORSCH_SEBASTIAN)
-                                && candidate.elected() === Elected.OVERALL_VOTE_ORDER)
+                        (candidate.name == DORSCH_SEBASTIAN
+                                && candidate.elected == Elected.OVERALL_VOTE_ORDER)
                     }
             }
     }
 
     private fun setUpConstituencyResults(): Map<String, Collection<ElectedCandidate>> {
-        return java.util.Map.of(
-            GRUENE_BEZIRK_RESULT.nominationId.partyAbbreviation, listOf(
-                ElectedCandidate(GRUENE_BEZIRK.getCandidate(1), Elected.CONSTITUENCY),
-                ElectedCandidate(GRUENE_BEZIRK.getCandidate(2), Elected.CONSTITUENCY),
-                ElectedCandidate(GRUENE_BEZIRK.getCandidate(3), Elected.CONSTITUENCY),
-                ElectedCandidate(GRUENE_BEZIRK.getCandidate(5), Elected.CONSTITUENCY),
-                ElectedCandidate(GRUENE_BEZIRK.getCandidate(6), Elected.CONSTITUENCY),
-                ElectedCandidate(GRUENE_BEZIRK.getCandidate(7), Elected.CONSTITUENCY),
-                ElectedCandidate(GRUENE_BEZIRK.getCandidate(11), Elected.CONSTITUENCY),
-                ElectedCandidate(GRUENE_BEZIRK.getCandidate(15), Elected.CONSTITUENCY),
-                ElectedCandidate(GRUENE_BEZIRK.getCandidate(16), Elected.CONSTITUENCY),
-                ElectedCandidate(GRUENE_BEZIRK.getCandidate(20), Elected.CONSTITUENCY),
-                ElectedCandidate(GRUENE_BEZIRK.getCandidate(22), Elected.CONSTITUENCY)
+        return mapOf(
+            Pair(
+                GRUENE_BEZIRK_RESULT.nominationId.partyAbbreviation, listOf(
+                    ElectedCandidate(GRUENE_BEZIRK.getCandidate(1), Elected.CONSTITUENCY),
+                    ElectedCandidate(GRUENE_BEZIRK.getCandidate(2), Elected.CONSTITUENCY),
+                    ElectedCandidate(GRUENE_BEZIRK.getCandidate(3), Elected.CONSTITUENCY),
+                    ElectedCandidate(GRUENE_BEZIRK.getCandidate(5), Elected.CONSTITUENCY),
+                    ElectedCandidate(GRUENE_BEZIRK.getCandidate(6), Elected.CONSTITUENCY),
+                    ElectedCandidate(GRUENE_BEZIRK.getCandidate(7), Elected.CONSTITUENCY),
+                    ElectedCandidate(GRUENE_BEZIRK.getCandidate(11), Elected.CONSTITUENCY),
+                    ElectedCandidate(GRUENE_BEZIRK.getCandidate(15), Elected.CONSTITUENCY),
+                    ElectedCandidate(GRUENE_BEZIRK.getCandidate(16), Elected.CONSTITUENCY),
+                    ElectedCandidate(GRUENE_BEZIRK.getCandidate(20), Elected.CONSTITUENCY),
+                    ElectedCandidate(GRUENE_BEZIRK.getCandidate(22), Elected.CONSTITUENCY)
+                )
             )
         )
     }

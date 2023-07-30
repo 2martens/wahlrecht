@@ -1,9 +1,7 @@
-package de.twomartens.wahlrecht.model.internal;
+package de.twomartens.wahlrecht.model.internal
 
-import java.util.Collection;
-import java.util.Map;
-
-public record ElectionResult(String electionName, Collection<VotingResult> overallResults,
-                             Map<Integer, Collection<VotingResult>> constituencyResults) {
-
-}
+data class ElectionResult(
+    val electionName: String,
+    val overallResults: Collection<VotingResult>,
+    val constituencyResults: Map<Int, Collection<VotingResult>>
+)

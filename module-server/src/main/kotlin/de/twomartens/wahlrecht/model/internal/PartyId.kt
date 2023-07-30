@@ -1,5 +1,3 @@
-package de.twomartens.wahlrecht.model.internal;
+package de.twomartens.wahlrecht.model.internal
 
-public record PartyId(String electionName, String abbreviation) {
-
-}
+data class PartyId(val electionName: String, val abbreviation: String)

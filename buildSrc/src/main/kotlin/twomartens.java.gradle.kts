@@ -1,5 +1,5 @@
 import org.gradle.accessors.dm.LibrariesForLibs
-import java.time.LocalDateTime
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 plugins {
@@ -51,7 +51,7 @@ tasks.jacocoTestReport {
     }
 }
 
-val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 
 tasks.jar {
     doFirst {
@@ -59,7 +59,7 @@ tasks.jar {
             attributes["Implementation-Title"] = rootProject.name
             attributes["Implementation-Version"] = archiveVersion.get()
             attributes["Implementation-Vendor"] = "Jim Martens"
-            attributes["Build-Timestamp"] = LocalDateTime.now().format(formatter)
+            attributes["Build-Timestamp"] = ZonedDateTime.now().format(formatter)
             attributes["Created-By"] = "Gradle ${gradle.gradleVersion}"
             attributes["Build-Jdk"] = "${providers.systemProperty("java.version").get()} (${providers.systemProperty("java.vendor").get()} ${providers.systemProperty("java.vm.version").get()})"
             attributes["Build-OS"] = "${providers.systemProperty("os.name").get()} ${providers.systemProperty("os.arch").get()} ${providers.systemProperty("os.version").get()}"

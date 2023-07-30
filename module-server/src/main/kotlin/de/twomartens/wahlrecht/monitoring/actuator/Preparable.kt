@@ -1,10 +1,7 @@
-package de.twomartens.wahlrecht.monitoring.actuator;
+package de.twomartens.wahlrecht.monitoring.actuator
 
-import java.io.Closeable;
+import java.io.Closeable
 
-@FunctionalInterface
-public interface Preparable {
-
-  Closeable prepare();
-
+fun interface Preparable {
+    fun prepare(): Closeable
 }

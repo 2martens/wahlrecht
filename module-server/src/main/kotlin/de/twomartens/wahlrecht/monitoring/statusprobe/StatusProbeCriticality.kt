@@ -1,7 +1,7 @@
-package de.twomartens.wahlrecht.monitoring.statusprobe;
+package de.twomartens.wahlrecht.monitoring.statusprobe
 
-
-public enum StatusProbeCriticality {
-  K1, K2, K3
+enum class StatusProbeCriticality {
+    K1,
+    K2,
+    K3
 }
-

@@ -1,28 +1,25 @@
-package de.twomartens.wahlrecht.configuration;
+package de.twomartens.wahlrecht.configuration
 
-import de.twomartens.wahlrecht.monitoring.statusprobe.CountBasedStatusProbe;
-import de.twomartens.wahlrecht.monitoring.statusprobe.StatusProbe;
-import de.twomartens.wahlrecht.monitoring.statusprobe.StatusProbeCriticality;
-import de.twomartens.wahlrecht.monitoring.statusprobe.StatusProbeLogger;
-import java.time.Clock;
-import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import de.twomartens.wahlrecht.monitoring.statusprobe.CountBasedStatusProbe
+import de.twomartens.wahlrecht.monitoring.statusprobe.StatusProbe
+import de.twomartens.wahlrecht.monitoring.statusprobe.StatusProbeCriticality
+import de.twomartens.wahlrecht.monitoring.statusprobe.StatusProbeLogger
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+import java.time.Clock
 
 @Configuration
-@RequiredArgsConstructor
-public class StatusProbeConfiguration {
+open class StatusProbeConfiguration(private val clock: Clock) {
+    @Bean
+    open fun statusProbeLogger(): StatusProbeLogger {
+        return StatusProbeLogger(clock)
+    }
 
-  private final Clock clock;
-
-  @Bean
-  public StatusProbeLogger statusProbeLogger() {
-    return new StatusProbeLogger(clock);
-  }
-
-  @Bean
-  public StatusProbe testStatusProbe(StatusProbeLogger statusProbeLogger) {
-    return new CountBasedStatusProbe(1,
-        clock, StatusProbeCriticality.K1, "testStatusProbe", statusProbeLogger);
-  }
+    @Bean
+    open fun testStatusProbe(statusProbeLogger: StatusProbeLogger): StatusProbe {
+        return CountBasedStatusProbe(
+            1,
+            clock, StatusProbeCriticality.K1, "testStatusProbe", statusProbeLogger
+        )
+    }
 }

@@ -1,9 +1,7 @@
-package de.twomartens.wahlrecht.model.internal;
+package de.twomartens.wahlrecht.model.internal
 
-public record Constituency(String electionName, int number, String name, int numberOfSeats) {
-
-  @Override
-  public String toString() {
-    return name;
-  }
+data class Constituency(val electionName: String, val number: Int, val name: String, val numberOfSeats: Int) {
+    override fun toString(): String {
+        return name
+    }
 }

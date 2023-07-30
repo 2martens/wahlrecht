@@ -1,84 +1,83 @@
-package de.twomartens.wahlrecht.monitoring.actuator;
+package de.twomartens.wahlrecht.monitoring.actuator
 
-import java.io.Closeable;
-import java.io.IOException;
-import java.time.Clock;
-import java.time.Duration;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.slf4j.MDC;
-import org.slf4j.MDC.MDCCloseable;
-import org.springframework.boot.actuate.health.Health;
-import org.springframework.boot.actuate.health.HealthIndicator;
-import org.springframework.boot.actuate.health.Status;
+import mu.KotlinLogging
+import org.slf4j.MDC
+import org.springframework.boot.actuate.health.Health
+import org.springframework.boot.actuate.health.HealthIndicator
+import org.springframework.boot.actuate.health.Status
+import java.io.IOException
+import java.time.Clock
+import java.time.Duration
+import java.util.*
 
-@Slf4j
-@RequiredArgsConstructor
-public abstract class AbstractHealthIndicator implements HealthIndicator {
+abstract class AbstractHealthIndicator(
+    private val clock: Clock,
+    private val preparable: Preparable
+) : HealthIndicator {
 
-  public static final String HOST = "localhost";
-  public static final String HTTP_PREFIX = "http://";
-  public static final String HOST_PORT_SEPERATOR = ":";
-  public static final String PATH_SEPERATOR = "/";
-  public static final String PARAMETER_SEPERATOR = "?";
-  public static final String DETAIL_ENDPOINT_KEY = "endpoint";
+    private val logStatusDownMessage = "health indicator '${indicatorName()}' invoked with status '${Status.DOWN.code}'"
+    private val logStatusUpMessage = "health indicator '${indicatorName()}' invoked with status '${Status.UP.code}'"
 
-  private final String logStatusDownMessage = String.format("health indicator '%s' invoked with status '%s'",
-      indicatorName(), Status.DOWN.getCode());
-  private final String logStatusUpMessage = String.format("health indicator '%s' invoked with status '%s'",
-      indicatorName(), Status.UP.getCode());
-  private final Clock clock;
-  private final Preparable preparable;
-  private boolean firstTime = true;
+    private var firstTime = true
 
-  /**
-   * main method that determines the health of the service
-   */
-  protected abstract Health determineHealth();
+    /**
+     * main method that determines the health of the service
+     */
+    protected abstract fun determineHealth(): Health
 
-  @Override
-  public Health health() {
-    try (Closeable ignored = preparable.prepare()) {
-      Health result = null;
-      Exception exception = null;
-      long start = clock.millis();
-      try {
-        result = determineHealth();
-      } catch (RuntimeException e) {
-        exception = e;
-        result = Health.down().withException(e).build();
-      } finally {
-        logInvocation(result, exception, start, clock.millis());
-      }
-      return result;
-    } catch (IOException e) {
-      log.error("unexpected exception occurred", e);
-      return Health.down(e).build();
+    override fun health(): Health {
+        try {
+            preparable.prepare().use {
+                var result: Health? = null
+                var exception: Exception? = null
+                val start = clock.millis()
+                try {
+                    result = determineHealth()
+                } catch (e: RuntimeException) {
+                    exception = e
+                    result = Health.down().withException(e).build()
+                } finally {
+                    logInvocation(result, exception, start, clock.millis())
+                }
+                return result!!
+            }
+        } catch (e: IOException) {
+            log.error("unexpected exception occurred", e)
+            return Health.down(e).build()
+        }
     }
-  }
 
-  private void logInvocation(Health health, Exception exception, long start, long end) {
-    Duration duration = Duration.ofMillis(end - start);
-    try (MDCCloseable ignored = MDC.putCloseable("event.duration", Long.toString(duration.toNanos()))) {
-      if (exception != null || health == null) {
-        log.error(logStatusDownMessage, exception);
-        firstTime = true;
-      } else if (health.getStatus() == Status.DOWN) {
-        log.warn(logStatusDownMessage);
-        firstTime = true;
-      } else if (firstTime) {
-        log.info(logStatusUpMessage);
-        firstTime = false;
-      } else {
-        log.trace(logStatusUpMessage);
-      }
+    private fun logInvocation(health: Health?, exception: Exception?, start: Long, end: Long) {
+        val duration = Duration.ofMillis(end - start)
+        MDC.putCloseable("event.duration", duration.toNanos().toString()).use {
+            if (exception != null || health == null) {
+                log.error(logStatusDownMessage, exception)
+                firstTime = true
+            } else if (health.status === Status.DOWN) {
+                log.warn(logStatusDownMessage)
+                firstTime = true
+            } else if (firstTime) {
+                log.info(logStatusUpMessage)
+                firstTime = false
+            } else {
+                log.trace(logStatusUpMessage)
+            }
+        }
     }
-  }
 
-  private String indicatorName() {
-    return this.getClass().getSimpleName()
-        .replace("HealthIndicator", "")
-        .toLowerCase();
-  }
+    private fun indicatorName(): String {
+        return this.javaClass.getSimpleName()
+            .replace("HealthIndicator", "")
+            .lowercase(Locale.getDefault())
+    }
 
+    companion object {
+        const val HOST = "localhost"
+        const val HTTP_PREFIX = "http://"
+        const val HOST_PORT_SEPARATOR = ":"
+        const val PATH_SEPARATOR = "/"
+        const val PARAMETER_SEPARATOR = "?"
+        const val DETAIL_ENDPOINT_KEY = "endpoint"
+        private val log = KotlinLogging.logger {}
+    }
 }
