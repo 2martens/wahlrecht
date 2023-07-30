@@ -27,10 +27,6 @@ data class Nomination(val id: NominationId, val supportVotesOnNomination: Boolea
         return positionToCandidate[position]
     }
 
-    fun getPosition(candidate: Candidate): Int {
-        return candidateToPosition[candidate]!!
-    }
-
     fun supportsVotesOnNomination(): Boolean {
         return supportVotesOnNomination
     }
