@@ -2,7 +2,6 @@ package de.twomartens.wahlrecht.service
 
 import de.twomartens.wahlrecht.model.internal.*
 import mu.KotlinLogging
-import org.springframework.lang.NonNull
 import org.springframework.stereotype.Service
 import org.springframework.util.StopWatch
 import kotlin.math.roundToInt
@@ -133,8 +132,8 @@ class CalculationService(
     }
 
     private fun passesVotingThreshold(
-        @NonNull election: Election, totalVotes: Int,
-        @NonNull votingResult: VotingResult
+        election: Election, totalVotes: Int,
+        votingResult: VotingResult
     ): Boolean {
         return (totalVotes * election.votingThreshold.multiplier
                 <= votingResult.totalVotes)
@@ -146,9 +145,8 @@ class CalculationService(
      * @param assignedSeatsPerNomination Map of seats to allocate for a voting result
      * @param alreadyElectedCandidates Map of already elected candidates per party
      */
-    @NonNull
     private fun findElectedCandidates(
-        @NonNull assignedSeatsPerNomination: Map<VotingResult, Int>,
+        assignedSeatsPerNomination: Map<VotingResult, Int>,
         alreadyElectedCandidates: Map<String, Collection<ElectedCandidate>>
     ): Map<VotingResult, Collection<ElectedCandidate>> {
         val electedCandidates: MutableMap<VotingResult, Collection<ElectedCandidate>> = HashMap()
@@ -172,10 +170,9 @@ class CalculationService(
      * @param numberOfSeats Number of seats to allocate
      * @param alreadyElectedCandidates Candidates already elected previously
      */
-    @NonNull
     private fun findCandidates(
-        @NonNull votingResult: VotingResult,
-        numberOfSeats: Int, @NonNull alreadyElectedCandidates: Collection<ElectedCandidate>
+        votingResult: VotingResult,
+        numberOfSeats: Int, alreadyElectedCandidates: Collection<ElectedCandidate>
     ): Collection<ElectedCandidate> {
         log.info(
             "Find elected candidates on nomination: {}",
