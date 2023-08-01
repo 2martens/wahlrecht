@@ -18,33 +18,34 @@ abstract class HeaderInterceptor {
         const val REQ_TYPE_SERVER_TEST = "SERVER_TEST"
         const val REQ_TYPE_WARMUP = "WARMUP"
 
-        private fun createNewTraceId(): String {
+        fun createNewTraceId(): String {
             return UUID.randomUUID().toString()
         }
-    }
 
-    fun getTraceId(): String {
-        val traceId = MDC.get(LOGGER_TRACE_ID)
-        return if (traceId.isNullOrBlank()) createNewTraceId() else traceId
-    }
+        fun getTraceId(): String {
+            val traceId = MDC.get(LOGGER_TRACE_ID)
+            return if (traceId.isNullOrBlank()) createNewTraceId() else traceId
+        }
 
-    fun getRequestType(): String? {
-        val type = MDC.get(LOGGER_REQTYPE_ID)
-        return if (type.isNullOrBlank()) null else type
-    }
+        fun getRequestType(): String? {
+            val type = MDC.get(LOGGER_REQTYPE_ID)
+            return if (type.isNullOrBlank()) null else type
+        }
 
-    private fun setTraceId(traceId: String): InterceptorCloseables {
-        return InterceptorCloseables(MDC.putCloseable(LOGGER_TRACE_ID, traceId))
-    }
+        private fun setTraceId(traceId: String): InterceptorCloseables {
+            return InterceptorCloseables(MDC.putCloseable(LOGGER_TRACE_ID, traceId))
+        }
 
-    private fun mark(requestType: String?): InterceptorCloseables {
-        return InterceptorCloseables(MDC.putCloseable(LOGGER_REQTYPE_ID, requestType))
-    }
+        private fun mark(requestType: String?): InterceptorCloseables {
+            return InterceptorCloseables(MDC.putCloseable(LOGGER_REQTYPE_ID, requestType))
+        }
 
-    fun set(traceId: String, requestType: String?): InterceptorCloseables {
-        return if (requestType != null) {
-            InterceptorCloseables(setTraceId(traceId), mark(requestType))
-        } else setTraceId(traceId)
+        fun set(traceId: String, requestType: String?): InterceptorCloseables {
+            return if (requestType != null) {
+                InterceptorCloseables(setTraceId(traceId), mark(requestType))
+            } else setTraceId(traceId)
+        }
+
     }
 
     fun markAsHealthCheck(): InterceptorCloseables {
@@ -62,7 +63,6 @@ abstract class HeaderInterceptor {
     fun markAsWarmup(): InterceptorCloseables {
         return InterceptorCloseables(mark(REQ_TYPE_WARMUP), setTraceId(createNewTraceId()))
     }
-
 
     class InterceptorCloseables(vararg closeables: Closeable) : Closeable {
         private val closeables: Array<out Closeable>

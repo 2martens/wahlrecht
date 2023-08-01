@@ -112,12 +112,15 @@ class LoggingInterceptorRest(
                         direction = DIRECTION_IN,
                         requestTime = requestTime,
                         responseTime = ZonedDateTime.now(clock),
-                        traceId = HeaderInterceptorRest.extractTraceId(httpRequest),
-                        requestType = HeaderInterceptorRest.extractRequestType(httpRequest),
+                        traceId = HeaderInterceptor.getTraceId(),
+                        requestType = HeaderInterceptor.getRequestType(),
                         businessType = businessType,
                         throwable = throwable
                     )
                 )
+                val interceptorCloseables =
+                    request.getAttribute(HeaderInterceptorRest.CLASS_NAME) as HeaderInterceptor.InterceptorCloseables
+                interceptorCloseables.close()
             } catch (e: java.lang.RuntimeException) {
                 log.error(e.toString(), e)
             }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
+import org.springframework.security.config.Customizer
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer
@@ -33,20 +34,11 @@ open class WebSecurityConfiguration {
     @Throws(Exception::class)
     open fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http
-            .csrf().disable()
-            .authorizeHttpRequests()
-            .requestMatchers(*PERMITTED_PATHS.toTypedArray<String>())
-            .permitAll()
-            .and()
-            .authorizeHttpRequests()
-            .requestMatchers(HttpMethod.OPTIONS)
-            .permitAll()
-            .and()
-            .authorizeHttpRequests()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .oauth2ResourceServer { obj: OAuth2ResourceServerConfigurer<HttpSecurity?> -> obj.jwt() }
+            .csrf { it.disable() }
+            .authorizeHttpRequests { it.requestMatchers(*PERMITTED_PATHS.toTypedArray<String>()).permitAll() }
+            .authorizeHttpRequests { it.requestMatchers(HttpMethod.OPTIONS).permitAll() }
+            .authorizeHttpRequests { it.anyRequest().authenticated() }
+            .oauth2ResourceServer { obj: OAuth2ResourceServerConfigurer<HttpSecurity?> -> obj.jwt(Customizer.withDefaults()) }
             .addFilterAfter(createPolicyEnforcerFilter(), BearerTokenAuthenticationFilter::class.java)
         return http.build()
     }
@@ -84,7 +76,9 @@ open class WebSecurityConfiguration {
             "/actuator/**",
             "/wahlrecht/v1/doc/**",
             "/wahlrecht/v1/api-docs/**",
-            "/error"
+            "/error",
+            "/wahlrecht/version",
+            "/wahlrecht/thirdParty",
         )
         private val PATHS = buildPathConfigs()
 

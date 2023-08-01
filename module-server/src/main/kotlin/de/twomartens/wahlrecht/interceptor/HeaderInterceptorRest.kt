@@ -7,7 +7,6 @@ import org.springframework.http.client.ClientHttpRequestExecution
 import org.springframework.http.client.ClientHttpRequestInterceptor
 import org.springframework.http.client.ClientHttpResponse
 import org.springframework.web.servlet.HandlerInterceptor
-import org.springframework.web.servlet.ModelAndView
 import java.io.IOException
 import java.util.*
 
@@ -18,7 +17,7 @@ class HeaderInterceptorRest : HeaderInterceptor(), HandlerInterceptor, ClientHtt
         fun extractTraceId(request: HttpServletRequest): String {
             var traceId = request.getHeader(HEADER_FIELD_TRACE_ID)
             if (traceId.isNullOrBlank()) traceId = request.getHeader(HEADER_FIELD_B3_TRACE_ID)
-            if (traceId.isNullOrBlank()) return UUID.randomUUID().toString()
+            if (traceId.isNullOrBlank()) return createNewTraceId()
             return traceId
         }
 
@@ -75,15 +74,15 @@ class HeaderInterceptorRest : HeaderInterceptor(), HandlerInterceptor, ClientHtt
     }
 
     // HandlerInterceptor
-    override fun postHandle(
-        request: HttpServletRequest,
-        response: HttpServletResponse,
-        handler: Any,
-        modelAndView: ModelAndView?
-    ) {
-        val obj = request.getAttribute(CLASS_NAME)
-        if (obj != null && obj is InterceptorCloseables) {
-            obj.close()
-        }
-    }
+//    override fun postHandle(
+//        request: HttpServletRequest,
+//        response: HttpServletResponse,
+//        handler: Any,
+//        modelAndView: ModelAndView?
+//    ) {
+//        val obj = request.getAttribute(CLASS_NAME)
+//        if (obj != null && obj is InterceptorCloseables) {
+//            obj.close()
+//        }
+//    }
 }
