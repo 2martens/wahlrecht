@@ -38,6 +38,10 @@ steps:
     volumes:
       - name: cache
         path: /cache
+    when:
+      status:
+        - failure
+        - success
 
 trigger:
   event:
