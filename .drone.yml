@@ -48,4 +48,5 @@ trigger:
     include:
       - push
       - pull_request
+      - custom
 
