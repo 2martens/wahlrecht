@@ -10,18 +10,6 @@ clone:
   skip_verify: true
 
 steps:
-  - name: restore-cache
-    privileged: true
-    pull: always
-    image: 2martens/drone-volume-cache
-    settings:
-      restore: true
-      mount:
-        - ./gradle
-        - ./.idea
-    volumes:
-      - name: cache
-        path: /cache
   - name: run code analysis
     pull: always
     image: 2martens/qodana-jvm-community-drone-plugin:2023.2
@@ -29,21 +17,14 @@ steps:
       qodana_token:
         from_secret: qodana_token
       args: --baseline qodana.sarif.json --fail-threshold 0
-  - name: rebuild-cache
-    privileged: true
-    image: 2martens/drone-volume-cache
-    settings:
-      rebuild: true
-      mount:
-        - ./gradle
-        - ./idea
     volumes:
       - name: cache
-        path: /cache
-    when:
-      status:
-        - failure
-        - success
+        path: /data/cache
+
+volumes:
+  - name: cache
+    host:
+      path: /var/lib/drone/cache
 
 trigger:
   event:
