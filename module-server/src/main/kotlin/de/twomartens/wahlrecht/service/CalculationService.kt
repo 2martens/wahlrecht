@@ -51,7 +51,10 @@ class CalculationService(
         return ElectedCandidates(
             overallResult = overallElectedCandidates,
             constituencyResults = constituencyResults,
-            electionNumbersForSeatAllocation = seatResult.usedElectionNumbers
+            electionNumbersForSeatAllocation = seatResult.usedElectionNumbers,
+            seatAllocation = seatResult.seatsPerNomination
+                    .map { Pair(it.key.partyAbbreviation, it.value) }
+                    .toMap()
         )
     }
 
