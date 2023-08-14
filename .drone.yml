@@ -1,3 +1,4 @@
+---
 kind: pipeline
 name: default
 type: docker
@@ -31,5 +32,40 @@ trigger:
     include:
       - push
       - pull_request
+      - custom
+
+---
+kind: pipeline
+name: default
+type: docker
+
+platform:
+  os: linux
+  arch: arm64
+
+clone:
+  skip_verify: true
+
+steps:
+  - name: build Docker container
+    image: gradle:8.2-jdk17
+    volumes:
+      - name: cache
+        path: /home/gradle/.gradle
+    commands:
+      - wget https://github.com/docker/docker-credential-helpers/releases/download/v0.8.0/docker-credential-pass-v0.8.0.linux-arm64
+      - mv docker-credential-pass-v0.8.0.linux-arm64 docker-credential-pass
+      - chmod +x ./docker-credentials-pass
+      - gradlew jib
+
+volumes:
+  - name: cache
+    host:
+      path: /var/lib/drone/cache/.gradle
+
+trigger:
+  event:
+    include:
+      - push
       - custom
 

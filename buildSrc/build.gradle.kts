@@ -15,4 +15,5 @@ dependencies {
     implementation(libs.plugin.nebula.release)
     implementation(libs.plugin.gradle.versions)
     implementation(libs.plugin.version.catalog)
+    implementation(libs.plugin.jib)
 }
