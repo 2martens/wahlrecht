@@ -58,7 +58,6 @@ steps:
       - name: cache
         path: /home/gradle/.gradle
     commands:
-      - docker login -u $USERNAME -p $PASSWORD
       - ./gradlew jib
 
 volumes:

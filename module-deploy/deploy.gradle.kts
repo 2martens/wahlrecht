@@ -25,6 +25,10 @@ jib {
         tags = setOf(
                 "latest",
                 properties["version"].toString().replace("+", "-"))
+        auth {
+            username = System.getenv("USERNAME")
+            password = System.getenv("PASSWORD")
+        }
     }
     container {
         extraClasspath = listOf("/configmap")
