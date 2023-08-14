@@ -75,7 +75,7 @@ steps:
         path: /home/gradle/.gradle
     commands:
       - mkdir $HOME/.ssh
-      - echo $SSH_KEY > $HOME/.ssh/id_ed25519
+      - echo "$SSH_KEY" > $HOME/.ssh/id_ed25519
       - chmod 600 $HOME/.ssh/id_ed25519
       - touch $HOME/.ssh/known_hosts
       - chmod 600 $HOME/.ssh/known_hosts
