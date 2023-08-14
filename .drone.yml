@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: default
+name: code quality
 type: docker
 
 platform:
@@ -36,7 +36,7 @@ trigger:
 
 ---
 kind: pipeline
-name: default
+name: build image
 type: docker
 
 platform:
