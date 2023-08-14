@@ -24,7 +24,7 @@ management:
 
 spring:
   config:
-    import: "configserver:"
+    import: "optional:configserver:"
   main:
     banner-mode: off
   profiles:
