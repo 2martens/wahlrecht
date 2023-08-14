@@ -23,6 +23,8 @@ management:
     http.server.requests: true
 
 spring:
+  config:
+    import: "configserver:"
   main:
     banner-mode: off
   profiles:
@@ -35,6 +37,8 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: https://id.2martens.de/realms/2martens/protocol/openid-connect/certs
+  application:
+    name: wahlrecht
 
 
 # properties for application
