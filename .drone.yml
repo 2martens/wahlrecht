@@ -57,7 +57,7 @@ steps:
       - echo "$SSH_KEY" > $HOME/.ssh/id_ed25519
       - touch $HOME/.ssh/known_hosts
       - chmod 600 $HOME/.ssh/known_hosts
-      - ssh-keyscan -H giteajim@git.2martens.de > $HOME/.ssh/known_hosts
+      - ssh-keyscan -H git.2martens.de > $HOME/.ssh/known_hosts
       - git clone ssh://giteajim@git.2martens.de:22/2martens/wahlrecht.git .
       - git checkout $DRONE_COMMIT
   - name: build Docker container
