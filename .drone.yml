@@ -58,7 +58,7 @@ steps:
       - name: cache
         path: /home/gradle/.gradle
     commands:
-      - ./gradlew jib
+      - ./gradlew final jib
 
 volumes:
   - name: cache
@@ -66,6 +66,8 @@ volumes:
       path: /var/lib/drone/cache/.gradle
 
 trigger:
+  branches:
+    - main
   event:
     include:
       - push
