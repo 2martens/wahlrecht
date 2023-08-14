@@ -23,8 +23,8 @@ management:
     http.server.requests: true
 
 spring:
-#  config:
-#    import: "optional:configserver:http://localhost:8888/config"
+  config:
+    import: "optional:configserver:http://localhost:8888/config"
   main:
     banner-mode: off
   profiles:
