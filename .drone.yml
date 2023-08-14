@@ -49,13 +49,16 @@ clone:
 steps:
   - name: build Docker container
     image: gradle:8.2-jdk17
+    environment:
+      USERNAME:
+        from_secret: docker_username
+      PASSWORD:
+        from_secret: docker_password
     volumes:
       - name: cache
         path: /home/gradle/.gradle
     commands:
-      - wget https://github.com/docker/docker-credential-helpers/releases/download/v0.8.0/docker-credential-pass-v0.8.0.linux-arm64
-      - mv docker-credential-pass-v0.8.0.linux-arm64 docker-credential-pass
-      - chmod +x ./docker-credential-pass
+      - docker login -u $USERNAME -p $PASSWORD
       - ./gradlew jib
 
 volumes:

@@ -6,9 +6,6 @@ dependencies {
     implementation(project(":server"))
 }
 
-val dockerUsername = System.getenv("DOCKER_USERNAME") ?: "UNKNOWN"
-val dockerPassword = System.getenv("DOCKER_PASSWORD") ?: "UNKNOWN"
-
 jib {
     from {
         image = "amazoncorretto:" + properties["projectSourceCompatibility"]
@@ -28,9 +25,6 @@ jib {
         tags = setOf(
                 "latest",
                 properties["version"].toString().replace("+", "-"))
-        credHelper {
-            helper = "pass"
-        }
     }
     container {
         extraClasspath = listOf("/configmap")
