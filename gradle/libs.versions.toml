@@ -22,7 +22,7 @@ plugin-lombok = "8.0.1"
 plugin-gradle-versions = "0.46.0"
 plugin-version-catalog = "0.8.0"
 plugin-kotlin-gradle = "1.9.0"
-plugin-jib = "3.3.1"
+plugin-jib = "3.3.2"
 
 [libraries]
 spring-boot = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
