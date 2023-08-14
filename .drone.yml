@@ -55,7 +55,7 @@ steps:
     commands:
       - wget https://github.com/docker/docker-credential-helpers/releases/download/v0.8.0/docker-credential-pass-v0.8.0.linux-arm64
       - mv docker-credential-pass-v0.8.0.linux-arm64 docker-credential-pass
-      - chmod +x ./docker-credentials-pass
+      - chmod +x ./docker-credential-pass
       - gradlew jib
 
 volumes:
