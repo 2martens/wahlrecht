@@ -12,6 +12,7 @@ build/
 **/*.log
 **/*.hprof
 **/generated/**
+env.sh
 
 ### STS ###
 .apt_generated
