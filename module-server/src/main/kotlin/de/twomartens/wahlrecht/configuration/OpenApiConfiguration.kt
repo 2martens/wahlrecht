@@ -36,7 +36,7 @@ open class OpenApiConfiguration {
                     .version(apiVersion)
                     .description(apiDescription)
             )
-                .addServersItem(Server().url("http://localhost:12000"))
-                .addServersItem(Server().url("https://api.2martens.de"))
+            .addServersItem(Server().url("http://localhost:12000"))
+            .addServersItem(Server().url("https://api.2martens.de"))
     }
 }
