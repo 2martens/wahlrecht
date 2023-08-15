@@ -1,4 +1,7 @@
 import org.gradle.accessors.dm.LibrariesForLibs
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeFormatter.ofPattern
 
 plugins {
     id("org.springframework.boot")
@@ -57,27 +60,21 @@ tasks.named("buildAll") {
     dependsOn("integrationTest")
 }
 
-springBoot {
-    buildInfo()
-}
+val formatter: DateTimeFormatter = ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 
 tasks.bootJar {
-    enabled = false
+    manifest {
+        attributes["Implementation-Title"] = rootProject.name
+        attributes["Implementation-Version"] = archiveVersion.get()
+        attributes["Implementation-Vendor"] = "Jim Martens"
+        attributes["Build-Timestamp"] = ZonedDateTime.now().format(formatter)
+        attributes["Created-By"] = "Gradle ${gradle.gradleVersion}"
+        attributes["Build-Jdk"] = "${providers.systemProperty("java.version").get()} (${providers.systemProperty("java.vendor").get()} ${providers.systemProperty("java.vm.version").get()})"
+        attributes["Build-OS"] = "${providers.systemProperty("os.name").get()} ${providers.systemProperty("os.arch").get()} ${providers.systemProperty("os.version").get()}"
+    }
 }
 
-tasks.jar {
-    enabled = true
-    archiveClassifier.set("")
-}
-
-tasks.bootDistZip {
-    dependsOn(tasks.jar)
-}
-
-tasks.bootDistTar {
-    dependsOn(tasks.jar)
-}
-
-tasks.bootStartScripts {
-    dependsOn(tasks.jar)
+springBoot {
+    buildInfo()
+    mainClass.set("de.twomartens.wahlrecht.MainApplicationKt")
 }
