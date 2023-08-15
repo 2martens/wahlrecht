@@ -13,6 +13,6 @@ tasks.register("writeVersionProperties") {
     val directory = buildDir
     doLast {
         Files.createDirectories(directory.toPath())
-        File("$buildDir/version.properties").writeText("VERSION=${project.version.toString()}\n")
+        File("$buildDir/version.properties").writeText("VERSION=${project.version}\n")
     }
 }
