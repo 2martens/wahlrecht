@@ -31,10 +31,8 @@ jib {
         }
     }
     container {
-        extraClasspath = listOf("/configmap")
         mainClass = "de.twomartens.wahlrecht.MainApplicationKt"
         jvmFlags = listOf("-XX:+UseContainerSupport",
-                "-XX:MaxRAMPercentage=75.0",
-                "-Dlog4j.configurationFile=/configmap/log4j2.xml")
+                "-XX:MaxRAMPercentage=75.0")
     }
 }
