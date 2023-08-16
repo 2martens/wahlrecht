@@ -32,14 +32,16 @@ class VersionHtmlController {
     }
 
     private fun getTitle(): String {
-        val title = VersionHtmlController::class.java.getPackage().implementationTitle
+        val title = VersionHtmlController::class.java.`package`.implementationTitle
+                ?: return "application"
         return title.ifBlank {
             "application"
         }
     }
 
     private fun getVersion(): String {
-        val version = VersionHtmlController::class.java.getPackage().implementationVersion
+        val version = VersionHtmlController::class.java.`package`.implementationVersion
+                ?: return "DEVELOPER"
         return version.ifBlank {
             "DEVELOPER"
         }
