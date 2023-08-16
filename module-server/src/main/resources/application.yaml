@@ -42,6 +42,7 @@ spring:
   application:
     name: wahlrecht
 
+
 springdoc:
   swagger-ui:
     display-request-duration: true
