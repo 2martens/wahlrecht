@@ -26,7 +26,6 @@ spring:
   config:
     import:
       - "classpath:config/wahlrecht.yaml"
-      - "optional:configserver:http://configserver:8888/config"
   main:
     banner-mode: off
   profiles:
