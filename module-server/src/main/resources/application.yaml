@@ -23,9 +23,9 @@ management:
     http.server.requests: true
 
 spring:
-  config:
-    import:
-      - "classpath:config/wahlrecht.yaml"
+  cloud:
+    config:
+      name: wahlrecht
   main:
     banner-mode: off
   profiles:
@@ -38,9 +38,6 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: https://id.2martens.de/realms/2martens/protocol/openid-connect/certs
-  application:
-    name: wahlrecht
-
 
 springdoc:
   swagger-ui:
