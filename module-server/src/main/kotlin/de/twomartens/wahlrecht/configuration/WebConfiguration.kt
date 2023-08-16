@@ -16,8 +16,8 @@ open class WebConfiguration(private val headerInterceptorRest: HeaderInterceptor
     override fun addCorsMappings(registry: CorsRegistry) {
         val registration = registry.addMapping("/**")
         registration.allowedMethods(
-            HttpMethod.GET.name(), HttpMethod.POST.name(),
-            HttpMethod.PUT.name(), HttpMethod.OPTIONS.name()
+                HttpMethod.GET.name(), HttpMethod.POST.name(),
+                HttpMethod.PUT.name(), HttpMethod.HEAD.name()
         )
         registration.allowCredentials(true)
         registration.allowedOrigins(
