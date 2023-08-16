@@ -1,6 +1,6 @@
 de.twomartens.wahlrecht:
   defaultTimeZone: Europe/Berlin
-  greeting: "Hello %s, on dev"
+  greeting: "Hello %s, on millenium"
   statusprobe:
     scheduleDuration: 60
     maxKafkaFailureDuration: 5
