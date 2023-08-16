@@ -20,6 +20,9 @@ open class WebConfiguration(private val headerInterceptorRest: HeaderInterceptor
             HttpMethod.PUT.name(), HttpMethod.OPTIONS.name()
         )
         registration.allowCredentials(true)
-        registration.allowedOrigins("http://localhost:4200")
+        registration.allowedOrigins(
+                "http://localhost:4200",
+                "https://wahlrecht.2martens.de"
+        )
     }
 }
