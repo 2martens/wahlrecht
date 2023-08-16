@@ -24,7 +24,7 @@ management:
 
 spring:
   config:
-    import: "optional:configserver:http://127.0.0.1:8888/config"
+    import: "optional:configserver:http://configserver:8888/config"
   main:
     banner-mode: off
   profiles:
