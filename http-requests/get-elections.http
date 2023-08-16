@@ -1,0 +1,2 @@
+GET {{backend}}/wahlrecht/v1/elections
+Content-Type: application/json

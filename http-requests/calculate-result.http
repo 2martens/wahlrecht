@@ -1,4 +1,4 @@
-POST http://localhost:12000/wahlrecht/v1/calculate
+POST {{backend}}/wahlrecht/v1/calculate
 Content-Type: application/json
 
 {
