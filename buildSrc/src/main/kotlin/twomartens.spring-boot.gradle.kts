@@ -62,7 +62,7 @@ tasks.named("buildAll") {
 
 val formatter: DateTimeFormatter = ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 
-tasks.bootJar {
+tasks.jar {
     manifest {
         attributes["Implementation-Title"] = rootProject.name
         attributes["Implementation-Version"] = archiveVersion.get()
