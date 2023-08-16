@@ -9,4 +9,4 @@ import java.time.ZoneId
 @RefreshScope
 @ConfigurationProperties(prefix = "de.twomartens.wahlrecht")
 @Schema(description = "Properties, to configure this Application")
-data class ServiceProperties @ConstructorBinding constructor(val defaultTimeZone: ZoneId, val greeting: String)
+data class ServiceProperties @ConstructorBinding constructor(var defaultTimeZone: ZoneId, var greeting: String)
