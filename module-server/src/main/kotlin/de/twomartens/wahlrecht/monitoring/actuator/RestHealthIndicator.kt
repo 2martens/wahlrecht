@@ -1,6 +1,7 @@
 package de.twomartens.wahlrecht.monitoring.actuator
 
 import de.twomartens.wahlrecht.interceptor.HeaderInterceptorRest
+import de.twomartens.wahlrecht.property.ServiceProperties
 import org.springframework.boot.actuate.health.Health
 import org.springframework.boot.actuate.health.HealthIndicator
 import org.springframework.boot.actuate.health.Status
@@ -28,8 +29,10 @@ import java.time.Clock
  */
 @Component
 class RestHealthIndicator(
-    clock: Clock, interceptor: HeaderInterceptorRest,
-    serverProperties: ServerProperties, private val restTemplateRestHealthIndicator: RestTemplate
+        clock: Clock, interceptor: HeaderInterceptorRest,
+        serverProperties: ServerProperties,
+        private val restTemplateRestHealthIndicator: RestTemplate,
+        private val serviceProperties: ServiceProperties
 ) : AbstractHealthIndicator(clock, Preparable { interceptor.markAsHealthCheck() }), HealthIndicator {
     private val randomizer = SecureRandom()
     private val urlPrefix: String = (HTTP_PREFIX + HOST + HOST_PORT_SEPARATOR
@@ -43,10 +46,10 @@ class RestHealthIndicator(
         val random = randomizer.nextInt(100000, 999999).toString()
         val url = "$urlPrefix{random}"
         val response = restTemplateRestHealthIndicator.getForEntity(url, String::class.java, random)
-        val status = if (response.body == random) Status.UP else Status.DOWN
+        val status = if (response.body == serviceProperties.greeting.format(random)) Status.UP else Status.DOWN
         return Health.status(status)
-            .withDetail(DETAIL_ENDPOINT_KEY, url)
-            .build()
+                .withDetail(DETAIL_ENDPOINT_KEY, url)
+                .build()
     }
 
     companion object {
