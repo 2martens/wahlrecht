@@ -42,6 +42,8 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: https://id.2martens.de/realms/2martens/protocol/openid-connect/certs
+  application:
+    name: wahlrecht
 
 springdoc:
   swagger-ui:
