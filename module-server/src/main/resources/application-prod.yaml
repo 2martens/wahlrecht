@@ -1,8 +1,7 @@
 spring:
   config:
     import:
-      - "classpath:config/wahlrecht.yaml"
-      - "optional:configserver:http://configserver:8888/config"
+      - "configserver:http://configserver:8888/config"
   kafka:
     bootstrap-servers:
       - kafka:9092
