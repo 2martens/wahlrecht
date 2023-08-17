@@ -91,7 +91,6 @@ trigger:
   event:
     include:
       - tag
-      - custom
 
 ---
 kind: pipeline
