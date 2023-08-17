@@ -146,6 +146,7 @@ steps:
       playbook: ansible/deploy_spring.yaml
       inventory: ansible/inventories/production
       galaxy: ansible/requirements.yaml
+      galaxy_force: false
       private_key:
         from_secret: private_ssh_key
       vault_password:
