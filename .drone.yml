@@ -88,10 +88,71 @@ volumes:
       path: /var/lib/drone/cache/.gradle
 
 trigger:
-  branches:
-    - main
   event:
     include:
-      - push
+      - tag
       - custom
 
+---
+kind: pipeline
+name: deploy image
+type: docker
+
+platform:
+  os: linux
+  arch: arm64
+
+clone:
+  disable: true
+
+steps:
+  - name: clone
+    image: alpine/git
+    environment:
+      SSH_KEY:
+        from_secret: ssh_key
+    commands:
+      - mkdir $HOME/.ssh
+      - echo "$SSH_KEY" > $HOME/.ssh/id_ed25519
+      - chmod 600 $HOME/.ssh/id_ed25519
+      - touch $HOME/.ssh/known_hosts
+      - chmod 600 $HOME/.ssh/known_hosts
+      - ssh-keyscan -H git.2martens.de > $HOME/.ssh/known_hosts 2>/dev/null
+      - git clone ssh://giteajim@git.2martens.de:22/2martens/cloud-configuration.git .
+      - git checkout main
+  - name: modify deployed image
+    image: alpine
+    commands:
+      - sed -i -r "s/(wahlrecht_image_version:).*/\1\ $IMAGE_VERSION/" inventories/host_vars/api-server/public.yaml
+  - name: save modified variable file
+    image: alpine/git
+    environment:
+      SSH_KEY:
+        from_secret: ssh_key
+    commands:
+      - mkdir $HOME/.ssh
+      - echo "$SSH_KEY" > $HOME/.ssh/id_ed25519
+      - chmod 600 $HOME/.ssh/id_ed25519
+      - touch $HOME/.ssh/known_hosts
+      - chmod 600 $HOME/.ssh/known_hosts
+      - ssh-keyscan -H git.2martens.de > $HOME/.ssh/known_hosts 2>/dev/null
+      - git add inventories/host_vars/api-server/public.yaml
+      - git commit -m "[Drone] Changed wahlrecht_image_version to $IMAGE_VERSION"
+      - git push origin main
+  - name: deploy image
+    image: plugins/ansible:3
+    settings:
+      playbook: ansible/deploy_spring.yaml
+      inventory: ansible/inventories/production
+      private_key:
+        from_secret: ssh_key
+      vault_password:
+        from_secret: vault_password
+
+trigger:
+  target:
+    - production
+  event:
+    include:
+      - promote
+      - rollback
