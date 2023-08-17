@@ -123,7 +123,7 @@ steps:
   - name: modify deployed image
     image: alpine
     commands:
-      - sed -i -r "s/(wahlrecht_image_version:).*/\1\ $IMAGE_VERSION/" ansible/inventories/host_vars/api-server/public.yaml
+      - sed -i -r "s/(wahlrecht_image_version:).*/\1\ ${IMAGE_VERSION}/" ansible/inventories/host_vars/api-server/public.yaml
   - name: save modified variable file
     image: alpine/git
     environment:
