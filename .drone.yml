@@ -139,6 +139,9 @@ steps:
       - git push origin main
   - name: deploy image
     image: plugins/ansible:latest
+    volumes:
+      - name: cache
+        path: /root/.ansible
     settings:
       playbook: ansible/deploy_spring.yaml
       inventory: ansible/inventories/production
@@ -147,6 +150,11 @@ steps:
         from_secret: private_ssh_key
       vault_password:
         from_secret: vault_password
+
+volumes:
+  - name: cache
+    host:
+      path: /var/lib/drone/cache/.ansible
 
 trigger:
 #  target:
