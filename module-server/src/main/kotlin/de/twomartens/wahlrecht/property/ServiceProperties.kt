@@ -8,4 +8,7 @@ import java.time.ZoneId
 @RefreshScope
 @ConfigurationProperties(prefix = "de.twomartens.wahlrecht")
 @Schema(description = "Properties, to configure this Application")
-data class ServiceProperties(var defaultTimeZone: ZoneId, var greeting: String)
+class ServiceProperties {
+    lateinit var defaultTimeZone: ZoneId
+    lateinit var greeting: String
+}
