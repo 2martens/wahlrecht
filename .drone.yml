@@ -123,7 +123,7 @@ steps:
   - name: modify deployed image
     image: alpine
     commands:
-      - sed -i -r "s/(wahlrecht_image_version:).*/\1\ ${IMAGE_VERSION}/" ansible/inventories/host_vars/api-server/public.yaml
+      - sed -i -r "s/(wahlrecht_image_version:).*/\1\ ${DRONE_SEMVER}/" ansible/inventories/host_vars/api-server/public.yaml
   - name: save modified variable file
     image: alpine/git
     environment:
@@ -137,7 +137,7 @@ steps:
       - chmod 600 $HOME/.ssh/known_hosts
       - ssh-keyscan -H git.2martens.de > $HOME/.ssh/known_hosts 2>/dev/null
       - git add ansible/inventories/host_vars/api-server/public.yaml
-      - git commit -m "[Drone] Changed wahlrecht_image_version to $IMAGE_VERSION"
+      - git commit -m "[Drone] Changed wahlrecht_image_version to ${DRONE_SEMVER}"
       - git push origin main
   - name: deploy image
     image: plugins/ansible:latest
