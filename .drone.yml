@@ -140,7 +140,7 @@ steps:
       - git commit -m "[Drone] Changed wahlrecht_image_version to $IMAGE_VERSION"
       - git push origin main
   - name: deploy image
-    image: plugins/ansible:3
+    image: plugins/ansible:latest
     settings:
       playbook: ansible/deploy_spring.yaml
       inventory: ansible/inventories/production
