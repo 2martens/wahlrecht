@@ -150,8 +150,8 @@ steps:
         from_secret: vault_password
 
 trigger:
-  target:
-    - production
+#  target:
+#    - production
   event:
     include:
       - promote
