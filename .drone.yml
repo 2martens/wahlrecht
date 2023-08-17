@@ -144,6 +144,7 @@ steps:
     settings:
       playbook: ansible/deploy_spring.yaml
       inventory: ansible/inventories/production
+      galaxy: ansible/requirements.yaml
       private_key:
         from_secret: ssh_key
       vault_password:
@@ -156,3 +157,4 @@ trigger:
     include:
       - promote
       - rollback
+      - custom
