@@ -30,7 +30,6 @@ volumes:
 trigger:
   event:
     include:
-      - push
       - pull_request
       - custom
 
