@@ -50,7 +50,7 @@ steps:
     image: alpine/git
     environment:
       SSH_KEY:
-        from_secret: ssh_key
+        from_secret: private_ssh_key
     commands:
       - mkdir $HOME/.ssh
       - echo "$SSH_KEY" > $HOME/.ssh/id_ed25519
@@ -68,7 +68,7 @@ steps:
       PASSWORD:
         from_secret: docker_password
       SSH_KEY:
-        from_secret: ssh_key
+        from_secret: private_ssh_key
     volumes:
       - name: cache
         path: /home/gradle/.gradle
@@ -108,7 +108,7 @@ steps:
     image: alpine/git
     environment:
       SSH_KEY:
-        from_secret: ssh_key
+        from_secret: private_ssh_key
     commands:
       - mkdir $HOME/.ssh
       - echo "$SSH_KEY" > $HOME/.ssh/id_ed25519
@@ -126,7 +126,7 @@ steps:
     image: alpine/git
     environment:
       SSH_KEY:
-        from_secret: ssh_key
+        from_secret: private_ssh_key
     commands:
       - mkdir $HOME/.ssh
       - echo "$SSH_KEY" > $HOME/.ssh/id_ed25519
@@ -144,7 +144,7 @@ steps:
       inventory: ansible/inventories/production
       galaxy: ansible/requirements.yaml
       private_key:
-        from_secret: ssh_key
+        from_secret: private_ssh_key
       vault_password:
         from_secret: vault_password
 
