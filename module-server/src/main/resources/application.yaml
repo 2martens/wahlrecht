@@ -1,7 +1,7 @@
 server:
   port: 12000
   shutdown: graceful
-  forward-headers-strategy: native
+  forward-headers-strategy: framework
 
 ### technical configurations ###
 management:
