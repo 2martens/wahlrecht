@@ -80,12 +80,6 @@ steps:
       - chmod 600 $HOME/.ssh/known_hosts
       - ssh-keyscan -H git.2martens.de > $HOME/.ssh/known_hosts 2>/dev/null
       - ./gradlew -Prelease.useLastTag=true final jib
-  - name: promote-staging
-    image: danihodovic/drone-promote
-    settings:
-      drone_token:
-        from_secret: drone_token
-      target: production
 
 volumes:
   - name: cache
