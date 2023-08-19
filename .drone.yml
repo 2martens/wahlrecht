@@ -164,10 +164,9 @@ volumes:
       path: /var/lib/drone/cache/.ansible
 
 trigger:
-#  target:
-#    - production
+  target:
+    - production
   event:
     include:
       - promote
       - rollback
-      - custom
