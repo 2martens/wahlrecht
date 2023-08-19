@@ -18,6 +18,13 @@ class PartyService(
         fetchParties()
     }
 
+  fun getPartyByElectionNameAndAbbreviation(electionName: String,
+                                            abbreviation: String): PartyInElection {
+    return partyRepository.findByElectionNameAndAbbreviation(electionName, abbreviation)
+        ?: throw ResponseStatusException(HttpStatus.NOT_FOUND,
+            "no party found for $electionName and $abbreviation")
+  }
+
     fun getPartiesByElectionName(electionName: String): Collection<PartyInElection> {
         val parties = partyRepository.findByElectionName(electionName)
         if (parties.isEmpty()) {

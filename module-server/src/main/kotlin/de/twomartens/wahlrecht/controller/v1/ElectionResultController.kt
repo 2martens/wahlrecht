@@ -14,10 +14,12 @@ import io.swagger.v3.oas.annotations.tags.Tag
 import lombok.RequiredArgsConstructor
 import lombok.extern.slf4j.Slf4j
 import org.mapstruct.factory.Mappers
-import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
+import org.springframework.http.ResponseEntity.created
+import org.springframework.http.ResponseEntity.ok
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.util.UriComponentsBuilder
 
 @Slf4j
 @RestController
@@ -40,16 +42,16 @@ class ElectionResultController(private val service: ElectionResultService) {
         )]
     )
     @GetMapping(
-        value = ["/electionResult/by-election-name/{electionName}"],
+        value = ["/electionResults/{electionName}"],
         produces = [MediaType.APPLICATION_JSON_VALUE]
     )
     @SecurityRequirement(name = "bearerAuth")
     @SecurityRequirement(name = "oauth2")
-    fun getElectionByName(
+    fun getElectionResultByElectionName(
         @PathVariable @Parameter(description = "the election name", example = "Bezirkswahl 2019") electionName: String
     ): ResponseEntity<ElectionResult> {
         val result = mapper.mapToExternal(service.getElectionResult(electionName))
-        return ResponseEntity.ok()
+        return ok()
             .contentType(MediaType.APPLICATION_JSON)
             .body(result)
     }
@@ -68,8 +70,14 @@ class ElectionResultController(private val service: ElectionResultService) {
     @PutMapping("/electionResult")
     @SecurityRequirement(name = "bearerAuth")
     @SecurityRequirement(name = "oauth2")
-    fun putElection(@RequestBody electionResult: ElectionResult?): ResponseEntity<*> {
+    fun putElection(@RequestBody electionResult: ElectionResult?,
+                    uriComponentsBuilder: UriComponentsBuilder): ResponseEntity<Void> {
         val createdNew = service.storeResult(mapper.mapToDB(electionResult!!))
-        return if (createdNew) ResponseEntity<Any>(HttpStatus.CREATED) else ResponseEntity<Any>(HttpStatus.OK)
+        return if (createdNew) {
+          created(uriComponentsBuilder.path("/electionResult/{electionName}")
+              .buildAndExpand(electionResult.electionName).toUri())
+              .build()
+        }
+        else ok().build()
     }
 }
