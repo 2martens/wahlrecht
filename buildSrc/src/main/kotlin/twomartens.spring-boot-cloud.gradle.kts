@@ -9,7 +9,6 @@ val libs = the<LibrariesForLibs>()
 dependencies {
     implementation(platform(libs.spring.cloud))
     implementation(libs.bundles.spring.boot.server)
-    implementation(libs.spring.openapi)
 
     implementation(libs.httpclient)
     implementation(libs.prometheus)

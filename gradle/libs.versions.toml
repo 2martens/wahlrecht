@@ -1,6 +1,7 @@
 [versions]
 spring-boot = "3.1.2"
 spring-doc = "2.1.0"
+spring-doc-webflux = "1.7.0"
 spring-cloud = "2022.0.4"
 spring-grpc = "2.14.0.RELEASE"
 grpc = "1.57.0"
@@ -18,6 +19,7 @@ kotlin-logging = "3.0.5"
 kotlin-reflect = "1.9.0"
 kotlin-lombok = "1.9.0"
 kotlin-reactor = "1.2.2"
+kotlin-coroutines = "1.7.3"
 plugin-nebula-release = "17.2.2"
 plugin-lombok = "8.0.1"
 plugin-gradle-versions = "0.46.0"
@@ -47,8 +49,9 @@ spring-cloud-config-server = { module = "org.springframework.cloud:spring-cloud-
 spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter" }
 spring-grpc = { module = "net.devh:grpc-spring-boot-starter", version.ref = "spring-grpc" }
 spring-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "spring-doc" }
-spring-sec = { module = "org.springdoc:springdoc-openapi-starter-common", version.ref = "spring-doc" }
-spring-openapi = { module = "org.springdoc:springdoc-openapi-starter-webmvc-api", version.ref = "spring-doc" }
+spring-openapi-starter = { module = "org.springdoc:springdoc-openapi-starter-common", version.ref = "spring-doc" }
+spring-openapi-webmvc = { module = "org.springdoc:springdoc-openapi-starter-webmvc-api", version.ref = "spring-doc" }
+spring-openapi-webflux = { module = "org.springdoc:springdoc-openapi-webflux-ui", version.ref = "spring-doc-webflux" }
 keycloak-core = { module = "org.keycloak:keycloak-core", version.ref = "keycloak" }
 keycloak-policy-enforcer = { module = "org.keycloak:keycloak-policy-enforcer", version.ref = "keycloak" }
 grpc-api = { module = "io.grpc:grpc-api", version.ref = "grpc" }
@@ -81,7 +84,9 @@ mockito-inline = "org.mockito:mockito-inline:5.2.0"
 mockito-junit = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
 kotlin-logging = { module = "io.github.microutils:kotlin-logging-jvm", version.ref = "kotlin-logging" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin-reflect" }
-kotlin-reactor = { module = "io.projectreactor.kotlin:reactor-kotlin-extensions", version.ref = "kotlin.reactor" }
+kotlin-reactor = { module = "io.projectreactor.kotlin:reactor-kotlin-extensions", version.ref = "kotlin-reactor" }
+kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlin-coroutines-core", version.ref = "kotlin-coroutines" }
+kotlin-coroutines-reactor = { module = "org.jetbrains.kotlinx:kotlin-coroutines-reactor", version.ref = "kotlin-coroutines" }
 plugin-nebula-release = { module = "com.netflix.nebula:nebula-release-plugin", version.ref = "plugin-nebula-release" }
 plugin-springboot = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot" }
 plugin-lombok = { module = "io.freefair.gradle:lombok-plugin", version.ref = "plugin-lombok" }
@@ -122,7 +127,8 @@ spring-boot-server = [
     "spring-boot-web",
     "spring-boot-webflux",
     "spring-cloud-starter",
-    "spring-sec",
+    "spring-openapi-starter",
+    "spring-openapi-webflux",
     "spring-ui",
 ]
 spring-boot-security = [

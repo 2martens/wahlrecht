@@ -1,19 +1,21 @@
 import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
-  kotlin("jvm")
+    kotlin("jvm")
 }
 
 val libs = the<LibrariesForLibs>()
 
 dependencies {
-  implementation(libs.kotlin.logging)
-  implementation(libs.kotlin.reactor)
-  implementation(kotlin("reflect"))
+    implementation(libs.kotlin.logging)
+    implementation(libs.kotlin.reactor)
+    implementation(libs.kotlin.coroutines)
+    implementation(libs.kotlin.coroutines.reactor)
+    implementation(kotlin("reflect"))
 }
 
 kotlin {
-  compilerOptions {
-    freeCompilerArgs.add("-Xjvm-default=all")
-  }
+    compilerOptions {
+        freeCompilerArgs.add("-Xjvm-default=all")
+    }
 }
