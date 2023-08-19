@@ -8,13 +8,13 @@ import java.time.Clock
 
 @Configuration
 open class InterceptorConfiguration {
-    @Bean
-    open fun loggingInterceptorRest(clock: Clock): LoggingInterceptorRest {
-        return LoggingInterceptorRest(clock)
-    }
+  @Bean
+  open fun loggingInterceptorRest(clock: Clock): LoggingInterceptorRest {
+    return LoggingInterceptorRest(clock)
+  }
 
-    @Bean
-    open fun headerInterceptorRest(): HeaderInterceptorRest {
-        return HeaderInterceptorRest()
-    }
+  @Bean
+  open fun headerInterceptorRest(): HeaderInterceptorRest {
+    return HeaderInterceptorRest()
+  }
 }
