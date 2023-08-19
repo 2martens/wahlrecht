@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import reactor.core.publisher.Mono
 
 @RestController
 @RequestMapping(value = ["/wahlrecht/v1"])
@@ -47,12 +48,12 @@ class CalculationController(private val service: CalculationService) {
     @SecurityRequirement(name = "oauth2")
     fun calculateResult(
         @RequestBody electionResult: ElectionResult
-    ): ResponseEntity<ElectedCandidates> {
+    ): ResponseEntity<Mono<ElectedCandidates>> {
         val result = electedCandidatesMapper.mapToExternal(
             service.determineElectedCandidates(electionResultMapper.mapToInternal(electionResult))
         )
         return ResponseEntity.ok()
             .contentType(MediaType.APPLICATION_JSON)
-            .body(result)
+            .body(Mono.just(result))
     }
 }

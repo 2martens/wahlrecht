@@ -17,6 +17,7 @@ keycloak = "22.0.1"
 kotlin-logging = "3.0.5"
 kotlin-reflect = "1.9.0"
 kotlin-lombok = "1.9.0"
+kotlin-reactor = "1.2.2"
 plugin-nebula-release = "17.2.2"
 plugin-lombok = "8.0.1"
 plugin-gradle-versions = "0.46.0"
@@ -31,10 +32,12 @@ spring-boot-web = { module = "org.springframework.boot:spring-boot-starter-web" 
 spring-boot-log4j = { module = "org.springframework.boot:spring-boot-starter-log4j2" }
 spring-boot-thymeleaf = { module = "org.springframework.boot:spring-boot-starter-thymeleaf" }
 spring-boot-mongo = { module = "org.springframework.boot:spring-boot-starter-data-mongodb" }
+spring-boot-mongo-reactive = { module = "org.springframework.boot:spring-boot-starter-data-mongodb-reactive" }
 spring-boot-validation = { module = "org.springframework.boot:spring-boot-starter-validation" }
 spring-boot-test = { module = "org.springframework.boot:spring-boot-starter-test" }
 spring-boot-security = { module = "org.springframework.boot:spring-boot-starter-security" }
 spring-boot-oauth2-resource-server = { module = "org.springframework.boot:spring-boot-starter-oauth2-resource-server" }
+spring-boot-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux" }
 spring-boot-config = { module = "org.springframework.boot:spring-boot-configuration-processor", version.ref = "spring-boot" }
 spring-cloud = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "spring-cloud" }
 spring-cloud-starter = { module = "org.springframework.cloud:spring-cloud-starter" }
@@ -78,6 +81,7 @@ mockito-inline = "org.mockito:mockito-inline:5.2.0"
 mockito-junit = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
 kotlin-logging = { module = "io.github.microutils:kotlin-logging-jvm", version.ref = "kotlin-logging" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin-reflect" }
+kotlin-reactor = { module = "io.projectreactor.kotlin:reactor-kotlin-extensions", version.ref = "kotlin.reactor" }
 plugin-nebula-release = { module = "com.netflix.nebula:nebula-release-plugin", version.ref = "plugin-nebula-release" }
 plugin-springboot = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot" }
 plugin-lombok = { module = "io.freefair.gradle:lombok-plugin", version.ref = "plugin-lombok" }
@@ -112,10 +116,11 @@ spring-boot = [
 spring-boot-server = [
     "spring-boot-actuator",
     "spring-boot-log4j",
-    "spring-boot-mongo",
+    "spring-boot-mongo-reactive",
     "spring-boot-thymeleaf",
     "spring-boot-validation",
     "spring-boot-web",
+    "spring-boot-webflux",
     "spring-cloud-starter",
     "spring-sec",
     "spring-ui",

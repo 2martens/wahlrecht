@@ -17,9 +17,9 @@ class CalculationService(
         log.info("Calculate election result for election {}", electionResult.electionName)
         val stopWatch = StopWatch()
         stopWatch.start("determineElectedCandidates")
-        val election = electionService.getElectionInternal(electionResult.electionName)
+        val election = electionService.getElectionInternal(electionResult.electionName).block()
         val seatResult = calculateOverallSeatDistribution(
-            election,
+            election!!,
             electionResult.overallResults
         )
         val constituencyResults: MutableMap<Int, ElectedResult> = HashMap()
@@ -192,8 +192,8 @@ class CalculationService(
             .toMap()
             .toMutableMap()
         val nominationId = votingResult.nominationId
-        val nomination = nominationService.getNominationInternal(nominationId)
-        if (nomination.supportsVotesOnNomination()) {
+        val nomination = nominationService.getNominationInternal(nominationId).block()
+        if (nomination!!.supportsVotesOnNomination()) {
             val seatsByNomination = calculateSeatsByNominationOrder(votingResult, numberOfSeats)
             seatsByVoteOrder = numberOfSeats - seatsByNomination
             val candidates = nomination.getCandidates()

@@ -3,33 +3,17 @@ package de.twomartens.wahlrecht.service
 import de.twomartens.wahlrecht.model.db.Candidate
 import de.twomartens.wahlrecht.repository.CandidateRepository
 import org.springframework.stereotype.Service
+import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 
 @Service
 class CandidateService(private val repository: CandidateRepository) {
-    private val candidates: MutableMap<String, Candidate> by lazy {
-        fetchCandidates()
-    }
 
-    fun storeCandidate(candidate: Candidate): Candidate {
-        var result = candidate
-        val existing = candidates[candidate.name]
-        val needsUpdate = candidate != existing
-        if (!needsUpdate && existing != null) {
-            return existing
-        }
-        if (existing != null) {
-            existing.profession = candidate.profession
-            result = existing
-        }
-        result = repository.save(result)
-        candidates[candidate.name] = candidate
-        return result
-    }
+  fun storeCandidate(candidate: Candidate): Mono<Candidate> {
+    return repository.findAndModify(candidate)
+  }
 
-    private fun fetchCandidates(): MutableMap<String, Candidate> {
-        return repository.findAll().asSequence()
-            .map { Pair(it.name, it) }
-            .toMap()
-            .toMutableMap()
-    }
+  fun storeCandidates(candidates: Collection<Candidate>): Flux<Candidate> {
+    return Flux.merge(candidates.map { storeCandidate(it) })
+  }
 }
