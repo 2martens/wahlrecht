@@ -8,7 +8,7 @@ dependencies {
 
 jib {
     from {
-        image = "amazoncorretto:" + properties["projectSourceCompatibility"]
+        image = "amazoncorretto:" + properties["projectSourceCompatibility"] + "-al2023"
         platforms {
             platform {
                 architecture = "amd64"
