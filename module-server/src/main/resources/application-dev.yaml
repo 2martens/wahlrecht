@@ -6,4 +6,4 @@ spring:
   config:
     import:
       - "classpath:config/wahlrecht.yaml"
-      - "optional:configserver:http://localhost:8888/config"
+      - "optional:configserver:${CONFIGSERVER_SCHEME:http}://${CONFIGSERVER_HOST:configserver}:${CONFIGSERVER_PORT:8888}/${CONFIGSERVER_PREFIX:config}"

@@ -38,7 +38,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: https://id.2martens.de/realms/2martens/protocol/openid-connect/certs
+          jwk-set-uri: ${KEYCLOAK_URL:https://id.2martens.de}/realms/${KEYCLOAK_REALM:2martens}/protocol/openid-connect/certs
   application:
     name: wahlrecht
 

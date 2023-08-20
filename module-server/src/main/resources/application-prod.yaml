@@ -1,7 +1,7 @@
 spring:
   config:
     import:
-      - "configserver:http://configserver:8888/config"
+      - "configserver:${CONFIGSERVER_SCHEME:http}://${CONFIGSERVER_HOST:configserver}:${CONFIGSERVER_PORT:8888}/${CONFIGSERVER_PREFIX:config}"
   kafka:
     bootstrap-servers:
-      - kafka:9092
+      - ${KAFKA_HOST:kafka}:${KAFKA_PORT:9092}
