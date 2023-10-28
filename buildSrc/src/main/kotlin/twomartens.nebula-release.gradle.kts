@@ -9,10 +9,10 @@ apply(plugin="com.netflix.nebula.release")
 tasks.register("writeVersionProperties") {
     group = "version"
     mustRunAfter("release")
-    outputs.file("$buildDir/version.properties")
-    val directory = buildDir
+    outputs.file("${layout.buildDirectory}/version.properties")
+    val directory = layout.buildDirectory.asFile
     doLast {
-        Files.createDirectories(directory.toPath())
-        File("$buildDir/version.properties").writeText("VERSION=${project.version}\n")
+        Files.createDirectories(directory.get().toPath())
+        File("${layout.buildDirectory}/version.properties").writeText("VERSION=${project.version}\n")
     }
 }

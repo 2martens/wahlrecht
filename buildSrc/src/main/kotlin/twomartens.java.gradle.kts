@@ -54,7 +54,7 @@ normalization.runtimeClasspath.metaInf {
 }
 
 tasks.register("cleanLibs") {
-    delete("${buildDir}/libs")
+    delete("${layout.buildDirectory}/libs")
 }
 
 tasks.build {
