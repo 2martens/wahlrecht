@@ -3,11 +3,5 @@ spring:
     import:
       - "configserver:${CONFIGSERVER_SCHEME:http}://${CONFIGSERVER_HOST:configserver}:${CONFIGSERVER_PORT:8888}${CONFIGSERVER_PREFIX:/config}"
   kafka:
-    producer:
-      bootstrap-servers:
-        - ${KAFKA_HOST:kafka}:${KAFKA_PORT:9092}
-    consumer:
-      bootstrap-servers:
-        - ${KAFKA_HOST:kafka}:${KAFKA_PORT:9092}
     bootstrap-servers:
       - ${KAFKA_HOST:kafka}:${KAFKA_PORT:9092}
