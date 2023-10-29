@@ -1,12 +1,12 @@
 server:
-  port: 12000
+  port: ${PORT:12000}
   shutdown: graceful
   forward-headers-strategy: framework
 
 ### technical configurations ###
 management:
   # for security, don't use same port as application
-  server.port: 12001
+  server.port: ${ACTUATOR_PORT:12001}
   health:
     livenessState.enabled: true
     readinessState.enabled: true

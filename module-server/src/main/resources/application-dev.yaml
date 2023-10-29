@@ -1,7 +1,3 @@
-server.port: 12000
-management.server.port: 12001
-
-
 spring:
   config:
     import:
