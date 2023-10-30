@@ -13,53 +13,54 @@ import org.keycloak.representations.idm.authorization.Permission
 class SpringPolicyEnforcer(private val policyEnforcer: PolicyEnforcer,
                            private val policyEnforcerConfig: PolicyEnforcerConfig) {
 
-    fun enforce(request: HttpRequest, response: HttpResponse): AuthorizationContext {
-        if (log.isDebugEnabled) {
-            log.debug("Policy enforcement is enabled. Enforcing policy decisions for path [{}].", request.uri)
-        }
-        val context = authorize(request, response)
-        if (log.isDebugEnabled) {
-            log.debug("Policy enforcement result for path [{}] is : {}", request.uri, if (context.isGranted) "GRANTED" else "DENIED")
-            log.debug("Returning authorization context with permissions:")
-            for (permission in context.permissions) {
-                log.debug(permission.toString())
-            }
-        }
-        return context
+  fun enforce(request: HttpRequest, response: HttpResponse): AuthorizationContext {
+    if (log.isDebugEnabled) {
+      log.debug("Policy enforcement is enabled. Enforcing policy decisions for path [{}].", request.uri)
     }
-
-    private fun authorize(request: HttpRequest, response: HttpResponse): AuthorizationContext {
-        val enforcementMode = policyEnforcerConfig.enforcementMode
-        return if (EnforcementMode.DISABLED == enforcementMode) {
-            createAuthorizedContext()
-        } else policyEnforcer.enforce(request, response)
+    val context = authorize(request, response)
+    if (log.isDebugEnabled) {
+      log.debug("Policy enforcement result for path [{}] is : {}", request.uri, if (context.isGranted) "GRANTED" else "DENIED")
+      log.debug("Returning authorization context with permissions:")
+      for (permission in context.permissions) {
+        log.debug(permission.toString())
+      }
     }
+    return context
+  }
 
-    private fun createAuthorizedContext(): AuthorizationContext {
-        return object : ClientAuthorizationContext(policyEnforcer.authzClient) {
-            override fun hasPermission(resourceName: String, scopeName: String): Boolean {
-                return true
-            }
+  private fun authorize(request: HttpRequest, response: HttpResponse): AuthorizationContext {
+    val enforcementMode = policyEnforcerConfig.enforcementMode
+    log.debug("Authorize with enforcement mode: [{}]", enforcementMode)
+    return if (EnforcementMode.DISABLED == enforcementMode) {
+      createAuthorizedContext()
+    } else policyEnforcer.enforce(request, response)
+  }
 
-            override fun hasResourcePermission(resourceName: String): Boolean {
-                return true
-            }
+  private fun createAuthorizedContext(): AuthorizationContext {
+    return object : ClientAuthorizationContext(policyEnforcer.authzClient) {
+      override fun hasPermission(resourceName: String, scopeName: String): Boolean {
+        return true
+      }
 
-            override fun hasScopePermission(scopeName: String): Boolean {
-                return true
-            }
+      override fun hasResourcePermission(resourceName: String): Boolean {
+        return true
+      }
 
-            override fun getPermissions(): List<Permission> {
-                return emptyList()
-            }
+      override fun hasScopePermission(scopeName: String): Boolean {
+        return true
+      }
 
-            override fun isGranted(): Boolean {
-                return true
-            }
-        }
+      override fun getPermissions(): List<Permission> {
+        return emptyList()
+      }
+
+      override fun isGranted(): Boolean {
+        return true
+      }
     }
+  }
 
-    companion object {
-        private val log = KotlinLogging.logger {}
-    }
+  companion object {
+    private val log = KotlinLogging.logger {}
+  }
 }
