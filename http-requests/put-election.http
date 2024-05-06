@@ -1,0 +1,60 @@
+PUT http://localhost:12000/wahlrecht/v1/election
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJkalp3QzZGZEZ4eHl4R0RfX3JRYVhIMzNCc0Fxa29fYXZoelRlX19IYUxRIn0.eyJleHAiOjE3MTQ5ODE3NDUsImlhdCI6MTcxNDk4MDg0NSwiYXV0aF90aW1lIjoxNzE0OTc5Njk1LCJqdGkiOiIyMzcwNTU4My1mYTE2LTQ4NWYtODNlMC0xMWIyZjg0ODEyM2YiLCJpc3MiOiJodHRwczovL2lkLjJtYXJ0ZW5zLmRlL3JlYWxtcy8ybWFydGVucyIsImF1ZCI6WyJ0c3ctdGltZXRhYmxlLWZyb250ZW5kIiwiYWNjb3VudCIsInRpbWV0YWJsZSJdLCJzdWIiOiJkOTRiMzU3My05ZjdhLTRjYmMtYTg5MS1kZGRjYWQ1MjE0YjMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3YWhscmVjaHQiLCJzZXNzaW9uX3N0YXRlIjoiZGIxNmVmNzItZTUyMi00ZWE4LThjNjAtYjRjYmRiMTEzNjEyIiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2FwaS4ybWFydGVucy5kZSIsImh0dHA6Ly9sb2NhbGhvc3Q6MTIwMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiQ09SRV9FTEVDVElPTl9EQVRBX0NPTlRSSUJVVE9SIiwiZGVmYXVsdC1yb2xlcy13YWhscmVjaHQiLCJBRE1JTiIsInVtYV9hdXRob3JpemF0aW9uIiwiVVNFUiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InRzdy10aW1ldGFibGUtZnJvbnRlbmQiOnsicm9sZXMiOlsiQUNUSVZFX1BMQU4iLCJQRVJTT05BTF9QTEFOIiwiRlJFRV9QTEFOIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sInRpbWV0YWJsZSI6eyJyb2xlcyI6WyJBRE1JTiIsIlBFUlNPTkFMX1BMQU4iLCJGUkVFX1BMQU4iXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJkYjE2ZWY3Mi1lNTIyLTRlYTgtOGM2MC1iNGNiZGIxMTM2MTIiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkppbSBNYXJ0ZW5zIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZ2l0aHViQDJtYXJ0ZW5zLmRlIiwiZ2l2ZW5fbmFtZSI6IkppbSIsImxvY2FsZSI6ImVuIiwiZmFtaWx5X25hbWUiOiJNYXJ0ZW5zIiwiZW1haWwiOiJnaXRodWJAMm1hcnRlbnMuZGUifQ.VWDniNAGZOdBbQ3rIia81VqchT9fL0PbT4TS8ORpueRTVe8j2gatwDEPz3ocIFNevNh5hv0gQpjcYT8XGh5rk8oNbHrFg48uJZC5SfINzEEq9JYUQCLf_LGiXmfCODwKaRZc6EVFYU34t7d-SXrN0qNcFooFnV7erD57GJB--19nVOAv1zsQKDV_lJYz6SHGlPZol0PBOHwRaREjgsS1zw8kNOBZYFiuaAbHCOl3rrZb0YZevB1_qtPWtdCOCEjCIlGURIU6Wn6xTNUG1MkE2yytArJS1yGUfBnDDg1mAck5q_fl0a9T7lucyhakSNjauFGUWIsJP4ADdJZhn8CDVQ
+Content-Type: application/json
+
+{
+    "name": "Bezirkswahl 2024",
+    "day": "2024-06-09",
+    "votingThreshold": "THREE",
+    "totalNumberOfSeats": 51,
+    "constituencies": [
+      {
+        "electionName": "Bezirkswahl 2024",
+        "number": 5,
+        "name": "Niendorf",
+        "numberOfSeats": 5
+      },
+      {
+        "electionName": "Bezirkswahl 2024",
+        "number": 6,
+        "name": "Schnelsen",
+        "numberOfSeats": 3
+      },
+      {
+        "electionName": "Bezirkswahl 2024",
+        "number": 7,
+        "name": "Eidelstedt",
+        "numberOfSeats": 4
+      },
+      {
+        "electionName": "Bezirkswahl 2024",
+        "number": 8,
+        "name": "Stellingen",
+        "numberOfSeats": 3
+      },
+      {
+        "electionName": "Bezirkswahl 2024",
+        "number": 4,
+        "name": "Lokstedt",
+        "numberOfSeats": 3
+      },
+      {
+        "electionName": "Bezirkswahl 2024",
+        "number": 3,
+        "name": "Rotherbaum/Harvestehude",
+        "numberOfSeats": 4
+      },
+      {
+        "electionName": "Bezirkswahl 2024",
+        "number": 1,
+        "name": "Eimsbüttel-Nord",
+        "numberOfSeats": 3
+      },
+      {
+        "electionName": "Bezirkswahl 2024",
+        "number": 2,
+        "name": "Eimsbüttel-Süd/Hoheluft-West",
+"numberOfSeats": 5
+}
+]
+}
