@@ -1,179 +1,203 @@
 ### SPD
 PUT http://localhost:12000/wahlrecht/v1/party
-Authorization: Basic dXNlcjpwYXNzd29yZA==
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJkalp3QzZGZEZ4eHl4R0RfX3JRYVhIMzNCc0Fxa29fYXZoelRlX19IYUxRIn0.eyJleHAiOjE3MTUwMjI4NTcsImlhdCI6MTcxNTAyMTk1NywiYXV0aF90aW1lIjoxNzE1MDIxMzQ2LCJqdGkiOiIyNzVlYmFhMS1jZmFlLTQ4OGUtYTA0YS0yYzRhNmY4ZDk0NDIiLCJpc3MiOiJodHRwczovL2lkLjJtYXJ0ZW5zLmRlL3JlYWxtcy8ybWFydGVucyIsImF1ZCI6WyJ0c3ctdGltZXRhYmxlLWZyb250ZW5kIiwiYWNjb3VudCIsInRpbWV0YWJsZSJdLCJzdWIiOiJkOTRiMzU3My05ZjdhLTRjYmMtYTg5MS1kZGRjYWQ1MjE0YjMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3YWhscmVjaHQiLCJzZXNzaW9uX3N0YXRlIjoiZWNkZTQ4ZGYtMzc1NS00NWIzLTlkMTktYjEwMTNhOGMyNjU4IiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2FwaS4ybWFydGVucy5kZSIsImh0dHA6Ly9sb2NhbGhvc3Q6MTIwMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiQ09SRV9FTEVDVElPTl9EQVRBX0NPTlRSSUJVVE9SIiwiZGVmYXVsdC1yb2xlcy13YWhscmVjaHQiLCJBRE1JTiIsInVtYV9hdXRob3JpemF0aW9uIiwiVVNFUiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InRzdy10aW1ldGFibGUtZnJvbnRlbmQiOnsicm9sZXMiOlsiQUNUSVZFX1BMQU4iLCJQRVJTT05BTF9QTEFOIiwiRlJFRV9QTEFOIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sInRpbWV0YWJsZSI6eyJyb2xlcyI6WyJBRE1JTiIsIlBFUlNPTkFMX1BMQU4iLCJGUkVFX1BMQU4iXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJlY2RlNDhkZi0zNzU1LTQ1YjMtOWQxOS1iMTAxM2E4YzI2NTgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkppbSBNYXJ0ZW5zIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZ2l0aHViQDJtYXJ0ZW5zLmRlIiwiZ2l2ZW5fbmFtZSI6IkppbSIsImxvY2FsZSI6ImVuIiwiZmFtaWx5X25hbWUiOiJNYXJ0ZW5zIiwiZW1haWwiOiJnaXRodWJAMm1hcnRlbnMuZGUifQ.BM3a1pWVaS7Qv3cc0PI4uTwxslVCzcoFyWJQFKGyz0QUdmzKFmuLVweXdqTEjXQLLkPW8JJFwHsfuPu_Yx8hvLbDSXMfXi1ue2bT-6SeF1mqwn5FR5ufaPfqOAAhiWcL8IgchGRFv4ERSSd5cFZNxWcw3RofhSVZ0AcCLx1Zl_FbwVJOC-33VTX0U8xDI-OYaNQtGz138KBauB5nMv5vJ67tuUbsUYKrmC-Nyht05LbsHvNwguszIVBPxqjHsXVVD1oPIy5c38tsKBKO7wcqFIbg8OezRgbF98YL_udJWSUAguX8v7_k0lRBaD6i_hcCVBop3MF1zM1haPp1BQrCDQ
 Content-Type: application/json
 
 {
-  "electionName": "Bezirkswahl 2019",
+  "electionName": "Bezirkswahl 2024",
   "abbreviation": "SPD",
   "name": "Sozialdemokratische Partei Deutschlands - Kreisverband Eimsbüttel",
   "overallNomination": {
-    "electionName": "Bezirkswahl 2019",
+    "electionName": "Bezirkswahl 2024",
     "partyAbbreviation": "SPD",
     "name": "Bezirksliste SPD",
     "supportVotesOnNomination": true,
     "candidates": [
       {
         "name": "Gottlieb, Gabor",
-        "profession": ""
+        "profession": "Jurist"
       },
       {
-        "name": "Meding, Sarah",
-        "profession": ""
+        "name": "Schwarzarius, Ines",
+        "profession": "Arbeits- und Wirtschaftsjuristin"
       },
       {
-        "name": "Harringa, Nils",
-        "profession": ""
+        "name": "Armi, Koorosh",
+        "profession": "Leitender Angesteller, Sozialökonom"
+      },
+      {
+        "name": "Dinslage, Ina",
+        "profession": "Historikerin"
+      },
+      {
+        "name": "Schütt, Ernst Christian",
+        "profession": "Schriftsteller"
+      },
+      {
+        "name": "Kazemi, Armita",
+        "profession": "Juristin"
+      },
+      {
+        "name": "Meiburg, Ralf Diete",
+        "profession": "Kriminalhauptkommissar i.R."
+      },
+      {
+        "name": "Huntemann, Alica",
+        "profession": "Angestellte / Tourismuskauffrau"
+      },
+      {
+        "name": "Oehlmann, Roland",
+        "profession": "Sozialökonom"
+      },
+      {
+        "name": "Satzer, Janina",
+        "profession": "Sportökonomin"
+      },
+      {
+        "name": "Mourad, Hadi",
+        "profession": "Diplom-Jurist"
+      },
+      {
+        "name": "Riegel, Dr. Ann-Kathrin",
+        "profession": "Ärztin"
+      },
+      {
+        "name": "Wollkopf, Stefan",
+        "profession": "Software-Berater"
       },
       {
         "name": "Nendza-Ammar, Charlotte",
-        "profession": ""
+        "profession": "Angestellte Bundesamt"
       },
       {
-        "name": "Rust, Rüdiger",
-        "profession": ""
+        "name": "Geisweller, Dennis",
+        "profession": "Beamter"
       },
       {
-        "name": "Köster-Marjanovic, Hannelore",
-        "profession": ""
+        "name": "Kahriman, Nurgül",
+        "profession": "Studentin"
       },
       {
-        "name": "Riegel, Ann-Kathrin",
-        "profession": ""
+        "name": "Yumut, Anil",
+        "profession": "Finanzmanager"
       },
       {
-        "name": "Rüter, Monika",
-        "profession": ""
-      },
-      {
-        "name": "Heise, Elk",
-        "profession": ""
-      },
-      {
-        "name": "Fischbach-Pyttel, Carola",
-        "profession": ""
+        "name": "Gastl, Simone",
+        "profession": "Bildungswissenschaftlerin"
       },
       {
         "name": "Schirmer, Stephan-Philipp",
-        "profession": ""
+        "profession": "Teehändler"
       },
       {
-        "name": "Telljohann, Katharina",
-        "profession": ""
+        "name": "Leites, Kordula",
+        "profession": "Lehrerin"
       },
       {
-        "name": "Röder, Wilfried",
-        "profession": ""
+        "name": "Harringa, Nils",
+        "profession": "Grundschullehrer"
       },
       {
-        "name": "Dr. Matiss, Claudia",
-        "profession": ""
+        "name": "Koeppen, Johanna",
+        "profession": "Schülerin"
       },
       {
-        "name": "Koßel, Uwe",
-        "profession": ""
-      },
-      {
-        "name": "Wagner, Saskia",
-        "profession": ""
-      },
-      {
-        "name": "Bäcker, Guido",
-        "profession": ""
-      },
-      {
-        "name": "Tiben-Thörner, Karin",
-        "profession": ""
-      },
-      {
-        "name": "Ptach, Stephan",
-        "profession": ""
+        "name": "Schiffmann, Andreas",
+        "profession": "Immobilienfachwirt"
       },
       {
         "name": "Steinbiß, Emily",
-        "profession": ""
+        "profession": "Lehrerin"
       },
       {
-        "name": "Berisha, Dafina",
-        "profession": ""
+        "name": "Bednarek, Ralf",
+        "profession": "Strafverteidiger, Rechtsanwalt"
       },
       {
-        "name": "Meyer, Simon",
-        "profession": ""
+        "name": "Khalil, Miriam",
+        "profession": "SEO-Managerin"
       },
       {
-        "name": "Porr, Ulrike",
-        "profession": ""
+        "name": "Karabacak, Jakob Mehmet",
+        "profession": "Chemisch-technischer Assistent"
       },
       {
-        "name": "Lange, Frederik",
-        "profession": ""
+        "name": "Seifert, Jutta",
+        "profession": "Buchhalterin"
       },
       {
-        "name": "Oliva, Nora",
-        "profession": ""
+        "name": "Hielscher, Dr. Johannes",
+        "profession": "Hochschulprofessor, Geschäftsführer"
       },
       {
-        "name": "Drossinakis, Panagiotis",
-        "profession": ""
-      },
-      {
-        "name": "Jacobs, Ruth",
-        "profession": ""
+        "name": "Seib, Gisela",
+        "profession": "Künstlerin / Kfm. Angestellte"
       },
       {
         "name": "Bernstein, Til",
-        "profession": ""
+        "profession": "Wiss. Mitarbeiter/ Quartier Osterstraße"
       },
       {
-        "name": "Kröger, Manuela-Andrea",
-        "profession": ""
+        "name": "Maltz-Dethlefs, Inge",
+        "profession": "Diplom-Ingenieurin Umwelttechnik"
       },
       {
-        "name": "Dr. Enzmann, Dirk",
-        "profession": ""
+        "name": "Enzmann, Dr. Dirk",
+        "profession": "Professor, Kriminologe"
       },
       {
-        "name": "Schilling, Alexandra",
-        "profession": ""
-      },
-      {
-        "name": "Abboud, Hussein",
-        "profession": ""
-      },
-      {
-        "name": "Petersen, Britt",
-        "profession": ""
-      },
-      {
-        "name": "Petersen, Johannes",
-        "profession": ""
-      },
-      {
-        "name": "Petersen, Doris",
-        "profession": ""
+        "name": "Fischbach-Pyttel, Carola",
+        "profession": "Diplompolitologin"
       },
       {
         "name": "Frese, Gabor",
-        "profession": ""
+        "profession": "Politikwissenschaftler"
       },
       {
-        "name": "Suh-von Bremen, Sun Won",
-        "profession": ""
+        "name": "Kama, Nita",
+        "profession": "Gesundheitswissenschaftlerin"
       },
       {
-        "name": "Steppat, Wolfgang",
-        "profession": ""
+        "name": "Čubela, Johannes",
+        "profession": "Geprüfter Handelsfachwirt"
       },
       {
-        "name": "Hildebrand, Denise",
-        "profession": ""
+        "name": "Schulz, Shabnam",
+        "profession": "Kommunikationsberaterin"
+      },
+      {
+        "name": "Berisha, Ali",
+        "profession": "Labortechniker, Qualitätskontrolleur"
+      },
+      {
+        "name": "Herbrand, Ricarda",
+        "profession": "Kommunikationsleiterin"
+      },
+      {
+        "name": "Petersen, Johannes",
+        "profession": "Rentner"
+      },
+      {
+        "name": "Ptach, Annegret",
+        "profession": "Leiterin Seniorentreff"
+      },
+      {
+        "name": "Lölke, Dr. Ulrich",
+        "profession": "Antiquar"
+      },
+      {
+        "name": "Matiss, Dr. Claudia",
+        "profession": "Staatsanwältin"
+      },
+      {
+        "name": "Röder, Wilfried",
+        "profession": "Dipl.-Ingenieur"
       }
     ]
   },
   "constituencyNominations": {
     "1": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "SPD",
       "name": "SPD Wahlkreisliste Eimsbüttel-Nord",
       "supportVotesOnNomination": false,
@@ -183,7 +207,15 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Köster-Marjanovic, Hannelore",
+          "name": "Nendza-Ammar, Charlotte",
+          "profession": ""
+        },
+        {
+          "name": "Bednarek, Ralf",
+          "profession": ""
+        },
+        {
+          "name": "Herbrand, Ricarda",
           "profession": ""
         },
         {
@@ -191,35 +223,31 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Telljohann, Katharina",
-          "profession": ""
-        },
-        {
-          "name": "Thomsen, Jan Jacob",
-          "profession": ""
-        },
-        {
-          "name": "Westphalen, Solveig",
+          "name": "Ptach, Annegret",
           "profession": ""
         }
       ]
     },
     "2": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "SPD",
       "name": "SPD Wahlkreisliste Eimsbüttel-Süd",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Altner, Moritz",
+          "name": "Dinslage, Ina",
           "profession": ""
         },
         {
-          "name": "Pinetzki, Tatjana",
+          "name": "Wollkopf, Stefan",
           "profession": ""
         },
         {
-          "name": "Heise, Elk",
+          "name": "Gastl, Simone",
+          "profession": ""
+        },
+        {
+          "name": "Enzmann, Dr. Dirk",
           "profession": ""
         },
         {
@@ -227,11 +255,11 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Dr. Enzmann, Dirk",
+          "name": "Schmitz, Simon",
           "profession": ""
         },
         {
-          "name": "Petersen, Doris",
+          "name": "Khalil, Miriam",
           "profession": ""
         },
         {
@@ -239,49 +267,41 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Oliva, Nora",
+          "name": "Kegel, Sophie",
           "profession": ""
         },
         {
-          "name": "Dr. Kühling, Jürgen",
-          "profession": ""
-        },
-        {
-          "name": "Meding, Sarah",
+          "name": "Lölke, Dr. Ulrich",
           "profession": ""
         }
       ]
     },
     "3": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "SPD",
       "name": "SPD Wahlkreisliste HaRo",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Rügge, Paulina",
+          "name": "Gabor, Gottlieb",
           "profession": ""
         },
         {
-          "name": "Hamer, Philipp",
+          "name": "Steinbiß, Emily",
+          "profession": ""
+        },
+        {
+          "name": "Schirmer, Stephan-Philipp",
           "profession": ""
         },
         {
           "name": "Stallbaum, Angelika",
           "profession": ""
-        },
-        {
-          "name": "Dethloff Jolunić, Vladana",
-          "profession": ""
-        },
-        {
-          "name": "Oehlmann, Roland",
-          "profession": ""
         }
       ]
     },
     "4": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "SPD",
       "name": "SPD Wahlkreisliste Lokstedt",
       "supportVotesOnNomination": false,
@@ -291,25 +311,25 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Hildebrand, Denise",
+          "name": "Leites, Kordula",
           "profession": ""
         },
         {
-          "name": "Conrad, Martin",
+          "name": "Ulrich, Nikolai",
           "profession": ""
         },
         {
-          "name": "Dr. Matiss, Claudia",
+          "name": "Matiss, Dr. Claudia",
           "profession": ""
         },
         {
-          "name": "Dr. Hielscher, Johannes",
+          "name": "Hielscher, Dr. Johannes",
           "profession": ""
         }
       ]
     },
     "5": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "SPD",
       "name": "SPD Wahlkreisliste Niendorf",
       "supportVotesOnNomination": false,
@@ -319,45 +339,29 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Urbanski, Torge",
+          "name": "Mourad, Hadi",
           "profession": ""
         },
         {
-          "name": "Fischbach-Pyttel, Carola",
-          "profession": ""
-        },
-        {
-          "name": "Bäcker, Guido",
-          "profession": ""
-        },
-        {
-          "name": "Porr, Ulrike",
-          "profession": ""
-        },
-        {
-          "name": "Petersen, Johannes",
-          "profession": ""
-        },
-        {
-          "name": "Kröger, Manuela-Andrea",
-          "profession": ""
-        },
-        {
-          "name": "Steppat, Wolfgang",
-          "profession": ""
-        },
-        {
-          "name": "Canbay, Berfin",
+          "name": "Schumann, Britta",
           "profession": ""
         },
         {
           "name": "Schumacher, Wolfgang",
           "profession": ""
+        },
+        {
+          "name": "Seifert, Svenja-Kathrin",
+          "profession": ""
+        },
+        {
+          "name": "Riethmüller, Dr. Rolf",
+          "profession": ""
         }
       ]
     },
     "6": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "SPD",
       "name": "SPD Wahlkreisliste Schnelsen",
       "supportVotesOnNomination": false,
@@ -367,31 +371,39 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Dr. Röder, Petra",
-          "profession": ""
-        },
-        {
           "name": "Börner, Sylvia",
           "profession": ""
         },
         {
-          "name": "Zimmermann, Uwe",
+          "name": "Röder, Wilfried",
           "profession": ""
         },
         {
-          "name": "Bruchmann, Astrid",
+          "name": "Regling-Armi, Nadine",
+          "profession": ""
+        },
+        {
+          "name": "Ederhof, Matthias",
+          "profession": ""
+        },
+        {
+          "name": "Röder, Dr. Petra",
           "profession": ""
         }
       ]
     },
     "7": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "SPD",
       "name": "SPD Wahlkreisliste Eidelstedt",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Bahr, Dagmar",
+          "name": "Kazemi, Armita",
+          "profession": ""
+        },
+        {
+          "name": "Koßel, Uwe",
           "profession": ""
         },
         {
@@ -399,51 +411,39 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Brozzo, Walter",
+          "name": "Schreiber, Peter",
           "profession": ""
         },
         {
-          "name": "Huntemann, Alica",
+          "name": "Selb, Gisela",
           "profession": ""
         },
         {
-          "name": "Özek, Ersin",
+          "name": "Sorgenfrei, Stephan",
           "profession": ""
         },
         {
-          "name": "Cuneo, Cristina",
+          "name": "Paasburg, Eric Alexander",
           "profession": ""
         },
         {
-          "name": "Melzer, Kjell-Jonas",
-          "profession": ""
-        },
-        {
-          "name": "Atasoy, Erzat",
+          "name": "Koeppen, Johanna",
           "profession": ""
         }
       ]
     },
     "8": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "SPD",
       "name": "SPD Wahlkreisliste Stellingen",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Urbanski, Annika",
+          "name": "Huntemann, Alica",
           "profession": ""
         },
         {
-          "name": "Meyer, Simon",
-          "profession": ""
-        },
-        {
-          "name": "Wagner, Saskia",
-          "profession": ""
-        },
-        {
-          "name": "Taubenheim, Patrick",
+          "name": "Čubela, Johannes",
           "profession": ""
         },
         {
@@ -461,29 +461,29 @@ Content-Type: application/json
 ### GRÜNE
 
 PUT http://localhost:12000/wahlrecht/v1/party
-Authorization: Basic dXNlcjpwYXNzd29yZA==
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJkalp3QzZGZEZ4eHl4R0RfX3JRYVhIMzNCc0Fxa29fYXZoelRlX19IYUxRIn0.eyJleHAiOjE3MTUwMjI4NTcsImlhdCI6MTcxNTAyMTk1NywiYXV0aF90aW1lIjoxNzE1MDIxMzQ2LCJqdGkiOiIyNzVlYmFhMS1jZmFlLTQ4OGUtYTA0YS0yYzRhNmY4ZDk0NDIiLCJpc3MiOiJodHRwczovL2lkLjJtYXJ0ZW5zLmRlL3JlYWxtcy8ybWFydGVucyIsImF1ZCI6WyJ0c3ctdGltZXRhYmxlLWZyb250ZW5kIiwiYWNjb3VudCIsInRpbWV0YWJsZSJdLCJzdWIiOiJkOTRiMzU3My05ZjdhLTRjYmMtYTg5MS1kZGRjYWQ1MjE0YjMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3YWhscmVjaHQiLCJzZXNzaW9uX3N0YXRlIjoiZWNkZTQ4ZGYtMzc1NS00NWIzLTlkMTktYjEwMTNhOGMyNjU4IiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2FwaS4ybWFydGVucy5kZSIsImh0dHA6Ly9sb2NhbGhvc3Q6MTIwMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiQ09SRV9FTEVDVElPTl9EQVRBX0NPTlRSSUJVVE9SIiwiZGVmYXVsdC1yb2xlcy13YWhscmVjaHQiLCJBRE1JTiIsInVtYV9hdXRob3JpemF0aW9uIiwiVVNFUiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InRzdy10aW1ldGFibGUtZnJvbnRlbmQiOnsicm9sZXMiOlsiQUNUSVZFX1BMQU4iLCJQRVJTT05BTF9QTEFOIiwiRlJFRV9QTEFOIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sInRpbWV0YWJsZSI6eyJyb2xlcyI6WyJBRE1JTiIsIlBFUlNPTkFMX1BMQU4iLCJGUkVFX1BMQU4iXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJlY2RlNDhkZi0zNzU1LTQ1YjMtOWQxOS1iMTAxM2E4YzI2NTgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkppbSBNYXJ0ZW5zIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZ2l0aHViQDJtYXJ0ZW5zLmRlIiwiZ2l2ZW5fbmFtZSI6IkppbSIsImxvY2FsZSI6ImVuIiwiZmFtaWx5X25hbWUiOiJNYXJ0ZW5zIiwiZW1haWwiOiJnaXRodWJAMm1hcnRlbnMuZGUifQ.BM3a1pWVaS7Qv3cc0PI4uTwxslVCzcoFyWJQFKGyz0QUdmzKFmuLVweXdqTEjXQLLkPW8JJFwHsfuPu_Yx8hvLbDSXMfXi1ue2bT-6SeF1mqwn5FR5ufaPfqOAAhiWcL8IgchGRFv4ERSSd5cFZNxWcw3RofhSVZ0AcCLx1Zl_FbwVJOC-33VTX0U8xDI-OYaNQtGz138KBauB5nMv5vJ67tuUbsUYKrmC-Nyht05LbsHvNwguszIVBPxqjHsXVVD1oPIy5c38tsKBKO7wcqFIbg8OezRgbF98YL_udJWSUAguX8v7_k0lRBaD6i_hcCVBop3MF1zM1haPp1BQrCDQ
 Content-Type: application/json
 
 {
-  "electionName": "Bezirkswahl 2019",
+  "electionName": "Bezirkswahl 2024",
   "abbreviation": "GRÜNE",
   "name": "Bündnis 90/Die Grünen - Kreisverband Eimsbüttel",
   "overallNomination": {
-    "electionName": "Bezirkswahl 2019",
+    "electionName": "Bezirkswahl 2024",
     "partyAbbreviation": "GRÜNE",
     "name": "Bezirksliste GRÜNE",
     "supportVotesOnNomination": true,
     "candidates": [
       {
-        "name": "Kern, Lisa",
+        "name": "Warnecke, Kathrin",
         "profession": ""
       },
       {
-        "name": "Hadji Mir Agha, Ali",
+        "name": "Hadji Mir Agha, Seyed Ali",
         "profession": ""
       },
       {
-        "name": "Dr. Putz, Miriam",
+        "name": "Albers, Gabriele",
         "profession": ""
       },
       {
@@ -495,47 +495,11 @@ Content-Type: application/json
         "profession": ""
       },
       {
-        "name": "Schmidt-Tobler, Falk",
-        "profession": ""
-      },
-      {
-        "name": "Demirhan, Sina",
-        "profession": ""
-      },
-      {
-        "name": "Klein, Robert",
-        "profession": ""
-      },
-      {
-        "name": "Erk, Aramak",
-        "profession": ""
-      },
-      {
-        "name": "Martens, Jim",
-        "profession": ""
-      },
-      {
-        "name": "Warnecke, Anne Kathrin",
-        "profession": ""
-      },
-      {
-        "name": "Dr. Fischer, Jost Leonhardt",
-        "profession": ""
-      },
-      {
-        "name": "Kost, Cornelia",
-        "profession": ""
-      },
-      {
-        "name": "Brandt, Christopher",
-        "profession": ""
-      },
-      {
         "name": "Schübel, Nina Joana",
         "profession": ""
       },
       {
-        "name": "Schmidt, Lutz",
+        "name": "Schmidt-Tobler, Falk",
         "profession": ""
       },
       {
@@ -543,11 +507,19 @@ Content-Type: application/json
         "profession": ""
       },
       {
-        "name": "Alam, Leon",
+        "name": "Koriath, Jan",
         "profession": ""
       },
       {
-        "name": "Schwarzwald, Cristina",
+        "name": "Papendorf, Juliane",
+        "profession": ""
+      },
+      {
+        "name": "Scharr, Johannes",
+        "profession": ""
+      },
+      {
+        "name": "Weiner, Jekaterina",
         "profession": ""
       },
       {
@@ -555,43 +527,15 @@ Content-Type: application/json
         "profession": ""
       },
       {
-        "name": "Hasselmann, Annette",
+        "name": "Schürmann, Amelie Naemi",
         "profession": ""
       },
       {
-        "name": "Koriath, Jan",
+        "name": "Klein, Robert",
         "profession": ""
       },
       {
-        "name": "Küll, Gabriela",
-        "profession": ""
-      },
-      {
-        "name": "Köhler, Kevin",
-        "profession": ""
-      },
-      {
-        "name": "Hericks, Susanne",
-        "profession": ""
-      },
-      {
-        "name": "Bohny, Carl Maria",
-        "profession": ""
-      },
-      {
-        "name": "Fester, Emilia",
-        "profession": ""
-      },
-      {
-        "name": "Hofmann, Klaus-Dieter",
-        "profession": ""
-      },
-      {
-        "name": "Neumann, Bernd",
-        "profession": ""
-      },
-      {
-        "name": "Braasch, Julian",
+        "name": "Schwarzer, Lena",
         "profession": ""
       },
       {
@@ -599,14 +543,106 @@ Content-Type: application/json
         "profession": ""
       },
       {
-        "name": "Hasselmann, Harald",
+        "name": "Hunter, Dr. Lynne",
+        "profession": ""
+      },
+      {
+        "name": "Rupasinghe, Ananda",
+        "profession": ""
+      },
+      {
+        "name": "Rosemeier, Luise",
+        "profession": ""
+      },
+      {
+        "name": "Heymann, Stephan",
+        "profession": ""
+      },
+      {
+        "name": "Starken, Melanie",
+        "profession": ""
+      },
+      {
+        "name": "Martens, Jim",
+        "profession": ""
+      },
+      {
+        "name": "Pfeiffer, Annika",
+        "profession": ""
+      },
+      {
+        "name": "Heiss, Hans-Peter",
+        "profession": ""
+      },
+      {
+        "name": "Meyer, Katrin",
+        "profession": ""
+      },
+      {
+        "name": "Wiarda, Matthias",
+        "profession": ""
+      },
+      {
+        "name": "Allendorf, Solveig",
+        "profession": ""
+      },
+      {
+        "name": "Rustige, Dr. Lennart",
+        "profession": ""
+      },
+      {
+        "name": "Hampe, Anna",
+        "profession": ""
+      },
+      {
+        "name": "Bühler, Nils",
+        "profession": ""
+      },
+      {
+        "name": "Velmede, Christine",
+        "profession": ""
+      },
+      {
+        "name": "Delfs, Gerhard",
+        "profession": ""
+      },
+      {
+        "name": "Hasselmann, Annette",
+        "profession": ""
+      },
+      {
+        "name": "Zeimer, Matthias",
+        "profession": ""
+      },
+      {
+        "name": "Hoffmann, Claudia Margarete",
+        "profession": ""
+      },
+      {
+        "name": "Fischer, Dr. Jost",
+        "profession": ""
+      },
+      {
+        "name": "Donker, Ingrid",
+        "profession": ""
+      },
+      {
+        "name": "Engler, Dr. Philip",
+        "profession": ""
+      },
+      {
+        "name": "Dreyer, Claudia",
+        "profession": ""
+      },
+      {
+        "name": "Schmidt, Lutz",
         "profession": ""
       }
     ]
   },
   "constituencyNominations": {
     "1": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "GRÜNE",
       "name": "GRÜNE Wahlkreisliste Eimsbüttel-Nord",
       "supportVotesOnNomination": false,
@@ -616,29 +652,37 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Dr. Fischer, Jost Leonhardt",
+          "name": "Klein, Robert",
           "profession": ""
         }
       ]
     },
     "2": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "GRÜNE",
       "name": "GRÜNE Wahlkreisliste Eimsbüttel-Süd",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Dr. Putz, Miriam",
+          "name": "Albers, Gabriele",
           "profession": ""
         },
         {
-          "name": "Schmidt-Tobler, Falk",
+          "name": "Thies, Nico",
+          "profession": ""
+        },
+        {
+          "name": "Schwarzer, Lena",
+          "profession": ""
+        },
+        {
+          "name": "Bühler, Nils",
           "profession": ""
         }
       ]
     },
     "3": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "GRÜNE",
       "name": "GRÜNE Wahlkreisliste HaRo",
       "supportVotesOnNomination": false,
@@ -650,85 +694,101 @@ Content-Type: application/json
         {
           "name": "Koriath, Jan",
           "profession": ""
+        },
+        {
+          "name": "Rosemeier, Luise",
+          "profession": ""
+        },
+        {
+          "name": "Heymann, Stephan",
+          "profession": ""
         }
       ]
     },
     "4": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "GRÜNE",
       "name": "GRÜNE Wahlkreisliste Lokstedt",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Kern, Lisa",
+          "name": "Wolf, Rita",
           "profession": ""
         },
         {
-          "name": "Köhler, Kevin",
+          "name": "Dorsch, Sebastian",
           "profession": ""
         }
       ]
     },
     "5": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "GRÜNE",
       "name": "GRÜNE Wahlkreisliste Niendorf",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Demirhan, Sina",
+          "name": "Starken, Melanie",
           "profession": ""
         },
         {
           "name": "Schmidt, Lutz",
           "profession": ""
+        },
+        {
+          "name": "Hasselmann, Annette",
+          "profession": ""
+        },
+        {
+          "name": "Rupasinghe, Ananda",
+          "profession": ""
         }
       ]
     },
     "6": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "GRÜNE",
       "name": "GRÜNE Wahlkreisliste Schnelsen",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Dr. Hunter, Lynne",
+          "name": "Pfeifer, Annika",
           "profession": ""
         },
         {
-          "name": "Martens, Jim",
+          "name": "Hadji Mir Agha, Seyed Ali",
           "profession": ""
         }
       ]
     },
     "7": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "GRÜNE",
       "name": "GRÜNE Wahlkreisliste Eidelstedt",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Hadji Mir Agha, Ali",
+          "name": "Weiner, Jekaterina",
           "profession": ""
         },
         {
-          "name": "Hofmann, Klaus-Dieter",
+          "name": "Kuhlmann, Dietmar",
           "profession": ""
         }
       ]
     },
     "8": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "GRÜNE",
       "name": "GRÜNE Wahlkreisliste Stellingen",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Kuhlmann, Dietmar",
+          "name": "Papendorf, Juliane",
           "profession": ""
         },
         {
-          "name": "Thies, Nico",
+          "name": "Schmidt-Tobler, Falk",
           "profession": ""
         }
       ]
@@ -738,15 +798,15 @@ Content-Type: application/json
 ### CDU
 
 PUT http://localhost:12000/wahlrecht/v1/party
-Authorization: Basic dXNlcjpwYXNzd29yZA==
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJkalp3QzZGZEZ4eHl4R0RfX3JRYVhIMzNCc0Fxa29fYXZoelRlX19IYUxRIn0.eyJleHAiOjE3MTUwMjQ1MDEsImlhdCI6MTcxNTAyMzYwMSwiYXV0aF90aW1lIjoxNzE1MDIxMzQ2LCJqdGkiOiIzYzYzMDAzMS1hMjhlLTQxNDEtOGUxMi01YjdiZTc2YTcwOGYiLCJpc3MiOiJodHRwczovL2lkLjJtYXJ0ZW5zLmRlL3JlYWxtcy8ybWFydGVucyIsImF1ZCI6WyJ0c3ctdGltZXRhYmxlLWZyb250ZW5kIiwiYWNjb3VudCIsInRpbWV0YWJsZSJdLCJzdWIiOiJkOTRiMzU3My05ZjdhLTRjYmMtYTg5MS1kZGRjYWQ1MjE0YjMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3YWhscmVjaHQiLCJzZXNzaW9uX3N0YXRlIjoiZWNkZTQ4ZGYtMzc1NS00NWIzLTlkMTktYjEwMTNhOGMyNjU4IiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2FwaS4ybWFydGVucy5kZSIsImh0dHA6Ly9sb2NhbGhvc3Q6MTIwMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiQ09SRV9FTEVDVElPTl9EQVRBX0NPTlRSSUJVVE9SIiwiZGVmYXVsdC1yb2xlcy13YWhscmVjaHQiLCJBRE1JTiIsInVtYV9hdXRob3JpemF0aW9uIiwiVVNFUiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InRzdy10aW1ldGFibGUtZnJvbnRlbmQiOnsicm9sZXMiOlsiQUNUSVZFX1BMQU4iLCJQRVJTT05BTF9QTEFOIiwiRlJFRV9QTEFOIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sInRpbWV0YWJsZSI6eyJyb2xlcyI6WyJBRE1JTiIsIlBFUlNPTkFMX1BMQU4iLCJGUkVFX1BMQU4iXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJlY2RlNDhkZi0zNzU1LTQ1YjMtOWQxOS1iMTAxM2E4YzI2NTgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkppbSBNYXJ0ZW5zIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZ2l0aHViQDJtYXJ0ZW5zLmRlIiwiZ2l2ZW5fbmFtZSI6IkppbSIsImxvY2FsZSI6ImVuIiwiZmFtaWx5X25hbWUiOiJNYXJ0ZW5zIiwiZW1haWwiOiJnaXRodWJAMm1hcnRlbnMuZGUifQ.jQ5BDGJHbUZ1cwz9DHsRrJ8vCgs_h0nZgZDa4dqoeVyIFtx-P7aYubFwL3BnN64DOLDDLhg2EZ_AsjVaSoZWyKXU4b1psVTbJtMlH8JI3kBVWs3_YxkKC-rvJm_aU_grXSBYEsl1bq5FdXvTyRzP0i7-XOBic6us-cz0Ylzu54lFtqRkDJEYjI3OKrA1ZuRafVbRxUTGvdWGehv1FGpL55JXwVFeon5N9LatV_5LyU6eDBvC3YPZPDQbw37MUhqBSjDueTvz-ysSfT8UIZtflR_nvOXRLspaiC_LsAOaFTrJLFcOw_SF2rTiMRKYemL__YXKG18HUA-yPVfni9e0cA
 Content-Type: application/json
 
 {
-  "electionName": "Bezirkswahl 2019",
+  "electionName": "Bezirkswahl 2024",
   "abbreviation": "CDU",
   "name": "Christlich Demokratische Union - Kreisverband Eimsbüttel",
   "overallNomination": {
-    "electionName": "Bezirkswahl 2019",
+    "electionName": "Bezirkswahl 2024",
     "partyAbbreviation": "CDU",
     "name": "Bezirksliste CDU",
     "supportVotesOnNomination": true,
@@ -756,63 +816,15 @@ Content-Type: application/json
         "profession": ""
       },
       {
-        "name": "Könecke, Christian",
-        "profession": ""
-      },
-      {
-        "name": "Birnbaum, Andreas",
-        "profession": ""
-      },
-      {
-        "name": "Möller-Fiedler, Sybille",
-        "profession": ""
-      },
-      {
-        "name": "Kochmann, Franziska",
-        "profession": ""
-      },
-      {
-        "name": "von Deutsch, Christiane",
-        "profession": ""
-      },
-      {
         "name": "Hoffmann, Bernd",
         "profession": ""
       },
       {
-        "name": "Holst, Christian",
+        "name": "Könecke, Christian",
         "profession": ""
       },
       {
-        "name": "Lau, Roman",
-        "profession": ""
-      },
-      {
-        "name": "Hille, Robert",
-        "profession": ""
-      },
-      {
-        "name": "Ahrens, Mareike",
-        "profession": ""
-      },
-      {
-        "name": "Dr. Langhein, A.W. Heinrich",
-        "profession": ""
-      },
-      {
-        "name": "Wichmann, Norbert",
-        "profession": ""
-      },
-      {
-        "name": "Lau, Johanna",
-        "profession": ""
-      },
-      {
-        "name": "Czernotzky, Birgit",
-        "profession": ""
-      },
-      {
-        "name": "von Sawilski, Marlies",
+        "name": "Sieling, Nicole",
         "profession": ""
       },
       {
@@ -820,27 +832,11 @@ Content-Type: application/json
         "profession": ""
       },
       {
-        "name": "Jarzembowski, Daniel",
+        "name": "Werner, Dr. Daniel Georg",
         "profession": ""
       },
       {
-        "name": "Howe, Sönke",
-        "profession": ""
-      },
-      {
-        "name": "Recknagel, Dennis",
-        "profession": ""
-      },
-      {
-        "name": "Dieball, Laura",
-        "profession": ""
-      },
-      {
-        "name": "Josefowsky, Ernst Günther",
-        "profession": ""
-      },
-      {
-        "name": "Wysocki, Michael",
+        "name": "Böttcher, Marion",
         "profession": ""
       },
       {
@@ -848,86 +844,146 @@ Content-Type: application/json
         "profession": ""
       },
       {
+        "name": "Blenski, Matthias",
+        "profession": ""
+      },
+      {
+        "name": "Pochhammer, Gabriele",
+        "profession": ""
+      },
+      {
+        "name": "Müller, Brenda",
+        "profession": ""
+      },
+      {
+        "name": "Gerdau, Jörn",
+        "profession": ""
+      },
+      {
+        "name": "Stefani, Kai",
+        "profession": ""
+      },
+      {
+        "name": "Eberling, Susanne",
+        "profession": ""
+      },
+      {
+        "name": "Brunner, Nils",
+        "profession": ""
+      },
+      {
+        "name": "Castens, Jörg Ulrich",
+        "profession": ""
+      },
+      {
+        "name": "Becker, Roland",
+        "profession": ""
+      },
+      {
+        "name": "Stonus, Anja",
+        "profession": ""
+      },
+      {
+        "name": "Burkhardt, Ina",
+        "profession": ""
+      },
+      {
+        "name": "von Schassen, Dr. Malte",
+        "profession": ""
+      },
+      {
+        "name": "Wysocki, Michael",
+        "profession": ""
+      },
+      {
         "name": "Greshake, Sascha",
         "profession": ""
       },
       {
-        "name": "Thiesen, Marianne",
+        "name": "Boos, Navina-Sophie",
         "profession": ""
       },
       {
-        "name": "Schüller, Michael",
+        "name": "Wett, Gunnar",
         "profession": ""
       },
       {
-        "name": "Jacobs, Jürgen",
+        "name": "Stonus, Andreas",
         "profession": ""
       },
       {
-        "name": "Weiler, Johannes",
+        "name": "Stonus, Leonie",
         "profession": ""
       },
       {
-        "name": "Howe, Raphaela",
+        "name": "Kleinfeld, Ursula",
+        "profession": ""
+      },
+      {
+        "name": "Möller-Fiedler, Sybille Emma Johanna",
         "profession": ""
       }
     ]
   },
   "constituencyNominations": {
     "1": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "CDU",
       "name": "CDU Wahlkreisliste Eimsbüttel-Nord",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "von Sawilski, Marlies",
+          "name": "Langhein, Dr. A.W. Heinrich",
           "profession": ""
         },
         {
-          "name": "Sangines Füchtner, Jorge Daniel",
+          "name": "Möller-Fiedler, Sybille Emma Johanna",
           "profession": ""
         },
         {
-          "name": "Rawalski, Simon",
+          "name": "Braufer, Steffen",
+          "profession": ""
+        },
+        {
+          "name": "Decker-Laprell, Désirée Alexandrine",
           "profession": ""
         }
       ]
     },
     "2": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "CDU",
       "name": "CDU Wahlkreisliste Eimsbüttel-Süd",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Weiler, Johannes",
-          "profession": ""
-        },
-        {
           "name": "Birnbaum, Andreas",
-          "profession": ""
-        },
-        {
-          "name": "Dr. Siebert, Diana",
-          "profession": ""
-        },
-        {
-          "name": "Recknagel, Dennis",
-          "profession": ""
-        },
-        {
-          "name": "Dr. Langhein, A.W.Heinrich",
           "profession": ""
         },
         {
           "name": "Thomsen, Thomas",
           "profession": ""
+        },
+        {
+          "name": "Weiher, Alexa",
+          "profession": ""
+        },
+        {
+          "name": "Ibel, Dr. Rainer",
+          "profession": ""
+        },
+        {
+          "name": "Burkhardt, Ina",
+          "profession": ""
+        },
+        {
+          "name": "Richter, Ralph-Michael",
+          "profession": ""
         }
       ]
     },
     "3": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "CDU",
       "name": "CDU Wahlkreisliste HaRo",
       "supportVotesOnNomination": false,
@@ -937,41 +993,45 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Kochmann, Franziska",
+          "name": "Pochhammer, Gabriele",
           "profession": ""
         },
         {
-          "name": "Hille, Robert",
+          "name": "Gerdau, Jörn",
           "profession": ""
         },
         {
-          "name": "von Grone, Eckbrecht",
+          "name": "Höflich, Jutta",
           "profession": ""
         }
       ]
     },
     "4": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "CDU",
       "name": "CDU Wahlkreisliste Lokstedt",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Stonus, Andreas",
+          "name": "Loboda, Maxim",
           "profession": ""
         },
         {
-          "name": "Czernotzky, Birgit",
+          "name": "Landahl, Pascal",
           "profession": ""
         },
         {
-          "name": "Könecke, Christian",
+          "name": "Dönselmann, Malte",
+          "profession": ""
+        },
+        {
+          "name": "Böttcher, Marion",
           "profession": ""
         }
       ]
     },
     "5": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "CDU",
       "name": "CDU Wahlkreisliste Niendorf",
       "supportVotesOnNomination": false,
@@ -981,7 +1041,35 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Ahrens, Mareike",
+          "name": "Wett, Gunnar",
+          "profession": ""
+        },
+        {
+          "name": "Blenski, Matthias",
+          "profession": ""
+        },
+        {
+          "name": "Eberling, Susanne",
+          "profession": ""
+        },
+        {
+          "name": "Stefani, Kai",
+          "profession": ""
+        },
+        {
+          "name": "Stonus, Anja",
+          "profession": ""
+        }
+      ]
+    },
+    "6": {
+      "electionName": "Bezirkswahl 2024",
+      "partyAbbreviation": "CDU",
+      "name": "CDU Wahlkreisliste Schnelsen",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Stonus, Andreas",
           "profession": ""
         },
         {
@@ -989,61 +1077,45 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Dönselmann, Malte",
+          "name": "Brunner, Nils",
           "profession": ""
         },
         {
-          "name": "Seehaber, Daniel",
-          "profession": ""
-        }
-      ]
-    },
-    "6": {
-      "electionName": "Bezirkswahl 2019",
-      "partyAbbreviation": "CDU",
-      "name": "CDU Wahlkreisliste Schnelsen",
-      "supportVotesOnNomination": false,
-      "candidates": [
-        {
-          "name": "Seif, Silke",
-          "profession": ""
-        },
-        {
-          "name": "Holst, Christian",
-          "profession": ""
-        },
-        {
-          "name": "Schüller, Michael",
+          "name": "Gotta, Natascha",
           "profession": ""
         }
       ]
     },
     "7": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "CDU",
       "name": "CDU Wahlkreisliste Eidelstedt",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Ehrlich, Sören",
+          "name": "Kleinfeld, Ursula",
           "profession": ""
         },
         {
-          "name": "Lau, Roman",
+          "name": "Dzaferi, Salih",
           "profession": ""
         },
         {
-          "name": "Howe, Raphaela",
+          "name": "Müller, Brenda",
           "profession": ""
         },
         {
-          "name": "Lau, Johanna",
+          "name": "Klemeyer, Dr. Horst",
+          "profession": ""
+        },
+        {
+          "name": "Dieball, Laura",
           "profession": ""
         }
       ]
     },
     "8": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "CDU",
       "name": "CDU Wahlkreisliste Stellingen",
       "supportVotesOnNomination": false,
@@ -1053,11 +1125,15 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Orzechowski, Kurt",
+          "name": "von Deutsch, Christiane",
           "profession": ""
         },
         {
-          "name": "Kecke, Hubert",
+          "name": "Schwerdt, Björn",
+          "profession": ""
+        },
+        {
+          "name": "Bäde, Birgit",
           "profession": ""
         }
       ]
@@ -1071,11 +1147,11 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 Content-Type: application/json
 
 {
-  "electionName": "Bezirkswahl 2019",
+  "electionName": "Bezirkswahl 2024",
   "abbreviation": "Piraten",
   "name": "Piraten - Kreisverband Eimsbüttel",
   "overallNomination": {
-    "electionName": "Bezirkswahl 2019",
+    "electionName": "Bezirkswahl 2024",
     "partyAbbreviation": "Piraten",
     "name": "Bezirksliste Piraten",
     "supportVotesOnNomination": true,
@@ -1096,59 +1172,106 @@ Content-Type: application/json
   },
   "constituencyNominations": {}
 }
-### LINKE
+
+### Volt
 PUT http://localhost:12000/wahlrecht/v1/party
-Authorization: Basic dXNlcjpwYXNzd29yZA==
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJkalp3QzZGZEZ4eHl4R0RfX3JRYVhIMzNCc0Fxa29fYXZoelRlX19IYUxRIn0.eyJleHAiOjE3MTUwMjQ1MDEsImlhdCI6MTcxNTAyMzYwMSwiYXV0aF90aW1lIjoxNzE1MDIxMzQ2LCJqdGkiOiIzYzYzMDAzMS1hMjhlLTQxNDEtOGUxMi01YjdiZTc2YTcwOGYiLCJpc3MiOiJodHRwczovL2lkLjJtYXJ0ZW5zLmRlL3JlYWxtcy8ybWFydGVucyIsImF1ZCI6WyJ0c3ctdGltZXRhYmxlLWZyb250ZW5kIiwiYWNjb3VudCIsInRpbWV0YWJsZSJdLCJzdWIiOiJkOTRiMzU3My05ZjdhLTRjYmMtYTg5MS1kZGRjYWQ1MjE0YjMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3YWhscmVjaHQiLCJzZXNzaW9uX3N0YXRlIjoiZWNkZTQ4ZGYtMzc1NS00NWIzLTlkMTktYjEwMTNhOGMyNjU4IiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2FwaS4ybWFydGVucy5kZSIsImh0dHA6Ly9sb2NhbGhvc3Q6MTIwMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiQ09SRV9FTEVDVElPTl9EQVRBX0NPTlRSSUJVVE9SIiwiZGVmYXVsdC1yb2xlcy13YWhscmVjaHQiLCJBRE1JTiIsInVtYV9hdXRob3JpemF0aW9uIiwiVVNFUiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InRzdy10aW1ldGFibGUtZnJvbnRlbmQiOnsicm9sZXMiOlsiQUNUSVZFX1BMQU4iLCJQRVJTT05BTF9QTEFOIiwiRlJFRV9QTEFOIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sInRpbWV0YWJsZSI6eyJyb2xlcyI6WyJBRE1JTiIsIlBFUlNPTkFMX1BMQU4iLCJGUkVFX1BMQU4iXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJlY2RlNDhkZi0zNzU1LTQ1YjMtOWQxOS1iMTAxM2E4YzI2NTgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkppbSBNYXJ0ZW5zIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZ2l0aHViQDJtYXJ0ZW5zLmRlIiwiZ2l2ZW5fbmFtZSI6IkppbSIsImxvY2FsZSI6ImVuIiwiZmFtaWx5X25hbWUiOiJNYXJ0ZW5zIiwiZW1haWwiOiJnaXRodWJAMm1hcnRlbnMuZGUifQ.jQ5BDGJHbUZ1cwz9DHsRrJ8vCgs_h0nZgZDa4dqoeVyIFtx-P7aYubFwL3BnN64DOLDDLhg2EZ_AsjVaSoZWyKXU4b1psVTbJtMlH8JI3kBVWs3_YxkKC-rvJm_aU_grXSBYEsl1bq5FdXvTyRzP0i7-XOBic6us-cz0Ylzu54lFtqRkDJEYjI3OKrA1ZuRafVbRxUTGvdWGehv1FGpL55JXwVFeon5N9LatV_5LyU6eDBvC3YPZPDQbw37MUhqBSjDueTvz-ysSfT8UIZtflR_nvOXRLspaiC_LsAOaFTrJLFcOw_SF2rTiMRKYemL__YXKG18HUA-yPVfni9e0cA
 Content-Type: application/json
 
 {
-  "electionName": "Bezirkswahl 2019",
+  "electionName": "Bezirkswahl 2024",
+  "abbreviation": "Volt",
+  "name": "Volt - Kreisverband Eimsbüttel",
+  "overallNomination": {
+    "electionName": "Bezirkswahl 2024",
+    "partyAbbreviation": "Volt",
+    "name": "Bezirksliste Volt",
+    "supportVotesOnNomination": true,
+    "candidates": [
+      {
+        "name": "Horn, Sören",
+        "profession": ""
+      },
+      {
+        "name": "Junge, Kira",
+        "profession": ""
+      },
+      {
+        "name": "Jaschinski de Souza, Jannick",
+        "profession": ""
+      },
+      {
+        "name": "Schmidt, Björn",
+        "profession": ""
+      }
+    ]
+  },
+  "constituencyNominations": {}
+}
+
+
+### Freie Wähler
+PUT http://localhost:12000/wahlrecht/v1/party
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJkalp3QzZGZEZ4eHl4R0RfX3JRYVhIMzNCc0Fxa29fYXZoelRlX19IYUxRIn0.eyJleHAiOjE3MTUwMjQ1MDEsImlhdCI6MTcxNTAyMzYwMSwiYXV0aF90aW1lIjoxNzE1MDIxMzQ2LCJqdGkiOiIzYzYzMDAzMS1hMjhlLTQxNDEtOGUxMi01YjdiZTc2YTcwOGYiLCJpc3MiOiJodHRwczovL2lkLjJtYXJ0ZW5zLmRlL3JlYWxtcy8ybWFydGVucyIsImF1ZCI6WyJ0c3ctdGltZXRhYmxlLWZyb250ZW5kIiwiYWNjb3VudCIsInRpbWV0YWJsZSJdLCJzdWIiOiJkOTRiMzU3My05ZjdhLTRjYmMtYTg5MS1kZGRjYWQ1MjE0YjMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3YWhscmVjaHQiLCJzZXNzaW9uX3N0YXRlIjoiZWNkZTQ4ZGYtMzc1NS00NWIzLTlkMTktYjEwMTNhOGMyNjU4IiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2FwaS4ybWFydGVucy5kZSIsImh0dHA6Ly9sb2NhbGhvc3Q6MTIwMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiQ09SRV9FTEVDVElPTl9EQVRBX0NPTlRSSUJVVE9SIiwiZGVmYXVsdC1yb2xlcy13YWhscmVjaHQiLCJBRE1JTiIsInVtYV9hdXRob3JpemF0aW9uIiwiVVNFUiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InRzdy10aW1ldGFibGUtZnJvbnRlbmQiOnsicm9sZXMiOlsiQUNUSVZFX1BMQU4iLCJQRVJTT05BTF9QTEFOIiwiRlJFRV9QTEFOIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sInRpbWV0YWJsZSI6eyJyb2xlcyI6WyJBRE1JTiIsIlBFUlNPTkFMX1BMQU4iLCJGUkVFX1BMQU4iXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJlY2RlNDhkZi0zNzU1LTQ1YjMtOWQxOS1iMTAxM2E4YzI2NTgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkppbSBNYXJ0ZW5zIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZ2l0aHViQDJtYXJ0ZW5zLmRlIiwiZ2l2ZW5fbmFtZSI6IkppbSIsImxvY2FsZSI6ImVuIiwiZmFtaWx5X25hbWUiOiJNYXJ0ZW5zIiwiZW1haWwiOiJnaXRodWJAMm1hcnRlbnMuZGUifQ.jQ5BDGJHbUZ1cwz9DHsRrJ8vCgs_h0nZgZDa4dqoeVyIFtx-P7aYubFwL3BnN64DOLDDLhg2EZ_AsjVaSoZWyKXU4b1psVTbJtMlH8JI3kBVWs3_YxkKC-rvJm_aU_grXSBYEsl1bq5FdXvTyRzP0i7-XOBic6us-cz0Ylzu54lFtqRkDJEYjI3OKrA1ZuRafVbRxUTGvdWGehv1FGpL55JXwVFeon5N9LatV_5LyU6eDBvC3YPZPDQbw37MUhqBSjDueTvz-ysSfT8UIZtflR_nvOXRLspaiC_LsAOaFTrJLFcOw_SF2rTiMRKYemL__YXKG18HUA-yPVfni9e0cA
+Content-Type: application/json
+
+{
+  "electionName": "Bezirkswahl 2024",
+  "abbreviation": "FREIE WÄHLER",
+  "name": "Freie Wähler - Kreisverband Eimsbüttel",
+  "overallNomination": {
+    "electionName": "Bezirkswahl 2024",
+    "partyAbbreviation": "FREIE WÄHLER",
+    "name": "Bezirksliste Freie Wähler",
+    "supportVotesOnNomination": true,
+    "candidates": [
+      {
+        "name": "Jamal, Ammar",
+        "profession": ""
+      }
+    ]
+  },
+  "constituencyNominations": {
+    "5": {
+      "electionName": "Bezirkswahl 2024",
+      "partyAbbreviation": "FREIE WÄHLER",
+      "name": "FREIE WÄHLER Wahlkreisliste Niendorf",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Jamal, Ammar",
+          "profession": ""
+        }
+      ]
+    }
+  }
+}
+
+### LINKE
+PUT http://localhost:12000/wahlrecht/v1/party
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJkalp3QzZGZEZ4eHl4R0RfX3JRYVhIMzNCc0Fxa29fYXZoelRlX19IYUxRIn0.eyJleHAiOjE3MTUwMjU1NDQsImlhdCI6MTcxNTAyNDY0NCwiYXV0aF90aW1lIjoxNzE1MDIxMzQ2LCJqdGkiOiJiOTcyMjk5Mi0yMGFjLTRlYzktODdiMy02N2EzNmU3OWNiNzkiLCJpc3MiOiJodHRwczovL2lkLjJtYXJ0ZW5zLmRlL3JlYWxtcy8ybWFydGVucyIsImF1ZCI6WyJ0c3ctdGltZXRhYmxlLWZyb250ZW5kIiwiYWNjb3VudCIsInRpbWV0YWJsZSJdLCJzdWIiOiJkOTRiMzU3My05ZjdhLTRjYmMtYTg5MS1kZGRjYWQ1MjE0YjMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3YWhscmVjaHQiLCJzZXNzaW9uX3N0YXRlIjoiZWNkZTQ4ZGYtMzc1NS00NWIzLTlkMTktYjEwMTNhOGMyNjU4IiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2FwaS4ybWFydGVucy5kZSIsImh0dHA6Ly9sb2NhbGhvc3Q6MTIwMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiQ09SRV9FTEVDVElPTl9EQVRBX0NPTlRSSUJVVE9SIiwiZGVmYXVsdC1yb2xlcy13YWhscmVjaHQiLCJBRE1JTiIsInVtYV9hdXRob3JpemF0aW9uIiwiVVNFUiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InRzdy10aW1ldGFibGUtZnJvbnRlbmQiOnsicm9sZXMiOlsiQUNUSVZFX1BMQU4iLCJQRVJTT05BTF9QTEFOIiwiRlJFRV9QTEFOIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sInRpbWV0YWJsZSI6eyJyb2xlcyI6WyJBRE1JTiIsIlBFUlNPTkFMX1BMQU4iLCJGUkVFX1BMQU4iXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJlY2RlNDhkZi0zNzU1LTQ1YjMtOWQxOS1iMTAxM2E4YzI2NTgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkppbSBNYXJ0ZW5zIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZ2l0aHViQDJtYXJ0ZW5zLmRlIiwiZ2l2ZW5fbmFtZSI6IkppbSIsImxvY2FsZSI6ImVuIiwiZmFtaWx5X25hbWUiOiJNYXJ0ZW5zIiwiZW1haWwiOiJnaXRodWJAMm1hcnRlbnMuZGUifQ.WERWx4KlcaqykmLKlU_wZOPZW6qJBmP0N5M4GvF56qQNMpvlqxI3UN0yOFqXl05dqh0a9URTnfVwc12IohcR1mgBVxIvfUs4yNVPfB5ow-vgi3XDdV0h8EexaBrmV32y7K6Em6gzKsSX1ijAR81ojZBDxv-2Kq73wRiSfBuUQ7P6nHAOZaijIRRMbA6S1sD2pi-KWhlvmVVoKrJqwsMRvLxAhQybmMe211jZ3B7Y60N7jdDeFy7MfkbHEDxviWhvtamwWPpLCU7pGz8PrWDIJvhw3KndfrfxvVfNY2aDXHWFFvmgYaDK59qJqOG6zmPHg0cv9HdX2MHdVdTQVq7S3A
+Content-Type: application/json
+
+{
+  "electionName": "Bezirkswahl 2024",
   "abbreviation": "LINKE",
   "name": "Die LINKE - Kreisverband Eimsbüttel",
   "overallNomination": {
-    "electionName": "Bezirkswahl 2019",
+    "electionName": "Bezirkswahl 2024",
     "partyAbbreviation": "LINKE",
     "name": "Bezirksliste LINKE",
     "supportVotesOnNomination": true,
     "candidates": [
       {
-        "name": "Pagels, Manuela",
-        "profession": ""
-      },
-      {
-        "name": "Wiegmann, Roland",
-        "profession": ""
-      },
-      {
-        "name": "Peters, Ralf",
-        "profession": ""
-      },
-      {
-        "name": "Hoyer, Jonas",
-        "profession": ""
-      },
-      {
         "name": "Kleinert, Mikey",
         "profession": ""
       },
       {
-        "name": "Schulte, Kolja",
+        "name": "Pagels, Manuela",
         "profession": ""
       },
       {
-        "name": "Huwald, Kristin",
-        "profession": ""
-      },
-      {
-        "name": "Dr. Ritter, Sabine",
-        "profession": ""
-      },
-      {
-        "name": "Pirling, David",
-        "profession": ""
-      },
-      {
-        "name": "Reipschläger, Bernhard",
+        "name": "Faust-Benecke, Heike",
         "profession": ""
       },
       {
@@ -1156,90 +1279,78 @@ Content-Type: application/json
         "profession": ""
       },
       {
-        "name": "Artus, Holger",
+        "name": "Schrank, Myriam",
         "profession": ""
       },
       {
-        "name": "WLaab, Helene",
+        "name": "Brinkmann, Marvin",
+        "profession": ""
+      },
+      {
+        "name": "Drews, Nikolai",
+        "profession": ""
+      },
+      {
+        "name": "Ick, Eicke",
+        "profession": ""
+      },
+      {
+        "name": "Runge, Jan-Philipp",
+        "profession": ""
+      },
+      {
+        "name": "Manzella, Tim",
+        "profession": ""
+      },
+      {
+        "name": "Wolter, Gernot",
+        "profession": ""
+      },
+      {
+        "name": "Stahl, Alexander",
+        "profession": ""
+      },
+      {
+        "name": "Kolja, Schulte",
+        "profession": ""
+      },
+      {
+        "name": "Assall, Moritz",
         "profession": ""
       }
     ]
   },
   "constituencyNominations": {
     "1": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "LINKE",
       "name": "LINKE Wahlkreisliste Eimsbüttel-Nord",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Peters, Ralf",
-          "profession": ""
-        },
-        {
-          "name": "Rautenstrauch, Kirsten",
-          "profession": ""
-        },
-        {
-          "name": "Kopetsch, Lasse",
-          "profession": ""
-        },
-        {
-          "name": "Kittendorf, Bernd",
-          "profession": ""
-        },
-        {
-          "name": "Kahlert, Jürgen",
-          "profession": ""
-        },
-        {
-          "name": "Weinandy, Uwe",
+          "name": "Drews, Nikolai",
           "profession": ""
         }
       ]
     },
     "2": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "LINKE",
       "name": "LINKE Wahlkreisliste Eimsbüttel-Süd",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Gutzeit, Peter",
+          "name": "Assall, Moritz",
           "profession": ""
         },
         {
-          "name": "Pirling, David",
-          "profession": ""
-        },
-        {
-          "name": "Artus, Holger",
-          "profession": ""
-        },
-        {
-          "name": "Schrank, Myriam",
-          "profession": ""
-        },
-        {
-          "name": "Huwald, Kristin",
-          "profession": ""
-        },
-        {
-          "name": "Ehlers, Hermann",
-          "profession": ""
-        },
-        {
-          "name": "Behrendt, Peter",
-          "profession": ""
-        },
-        {
-          "name": "Voß, Lothar",
+          "name": "Brinkmann, Marvin",
           "profession": ""
         }
       ]
     },
     "3": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "LINKE",
       "name": "LINKE Wahlkreisliste HaRo",
       "supportVotesOnNomination": false,
@@ -1249,21 +1360,13 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Iversen, Karin",
-          "profession": ""
-        },
-        {
-          "name": "Wiora, Rosemarie",
-          "profession": ""
-        },
-        {
-          "name": "Fritzsche, Olga",
+          "name": "Stahl, Alexander",
           "profession": ""
         }
       ]
     },
     "4": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "LINKE",
       "name": "LINKE Wahlkreisliste Lokstedt",
       "supportVotesOnNomination": false,
@@ -1273,65 +1376,41 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Arndt, Thomas",
-          "profession": ""
-        },
-        {
-          "name": "Maruhn, Simone",
+          "name": "Ick, Eicke",
           "profession": ""
         }
       ]
     },
     "5": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "LINKE",
       "name": "LINKE Wahlkreisliste Niendorf",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Dr. Khenkhar, Malik",
+          "name": "Manzella, Tim",
           "profession": ""
         },
         {
-          "name": "Radom, Claudia",
-          "profession": ""
-        },
-        {
-          "name": "Kara, Başak",
+          "name": "Wolter, Gernot",
           "profession": ""
         }
       ]
     },
     "6": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "LINKE",
       "name": "LINKE Wahlkreisliste Schnelsen",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Wiegmann, Roland",
-          "profession": ""
-        },
-        {
-          "name": "Laab, Helene",
-          "profession": ""
-        },
-        {
-          "name": "Richter, Petra",
-          "profession": ""
-        },
-        {
-          "name": "Weinrich, Hermann",
-          "profession": ""
-        },
-        {
-          "name": "Griebner, Holger",
+          "name": "Arndt, Thomas",
           "profession": ""
         }
       ]
     },
     "7": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "LINKE",
       "name": "LINKE Wahlkreisliste Eidelstedt",
       "supportVotesOnNomination": false,
@@ -1341,23 +1420,23 @@ Content-Type: application/json
           "profession": ""
         },
         {
-          "name": "Fidan-Denizhan, Safiye",
+          "name": "Schrank, Myriam",
           "profession": ""
         }
       ]
     },
     "8": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "LINKE",
       "name": "LINKE Wahlkreisliste Stellingen",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Hoyer, Jonas",
+          "name": "Runge, Jan-Philipp",
           "profession": ""
         },
         {
-          "name": "Palm, Cecylia",
+          "name": "Faust-Benecke, Heike",
           "profession": ""
         }
       ]
@@ -1367,33 +1446,21 @@ Content-Type: application/json
 
 ### FDP
 PUT http://localhost:12000/wahlrecht/v1/party
-Authorization: Basic dXNlcjpwYXNzd29yZA==
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJkalp3QzZGZEZ4eHl4R0RfX3JRYVhIMzNCc0Fxa29fYXZoelRlX19IYUxRIn0.eyJleHAiOjE3MTUwMjU1NDQsImlhdCI6MTcxNTAyNDY0NCwiYXV0aF90aW1lIjoxNzE1MDIxMzQ2LCJqdGkiOiJiOTcyMjk5Mi0yMGFjLTRlYzktODdiMy02N2EzNmU3OWNiNzkiLCJpc3MiOiJodHRwczovL2lkLjJtYXJ0ZW5zLmRlL3JlYWxtcy8ybWFydGVucyIsImF1ZCI6WyJ0c3ctdGltZXRhYmxlLWZyb250ZW5kIiwiYWNjb3VudCIsInRpbWV0YWJsZSJdLCJzdWIiOiJkOTRiMzU3My05ZjdhLTRjYmMtYTg5MS1kZGRjYWQ1MjE0YjMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3YWhscmVjaHQiLCJzZXNzaW9uX3N0YXRlIjoiZWNkZTQ4ZGYtMzc1NS00NWIzLTlkMTktYjEwMTNhOGMyNjU4IiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2FwaS4ybWFydGVucy5kZSIsImh0dHA6Ly9sb2NhbGhvc3Q6MTIwMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiQ09SRV9FTEVDVElPTl9EQVRBX0NPTlRSSUJVVE9SIiwiZGVmYXVsdC1yb2xlcy13YWhscmVjaHQiLCJBRE1JTiIsInVtYV9hdXRob3JpemF0aW9uIiwiVVNFUiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InRzdy10aW1ldGFibGUtZnJvbnRlbmQiOnsicm9sZXMiOlsiQUNUSVZFX1BMQU4iLCJQRVJTT05BTF9QTEFOIiwiRlJFRV9QTEFOIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sInRpbWV0YWJsZSI6eyJyb2xlcyI6WyJBRE1JTiIsIlBFUlNPTkFMX1BMQU4iLCJGUkVFX1BMQU4iXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJlY2RlNDhkZi0zNzU1LTQ1YjMtOWQxOS1iMTAxM2E4YzI2NTgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkppbSBNYXJ0ZW5zIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZ2l0aHViQDJtYXJ0ZW5zLmRlIiwiZ2l2ZW5fbmFtZSI6IkppbSIsImxvY2FsZSI6ImVuIiwiZmFtaWx5X25hbWUiOiJNYXJ0ZW5zIiwiZW1haWwiOiJnaXRodWJAMm1hcnRlbnMuZGUifQ.WERWx4KlcaqykmLKlU_wZOPZW6qJBmP0N5M4GvF56qQNMpvlqxI3UN0yOFqXl05dqh0a9URTnfVwc12IohcR1mgBVxIvfUs4yNVPfB5ow-vgi3XDdV0h8EexaBrmV32y7K6Em6gzKsSX1ijAR81ojZBDxv-2Kq73wRiSfBuUQ7P6nHAOZaijIRRMbA6S1sD2pi-KWhlvmVVoKrJqwsMRvLxAhQybmMe211jZ3B7Y60N7jdDeFy7MfkbHEDxviWhvtamwWPpLCU7pGz8PrWDIJvhw3KndfrfxvVfNY2aDXHWFFvmgYaDK59qJqOG6zmPHg0cv9HdX2MHdVdTQVq7S3A
 Content-Type: application/json
 
 {
-  "electionName": "Bezirkswahl 2019",
+  "electionName": "Bezirkswahl 2024",
   "abbreviation": "FDP",
   "name": "Freie Demokratische Partei - Kreisverband Eimsbüttel",
   "overallNomination": {
-    "electionName": "Bezirkswahl 2019",
+    "electionName": "Bezirkswahl 2024",
     "partyAbbreviation": "FDP",
     "name": "Bezirksliste FDP",
     "supportVotesOnNomination": true,
     "candidates": [
       {
-        "name": "Krüger, Klaus",
-        "profession": ""
-      },
-      {
         "name": "Schwanke, Benjamin",
-        "profession": ""
-      },
-      {
-        "name": "Cleven, Martina",
-        "profession": ""
-      },
-      {
-        "name": "Zielinski, Mathias",
         "profession": ""
       },
       {
@@ -1401,23 +1468,7 @@ Content-Type: application/json
         "profession": ""
       },
       {
-        "name": "Krüger, Hannelore",
-        "profession": ""
-      },
-      {
-        "name": "Welling, Jörg",
-        "profession": ""
-      },
-      {
-        "name": "Häffs, Marvin",
-        "profession": ""
-      },
-      {
-        "name": "Korb, Hendrik",
-        "profession": ""
-      },
-      {
-        "name": "Bahmer, Larissa",
+        "name": "Weintritt, Sarah",
         "profession": ""
       },
       {
@@ -1425,78 +1476,162 @@ Content-Type: application/json
         "profession": ""
       },
       {
-        "name": "Szrubarski, Sebastian",
+        "name": "Krüger, Klaus",
         "profession": ""
       },
       {
-        "name": "Patzer, Heinrich-Otto",
+        "name": "Lenke, Ina",
         "profession": ""
       },
       {
-        "name": "Sosin, Tatjana",
+        "name": "von Arnim, Hans-Christian",
         "profession": ""
       },
       {
-        "name": "Damm, Renate",
+        "name": "Korb, Hendrik",
         "profession": ""
       },
       {
-        "name": "Müller-Sönksen, Burkhardt",
+        "name": "Hümpel, Carolin",
+        "profession": ""
+      },
+      {
+        "name": "Dulias, Uwe",
+        "profession": ""
+      },
+      {
+        "name": "Haupt, Aliena",
+        "profession": ""
+      },
+      {
+        "name": "Fricke, Lea",
+        "profession": ""
+      },
+      {
+        "name": "Miele, Volker",
+        "profession": ""
+      },
+      {
+        "name": "Jacobs, Lucas",
+        "profession": ""
+      },
+      {
+        "name": "Krüger, Hannelore",
+        "profession": ""
+      },
+      {
+        "name": "Kasprzack, Mathias",
+        "profession": ""
+      },
+      {
+        "name": "Tillessen, Joachim",
+        "profession": ""
+      },
+      {
+        "name": "Gärtner, Christoph",
+        "profession": ""
+      },
+      {
+        "name": "Köchy, Jonathan",
+        "profession": ""
+      },
+      {
+        "name": "Trzeciok, Tristan",
+        "profession": ""
+      },
+      {
+        "name": "Zimmermann, Lutz",
+        "profession": ""
+      },
+      {
+        "name": "Pego, Karl-Heinz",
+        "profession": ""
+      },
+      {
+        "name": "Erntges, Melvyn",
+        "profession": ""
+      },
+      {
+        "name": "Franz, Marcel",
         "profession": ""
       }
     ]
   },
   "constituencyNominations": {
     "1": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "FDP",
       "name": "FDP Wahlkreisliste Eimsbüttel-Nord",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Schwanke, Benjamin",
-          "profession": ""
-        },
-        {
-          "name": "Cleven, Martina",
+          "name": "Haupt, Aliena",
           "profession": ""
         }
       ]
     },
     "2": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "FDP",
       "name": "FDP Wahlkreisliste Eimsbüttel-Süd",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Zielinski, Mathias",
+          "name": "Langbehn, Marian",
+          "profession": ""
+        },
+        {
+          "name": "Weintritt, Sarah",
           "profession": ""
         },
         {
           "name": "Tillessen, Joachim",
           "profession": ""
+        },
+        {
+          "name": "Gärtner, Christoph",
+          "profession": ""
+        },
+        {
+          "name": "Mielke, Volker",
+          "profession": ""
         }
       ]
     },
     "3": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "FDP",
       "name": "FDP Wahlkreisliste HaRo",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Sosin, Tatjana",
+          "name": "von Arnim, Hans-Christian",
+          "profession": ""
+        },
+        {
+          "name": "Franz, Marcel",
+          "profession": ""
+        },
+        {
+          "name": "Lenke, Ina",
           "profession": ""
         },
         {
           "name": "Korb, Hendrik",
           "profession": ""
+        },
+        {
+          "name": "Fricke, Lea",
+          "profession": ""
+        },
+        {
+          "name": "Kasprzack, Mathias",
+          "profession": ""
         }
       ]
     },
     "4": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "FDP",
       "name": "FDP Wahlkreisliste Lokstedt",
       "supportVotesOnNomination": false,
@@ -1504,47 +1639,63 @@ Content-Type: application/json
         {
           "name": "Thiele, Camilla Joyce",
           "profession": ""
+        },
+        {
+          "name": "Philipps, Tina",
+          "profession": ""
+        },
+        {
+          "name": "Erntges, Melvyn",
+          "profession": ""
         }
       ]
     },
     "5": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "FDP",
       "name": "FDP Wahlkreisliste Niendorf",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Häffs, Marvin",
+          "name": "Dulias, Uwe",
           "profession": ""
         },
         {
-          "name": "Bahmer, Larissa",
+          "name": "Philipps, Markus",
           "profession": ""
         },
         {
-          "name": "Patzer, Heinrich-Otto",
+          "name": "Zimmermann, Lutz",
           "profession": ""
         }
       ]
     },
     "6": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "FDP",
       "name": "FDP Wahlkreisliste Schnelsen",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Krüger, Carsten",
+          "name": "Krüger, Klaus",
+          "profession": ""
+        },
+        {
+          "name": "Krüger, Hannelore",
           "profession": ""
         }
       ]
     },
     "7": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "FDP",
       "name": "FDP Wahlkreisliste Eidelstedt",
       "supportVotesOnNomination": false,
       "candidates": [
+        {
+          "name": "Bilgi, Mir Baran",
+          "profession": ""
+        },
         {
           "name": "Szrubarski, Sebastian",
           "profession": ""
@@ -1552,13 +1703,13 @@ Content-Type: application/json
       ]
     },
     "8": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "FDP",
       "name": "FDP Wahlkreisliste Stellingen",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Welling, Jörg",
+          "name": "Jacobs, Lucas",
           "profession": ""
         }
       ]
@@ -1567,25 +1718,25 @@ Content-Type: application/json
 }
 ### AfD
 PUT http://localhost:12000/wahlrecht/v1/party
-Authorization: Basic dXNlcjpwYXNzd29yZA==
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJkalp3QzZGZEZ4eHl4R0RfX3JRYVhIMzNCc0Fxa29fYXZoelRlX19IYUxRIn0.eyJleHAiOjE3MTUwMjU1NDQsImlhdCI6MTcxNTAyNDY0NCwiYXV0aF90aW1lIjoxNzE1MDIxMzQ2LCJqdGkiOiJiOTcyMjk5Mi0yMGFjLTRlYzktODdiMy02N2EzNmU3OWNiNzkiLCJpc3MiOiJodHRwczovL2lkLjJtYXJ0ZW5zLmRlL3JlYWxtcy8ybWFydGVucyIsImF1ZCI6WyJ0c3ctdGltZXRhYmxlLWZyb250ZW5kIiwiYWNjb3VudCIsInRpbWV0YWJsZSJdLCJzdWIiOiJkOTRiMzU3My05ZjdhLTRjYmMtYTg5MS1kZGRjYWQ1MjE0YjMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3YWhscmVjaHQiLCJzZXNzaW9uX3N0YXRlIjoiZWNkZTQ4ZGYtMzc1NS00NWIzLTlkMTktYjEwMTNhOGMyNjU4IiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2FwaS4ybWFydGVucy5kZSIsImh0dHA6Ly9sb2NhbGhvc3Q6MTIwMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiQ09SRV9FTEVDVElPTl9EQVRBX0NPTlRSSUJVVE9SIiwiZGVmYXVsdC1yb2xlcy13YWhscmVjaHQiLCJBRE1JTiIsInVtYV9hdXRob3JpemF0aW9uIiwiVVNFUiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InRzdy10aW1ldGFibGUtZnJvbnRlbmQiOnsicm9sZXMiOlsiQUNUSVZFX1BMQU4iLCJQRVJTT05BTF9QTEFOIiwiRlJFRV9QTEFOIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sInRpbWV0YWJsZSI6eyJyb2xlcyI6WyJBRE1JTiIsIlBFUlNPTkFMX1BMQU4iLCJGUkVFX1BMQU4iXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJlY2RlNDhkZi0zNzU1LTQ1YjMtOWQxOS1iMTAxM2E4YzI2NTgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkppbSBNYXJ0ZW5zIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZ2l0aHViQDJtYXJ0ZW5zLmRlIiwiZ2l2ZW5fbmFtZSI6IkppbSIsImxvY2FsZSI6ImVuIiwiZmFtaWx5X25hbWUiOiJNYXJ0ZW5zIiwiZW1haWwiOiJnaXRodWJAMm1hcnRlbnMuZGUifQ.WERWx4KlcaqykmLKlU_wZOPZW6qJBmP0N5M4GvF56qQNMpvlqxI3UN0yOFqXl05dqh0a9URTnfVwc12IohcR1mgBVxIvfUs4yNVPfB5ow-vgi3XDdV0h8EexaBrmV32y7K6Em6gzKsSX1ijAR81ojZBDxv-2Kq73wRiSfBuUQ7P6nHAOZaijIRRMbA6S1sD2pi-KWhlvmVVoKrJqwsMRvLxAhQybmMe211jZ3B7Y60N7jdDeFy7MfkbHEDxviWhvtamwWPpLCU7pGz8PrWDIJvhw3KndfrfxvVfNY2aDXHWFFvmgYaDK59qJqOG6zmPHg0cv9HdX2MHdVdTQVq7S3A
 Content-Type: application/json
 
 {
-  "electionName": "Bezirkswahl 2019",
+  "electionName": "Bezirkswahl 2024",
   "abbreviation": "AfD",
   "name": "Alternative für Deutschland - Kreisverband Eimsbüttel",
   "overallNomination": {
-    "electionName": "Bezirkswahl 2019",
+    "electionName": "Bezirkswahl 2024",
     "partyAbbreviation": "AfD",
     "name": "Bezirksliste AfD",
     "supportVotesOnNomination": true,
     "candidates": [
       {
-        "name": "Schömer, Dirk",
+        "name": "Zimmermann, Elke",
         "profession": ""
       },
       {
-        "name": "Zimmermann, Elke",
+        "name": "Wellmann, Harald",
         "profession": ""
       },
       {
@@ -1593,34 +1744,42 @@ Content-Type: application/json
         "profession": ""
       },
       {
-        "name": "Pohl, Christian",
-        "profession": ""
-      },
-      {
-        "name": "Hanssen, Wolfgang",
-        "profession": ""
-      },
-      {
         "name": "Lemke, Martin",
         "profession": ""
       },
       {
-        "name": "Cremer-Thursby, Marc",
+        "name": "Frank, Julian",
         "profession": ""
       },
       {
-        "name": "Schultz, Thomas",
+        "name": "Cremer-Thursby, Dr. Marc",
         "profession": ""
       },
       {
-        "name": "Ziob, Peter",
+        "name": "Lorenz, John",
+        "profession": ""
+      },
+      {
+        "name": "Fritsch, Johannes",
         "profession": ""
       }
     ]
   },
   "constituencyNominations": {
+    "1": {
+      "electionName": "Bezirkswahl 2024",
+      "partyAbbreviation": "AfD",
+      "name": "AfD Wahlkreisliste Eimsbüttel-Nord",
+      "supportVotesOnNomination": false,
+      "candidates": [
+        {
+          "name": "Wellmann, Harald",
+          "profession": ""
+        }
+      ]
+    },
     "2": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "AfD",
       "name": "AfD Wahlkreisliste Eimsbüttel-Süd",
       "supportVotesOnNomination": false,
@@ -1632,43 +1791,43 @@ Content-Type: application/json
       ]
     },
     "3": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "AfD",
       "name": "AfD Wahlkreisliste HaRo",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Cremer-Thursby, Marc",
+          "name": "Cremer-Thursby, Dr. Marc",
           "profession": ""
         }
       ]
     },
     "4": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "AfD",
       "name": "AfD Wahlkreisliste Lokstedt",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Pohl, Christian",
+          "name": "Frank, Julian",
           "profession": ""
         }
       ]
     },
     "5": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "AfD",
       "name": "AfD Wahlkreisliste Niendorf",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Hanssen, Wolfgang",
+          "name": "Fritsch, Johannes",
           "profession": ""
         }
       ]
     },
     "6": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "AfD",
       "name": "AfD Wahlkreisliste Schnelsen",
       "supportVotesOnNomination": false,
@@ -1680,7 +1839,7 @@ Content-Type: application/json
       ]
     },
     "7": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "AfD",
       "name": "AfD Wahlkreisliste Eidelstedt",
       "supportVotesOnNomination": false,
@@ -1692,13 +1851,13 @@ Content-Type: application/json
       ]
     },
     "8": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "AfD",
       "name": "AfD Wahlkreisliste Stellingen",
       "supportVotesOnNomination": false,
       "candidates": [
         {
-          "name": "Schömer, Dirk",
+          "name": "Lorenz, John",
           "profession": ""
         }
       ]
@@ -1711,13 +1870,13 @@ Authorization: Basic dXNlcjpwYXNzd29yZA==
 Content-Type: application/json
 
 {
-  "electionName": "Bezirkswahl 2019",
+  "electionName": "Bezirkswahl 2024",
   "abbreviation": "JfE",
   "name": "Jekaterina für Eidelstedt",
   "overallNomination": null,
   "constituencyNominations": {
     "7": {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "JfE",
       "name": "JfE Wahlkreisliste Eidelstedt",
       "supportVotesOnNomination": false,
