@@ -1,818 +1,855 @@
 PUT http://localhost:12000/wahlrecht/v1/electionResult
-Authorization: Basic dXNlcjpwYXNzd29yZA==
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJkalp3QzZGZEZ4eHl4R0RfX3JRYVhIMzNCc0Fxa29fYXZoelRlX19IYUxRIn0.eyJleHAiOjE3MTUwMjc4MzIsImlhdCI6MTcxNTAyNjkzMiwiYXV0aF90aW1lIjoxNzE1MDIxMzQ2LCJqdGkiOiJmMWExYTBhZC1jMmU3LTQ2ZjAtYWE2OS1jZjJiZmI3ZWMzZTkiLCJpc3MiOiJodHRwczovL2lkLjJtYXJ0ZW5zLmRlL3JlYWxtcy8ybWFydGVucyIsImF1ZCI6WyJ0c3ctdGltZXRhYmxlLWZyb250ZW5kIiwiYWNjb3VudCIsInRpbWV0YWJsZSJdLCJzdWIiOiJkOTRiMzU3My05ZjdhLTRjYmMtYTg5MS1kZGRjYWQ1MjE0YjMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3YWhscmVjaHQiLCJzZXNzaW9uX3N0YXRlIjoiZWNkZTQ4ZGYtMzc1NS00NWIzLTlkMTktYjEwMTNhOGMyNjU4IiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2FwaS4ybWFydGVucy5kZSIsImh0dHA6Ly9sb2NhbGhvc3Q6MTIwMDAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiQ09SRV9FTEVDVElPTl9EQVRBX0NPTlRSSUJVVE9SIiwiZGVmYXVsdC1yb2xlcy13YWhscmVjaHQiLCJBRE1JTiIsInVtYV9hdXRob3JpemF0aW9uIiwiVVNFUiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7InRzdy10aW1ldGFibGUtZnJvbnRlbmQiOnsicm9sZXMiOlsiQUNUSVZFX1BMQU4iLCJQRVJTT05BTF9QTEFOIiwiRlJFRV9QTEFOIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX0sInRpbWV0YWJsZSI6eyJyb2xlcyI6WyJBRE1JTiIsIlBFUlNPTkFMX1BMQU4iLCJGUkVFX1BMQU4iXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiJlY2RlNDhkZi0zNzU1LTQ1YjMtOWQxOS1iMTAxM2E4YzI2NTgiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkppbSBNYXJ0ZW5zIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZ2l0aHViQDJtYXJ0ZW5zLmRlIiwiZ2l2ZW5fbmFtZSI6IkppbSIsImxvY2FsZSI6ImVuIiwiZmFtaWx5X25hbWUiOiJNYXJ0ZW5zIiwiZW1haWwiOiJnaXRodWJAMm1hcnRlbnMuZGUifQ.X29KmJJ52RMjqsHSypH2akus0qtH4hMFVKp-5WtajtEKa8zdpOEtbpGw8OoAoOFt-Ty3gT8hkHtLg3RV66eKfU0z42NiZk8xeKPfk-Ar9U9YN4qUDHow4UgnqlU0-OCEpkCDjQp9NtdifJY5vK04TP-2cd-2ixKpwgD2l9ge9pk8Y0Qg4Woawrtx_0AhSIR7JzXg1u0e6UYJp0iMtkS3c4HL-cIq9sd4AAPF841QRuFhX2xGDVF7NDYSlL8zFfxPifQoDo3LCNuk8fzd7Km4VBN9vE4CvFzjhU4_71VK4PO3L_BO0GtaCIz9WhINCS8dR3lDThjyu6A9j9sc-VxY-g
 Content-Type: application/json
 
 {
-  "electionName": "Bezirkswahl 2019",
+  "electionName": "Bezirkswahl 2024",
   "overallResults": [
     {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "SPD",
       "nominationName": "Bezirksliste SPD",
-      "votesOnNomination": 84703,
-      "votesThroughHealing": 985,
+      "votesOnNomination": 0,
+      "votesThroughHealing": 0,
       "votesPerPosition": {
-        "1": 8782,
-        "2": 3318,
-        "3": 3825,
-        "4": 3519,
-        "5": 2036,
-        "6": 3923,
-        "7": 5427,
-        "8": 2131,
-        "9": 566,
-        "10": 895,
-        "11": 1425,
-        "12": 1924,
-        "13": 819,
-        "14": 2590,
-        "15": 2190,
-        "16": 3568,
-        "17": 742,
-        "18": 401,
-        "19": 554,
-        "20": 1133,
-        "21": 1268,
-        "22": 580,
-        "23": 254,
-        "24": 1217,
-        "25": 693,
-        "26": 1359,
-        "27": 481,
-        "28": 650,
-        "29": 230,
-        "30": 1544,
-        "31": 1080,
-        "32": 1879,
-        "33": 400,
-        "34": 353,
-        "35": 525,
-        "36": 469,
-        "37": 196,
-        "38": 759,
-        "39": 872
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0,
+        "21": 0,
+        "22": 0,
+        "23": 0,
+        "24": 0,
+        "25": 0,
+        "26": 0,
+        "27": 0,
+        "28": 0,
+        "29": 0,
+        "30": 0,
+        "31": 0,
+        "32": 0,
+        "33": 0,
+        "34": 0,
+        "35": 0,
+        "36": 0,
+        "37": 0,
+        "38": 0,
+        "39": 0,
+        "40": 0,
+        "41": 0,
+        "42": 0,
+        "43": 0,
+        "44": 0,
+        "45": 0
       }
     },
     {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "CDU",
       "nominationName": "Bezirksliste CDU",
-      "votesOnNomination": 66245,
-      "votesThroughHealing": 660,
+      "votesOnNomination": 0,
+      "votesThroughHealing": 0,
       "votesPerPosition": {
-        "1": 5966,
-        "2": 1982,
-        "3": 1604,
-        "4": 2414,
-        "5": 1322,
-        "6": 2237,
-        "7": 1868,
-        "8": 1872,
-        "9": 1889,
-        "10": 881,
-        "11": 1253,
-        "12": 2921,
-        "13": 598,
-        "14": 2721,
-        "15": 618,
-        "16": 941,
-        "17": 620,
-        "18": 837,
-        "19": 378,
-        "20": 594,
-        "21": 484,
-        "22": 584,
-        "23": 472,
-        "24": 408,
-        "25": 748,
-        "26": 650,
-        "27": 282,
-        "28": 315,
-        "29": 1397,
-        "30": 502
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0,
+        "21": 0,
+        "22": 0,
+        "23": 0,
+        "24": 0,
+        "25": 0,
+        "26": 0,
+        "27": 0,
+        "28": 0
       }
     },
     {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "LINKE",
       "nominationName": "Bezirksliste LINKE",
-      "votesOnNomination": 47452,
-      "votesThroughHealing": 330,
+      "votesOnNomination": 0,
+      "votesThroughHealing": 0,
       "votesPerPosition": {
-        "1": 4890,
-        "2": 875,
-        "3": 1532,
-        "4": 1293,
-        "5": 2321,
-        "6": 696,
-        "7": 1843,
-        "8": 2212,
-        "9": 1488,
-        "10": 483,
-        "11": 764,
-        "12": 572,
-        "13": 892
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0
       }
     },
     {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "GRÜNE",
       "nominationName": "Bezirksliste GRÜNE",
-      "votesOnNomination": 150842,
-      "votesThroughHealing": 900,
+      "votesOnNomination": 0,
+      "votesThroughHealing": 0,
       "votesPerPosition": {
-        "1": 10586,
-        "2": 5629,
-        "3": 12597,
-        "4": 2935,
-        "5": 3378,
-        "6": 735,
-        "7": 5662,
-        "8": 4021,
-        "9": 2065,
-        "10": 2469,
-        "11": 1561,
-        "12": 1561,
-        "13": 2290,
-        "14": 1411,
-        "15": 2445,
-        "16": 1761,
-        "17": 1252,
-        "18": 1628,
-        "19": 652,
-        "20": 3524,
-        "21": 677,
-        "22": 843,
-        "23": 2375,
-        "24": 500,
-        "25": 1674,
-        "26": 3264,
-        "27": 1569,
-        "28": 531,
-        "29": 531,
-        "30": 652,
-        "31": 5358,
-        "32": 2129
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0,
+        "21": 0,
+        "22": 0,
+        "23": 0,
+        "24": 0,
+        "25": 0,
+        "26": 0,
+        "27": 0,
+        "28": 0,
+        "29": 0,
+        "30": 0,
+        "31": 0,
+        "32": 0,
+        "33": 0,
+        "34": 0,
+        "35": 0,
+        "36": 0,
+        "37": 0,
+        "38": 0,
+        "39": 0,
+        "40": 0
       }
     },
     {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "FDP",
       "nominationName": "Bezirksliste FDP",
-      "votesOnNomination": 24435,
-      "votesThroughHealing": 240,
+      "votesOnNomination": 0,
+      "votesThroughHealing": 0,
       "votesPerPosition": {
-        "1": 3528,
-        "2": 1964,
-        "3": 1633,
-        "4": 897,
-        "5": 1193,
-        "6": 355,
-        "7": 401,
-        "8": 1012,
-        "9": 496,
-        "10": 1242,
-        "11": 643,
-        "12": 300,
-        "13": 311,
-        "14": 998,
-        "15": 505,
-        "16": 2181
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "20": 0,
+        "21": 0,
+        "22": 0,
+        "23": 0,
+        "24": 0
       }
     },
     {
-      "electionName": "Bezirkswahl 2019",
+      "electionName": "Bezirkswahl 2024",
       "partyAbbreviation": "AfD",
       "nominationName": "Bezirksliste AfD",
-      "votesOnNomination": 21625,
-      "votesThroughHealing": 220,
+      "votesOnNomination": 0,
+      "votesThroughHealing": 0,
       "votesPerPosition": {
-        "1": 1226,
-        "2": 1950,
-        "3": 3007,
-        "4": 874,
-        "5": 1032,
-        "6": 780,
-        "7": 535,
-        "8": 221,
-        "9": 283
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0
       }
     },
     {
-      "electionName": "Bezirkswahl 2019",
-      "partyAbbreviation": "Piraten",
-      "nominationName": "Bezirksliste Piraten",
-      "votesOnNomination": 6715,
-      "votesThroughHealing": 25,
+      "electionName": "Bezirkswahl 2024",
+      "partyAbbreviation": "FREIE WÄHLER",
+      "nominationName": "Bezirksliste Freie Wähler",
+      "votesOnNomination": 0,
+      "votesThroughHealing": 0,
       "votesPerPosition": {
-        "1": 871,
-        "2": 1907,
-        "3": 987
+        "1": 0
+      }
+    },
+    {
+      "electionName": "Bezirkswahl 2024",
+      "partyAbbreviation": "Volt",
+      "nominationName": "Bezirksliste Volt",
+      "votesOnNomination": 0,
+      "votesThroughHealing": 0,
+      "votesPerPosition": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0
       }
     }
   ],
   "constituencyResults": {
     "1": [
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "SPD",
         "nominationName": "SPD Wahlkreisliste Eimsbüttel-Nord",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 4380,
-          "2": 3107,
-          "3": 1526,
-          "4": 2649,
-          "5": 1468,
-          "6": 1709
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "CDU",
         "nominationName": "CDU Wahlkreisliste Eimsbüttel-Nord",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 3187,
-          "2": 2006,
-          "3": 1329
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "LINKE",
         "nominationName": "LINKE Wahlkreisliste Eimsbüttel-Nord",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 3171,
-          "2": 4537,
-          "3": 2770,
-          "4": 1092,
-          "5": 1006,
-          "6": 564
+          "1": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "GRÜNE",
         "nominationName": "GRÜNE Wahlkreisliste Eimsbüttel-Nord",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 19570,
-          "2": 15345
+          "1": 0,
+          "2": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "FDP",
         "nominationName": "FDP Wahlkreisliste Eimsbüttel-Nord",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 2733,
-          "2": 1805
+          "1": 0
+        }
+      },
+      {
+        "electionName": "Bezirkswahl 2024",
+        "partyAbbreviation": "AfD",
+        "nominationName": "AfD Wahlkreisliste Eimsbüttel-Nord",
+        "votesOnNomination": 0,
+        "votesThroughHealing": 0,
+        "votesPerPosition": {
+          "1": 0
         }
       }
     ],
     "2": [
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "SPD",
         "nominationName": "SPD Wahlkreisliste Eimsbüttel-Süd",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 5761,
-          "2": 2655,
-          "3": 1181,
-          "4": 965,
-          "5": 2426,
-          "6": 1719,
-          "7": 2541,
-          "8": 1548,
-          "9": 1463,
-          "10": 1110
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0,
+          "9": 0,
+          "10": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "CDU",
         "nominationName": "CDU Wahlkreisliste Eimsbüttel-Süd",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 3900,
-          "2": 1548,
-          "3": 2400,
-          "4": 1453,
-          "5": 1992,
-          "6": 1026
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "LINKE",
         "nominationName": "LINKE Wahlkreisliste Eimsbüttel-Süd",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 5742,
-          "2": 4100,
-          "3": 1043,
-          "4": 3375,
-          "5": 1944,
-          "6": 1476,
-          "7": 840,
-          "8": 1061
+          "1": 0,
+          "2": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "GRÜNE",
         "nominationName": "GRÜNE Wahlkreisliste Eimsbüttel-Süd",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 44267,
-          "2": 10039
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "FDP",
         "nominationName": "FDP Wahlkreisliste Eimsbüttel-Süd",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 3164,
-          "2": 2422
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "AfD",
         "nominationName": "AfD Wahlkreisliste Eimsbüttel-Süd",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 2714
+          "1": 0
         }
       }
     ],
     "3": [
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "SPD",
         "nominationName": "SPD Wahlkreisliste HaRo",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 8893,
-          "2": 3006,
-          "3": 2243,
-          "4": 2549,
-          "5": 2146
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "CDU",
         "nominationName": "CDU Wahlkreisliste HaRo",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 9502,
-          "2": 3694,
-          "3": 4467,
-          "4": 6403
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "LINKE",
         "nominationName": "LINKE Wahlkreisliste HaRo",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 4425,
-          "2": 2108,
-          "3": 1199,
-          "4": 1839
+          "1": 0,
+          "2": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "GRÜNE",
         "nominationName": "GRÜNE Wahlkreisliste HaRo",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 25736,
-          "2": 12078
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "FDP",
         "nominationName": "FDP Wahlkreisliste HaRo",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 7037,
-          "2": 4144
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "AfD",
         "nominationName": "AfD Wahlkreisliste HaRo",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 3667
+          "1": 0
         }
       }
     ],
     "4": [
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "SPD",
         "nominationName": "SPD Wahlkreisliste Lokstedt",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 5133,
-          "2": 3786,
-          "3": 2214,
-          "4": 4107,
-          "5": 2593
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "CDU",
         "nominationName": "CDU Wahlkreisliste Lokstedt",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 6293,
-          "2": 3285,
-          "3": 2788
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "LINKE",
         "nominationName": "LINKE Wahlkreisliste Lokstedt",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 4072,
-          "2": 2264,
-          "3": 2139
+          "1": 0,
+          "2": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "GRÜNE",
         "nominationName": "GRÜNE Wahlkreisliste Lokstedt",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 19147,
-          "2": 7895
+          "1": 0,
+          "2": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "FDP",
         "nominationName": "FDP Wahlkreisliste Lokstedt",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 5019
+          "1": 0,
+          "2": 0,
+          "3": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "AfD",
         "nominationName": "AfD Wahlkreisliste Lokstedt",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 3308
+          "1": 0
         }
       }
     ],
     "5": [
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "SPD",
         "nominationName": "SPD Wahlkreisliste Niendorf",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 11882,
-          "2": 7617,
-          "3": 1946,
-          "4": 1743,
-          "5": 1363,
-          "6": 762,
-          "7": 895,
-          "8": 1598,
-          "9": 1786,
-          "10": 781
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "CDU",
         "nominationName": "CDU Wahlkreisliste Niendorf",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 10733,
-          "2": 4550,
-          "3": 2310,
-          "4": 2333,
-          "5": 2565
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "LINKE",
         "nominationName": "LINKE Wahlkreisliste Niendorf",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 3782,
-          "2": 1584,
-          "3": 1185
+          "1": 0,
+          "2": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "FDP",
         "nominationName": "FDP Wahlkreisliste Niendorf",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 2498,
-          "2": 3200,
-          "3": 992
+          "1": 0,
+          "2": 0,
+          "3": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "GRÜNE",
         "nominationName": "GRÜNE Wahlkreisliste Niendorf",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 14838,
-          "2": 12501
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "AfD",
         "nominationName": "AfD Wahlkreisliste Niendorf",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 6616
+          "1": 0
+        }
+      },
+      {
+        "electionName": "Bezirkswahl 2024",
+        "partyAbbreviation": "FREIE WÄHLER",
+        "nominationName": "FREIE WÄHLER Wahlkreisliste Niendorf",
+        "votesOnNomination": 0,
+        "votesThroughHealing": 0,
+        "votesPerPosition": {
+          "1": 0
         }
       }
     ],
     "6": [
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "SPD",
         "nominationName": "SPD Wahlkreisliste Schnelsen",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 10786,
-          "2": 2420,
-          "3": 2224,
-          "4": 1323,
-          "5": 2055
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "CDU",
         "nominationName": "CDU Wahlkreisliste Schnelsen",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 8222,
-          "2": 3878,
-          "3": 1119
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "LINKE",
         "nominationName": "LINKE Wahlkreisliste Schnelsen",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 1673,
-          "2": 574,
-          "3": 1078,
-          "4": 373,
-          "5": 1252
+          "1": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "GRÜNE",
         "nominationName": "GRÜNE Wahlkreisliste Schnelsen",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 9983,
-          "2": 6837
+          "1": 0,
+          "2": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "FDP",
         "nominationName": "FDP Wahlkreisliste Schnelsen",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 4417
+          "1": 0,
+          "2": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "AfD",
         "nominationName": "AfD Wahlkreisliste Schnelsen",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 4585
+          "1": 0
         }
       }
     ],
     "7": [
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "SPD",
         "nominationName": "SPD Wahlkreisliste Eidelstedt",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 8004,
-          "2": 2852,
-          "3": 1831,
-          "4": 1189,
-          "5": 764,
-          "6": 1892,
-          "7": 2099,
-          "8": 1017
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0,
+          "8": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "CDU",
         "nominationName": "CDU Wahlkreisliste Eidelstedt",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 4421,
-          "2": 2943,
-          "3": 1442,
-          "4": 2046
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "GRÜNE",
         "nominationName": "GRÜNE Wahlkreisliste Eidelstedt",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 8974,
-          "2": 4464
+          "1": 0,
+          "2": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "LINKE",
         "nominationName": "LINKE Wahlkreisliste Eidelstedt",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 3052,
-          "2": 2960
+          "1": 0,
+          "2": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "FDP",
         "nominationName": "FDP Wahlkreisliste Eidelstedt",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 2700
+          "1": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "AfD",
         "nominationName": "AfD Wahlkreisliste Eidelstedt",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 5632
-        }
-      },
-      {
-        "electionName": "Bezirkswahl 2019",
-        "partyAbbreviation": "JfE",
-        "nominationName": "JfE Wahlkreisliste Eidelstedt",
-        "votesOnNomination": 0,
-        "votesThroughHealing": 0,
-        "votesPerPosition": {
-          "1": 2996
+          "1": 0
         }
       }
     ],
     "8": [
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "SPD",
         "nominationName": "SPD Wahlkreisliste Stellingen",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 7353,
-          "2": 1626,
-          "3": 3170,
-          "4": 884,
-          "5": 1654,
-          "6": 990
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "CDU",
         "nominationName": "CDU Wahlkreisliste Stellingen",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 6761,
-          "2": 688,
-          "3": 438
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "GRÜNE",
         "nominationName": "GRÜNE Wahlkreisliste Stellingen",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 9071,
-          "2": 10282
+          "1": 0,
+          "2": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "LINKE",
         "nominationName": "LINKE Wahlkreisliste Stellingen",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 3870,
-          "2": 2219
+          "1": 0,
+          "2": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "FDP",
         "nominationName": "FDP Wahlkreisliste Stellingen",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 2886
+          "1": 0
         }
       },
       {
-        "electionName": "Bezirkswahl 2019",
+        "electionName": "Bezirkswahl 2024",
         "partyAbbreviation": "AfD",
         "nominationName": "AfD Wahlkreisliste Stellingen",
         "votesOnNomination": 0,
         "votesThroughHealing": 0,
         "votesPerPosition": {
-          "1": 3177
+          "1": 0
         }
       }
     ]
