@@ -247,6 +247,7 @@ class CalculationService(
         var assignedSeats: Long
         var assignedSeatsPerVotingResult: Map<VotingResult, Int>
         log.debug("Calculate assigned seats with initial election number {}", electionNumber)
+        var numberOfAttempts = 5
         do {
             electionNumberHistory.add(electionNumber)
             val seatsPerVotingResult: MutableMap<VotingResult, Double> = mutableMapOf()
@@ -277,7 +278,11 @@ class CalculationService(
                 )
                 log.debug("Calculated higher election number {}", electionNumber)
             }
-        } while (assignedSeats != numberOfSeats.toLong())
+            numberOfAttempts--
+        } while (assignedSeats != numberOfSeats.toLong() && numberOfAttempts > 0)
+        if (numberOfAttempts == 0 && assignedSeats != numberOfSeats.toLong()) {
+          log.error("With the given result, the solution can never be calculated")
+        }
         return assignedSeatsPerVotingResult
     }
 
