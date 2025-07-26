@@ -24,9 +24,6 @@ management:
     http.server.requests: true
 
 spring:
-  cloud:
-    config:
-      name: wahlrecht
   main:
     banner-mode: off
   profiles:
@@ -87,3 +84,12 @@ resttemplate:
     connectionRestHealthIndicatorTimeoutInMillis: 5000
     readTimeoutRestTemplateInMillis: 5000
     connectionRestTemplateTimeoutInMillis: 5000
+
+de.twomartens.wahlrecht:
+  defaultTimeZone: Europe/Berlin
+  greeting: "Hello %s, on millenium"
+  statusprobe:
+    scheduleDuration: 60
+    maxKafkaFailureDuration: 5
+    maxBlobFailureCount: 5
+    maxFailurePercent: 50
